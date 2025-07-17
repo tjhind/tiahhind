@@ -17,19 +17,30 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // Set the current year
-  document.getElementById("currentYear").textContent = new Date().getFullYear();
+  const currentYearElement = document.getElementById("currentYear");
+  if (currentYearElement) {
+    currentYearElement.textContent = new Date().getFullYear();
+  }
 
-  // Email copy & mobile hover support
+  const isMobile = () => {
+    return (
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent
+      ) ||
+      "ontouchstart" in window ||
+      navigator.maxTouchPoints > 0 ||
+      window.innerWidth <= 768
+    );
+  };
+
   const contactButton = document.querySelector(".contact-button");
   const confirmation = document.getElementById("copy-confirmation");
 
   if (contactButton) {
-    let isTouchDevice =
-      "ontouchstart" in window || navigator.maxTouchPoints > 0;
-
-    contactButton.addEventListener("click", function (e) {
+    const copyEmail = async () => {
       const email = "hello@tiahhind.com";
-      navigator.clipboard.writeText(email).then(() => {
+      try {
+        await navigator.clipboard.writeText(email);
         if (confirmation) {
           const emailWrapper = confirmation.parentElement;
           emailWrapper.classList.add("show-confirmation");
@@ -38,17 +49,74 @@ document.addEventListener("DOMContentLoaded", function () {
             emailWrapper.classList.remove("show-confirmation");
           }, 1500);
         }
+      } catch (err) {
+        console.error("Failed to copy email: ", err);
+        const textArea = document.createElement("textarea");
+        textArea.value = email;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand("copy");
+        document.body.removeChild(textArea);
+      }
+    };
+
+    if (isMobile()) {
+      contactButton.addEventListener("touchstart", function (e) {
+        e.preventDefault();
+        this.classList.add("active");
       });
 
-      // Simulate hover effect on mobile
-      if (isTouchDevice) {
+      contactButton.addEventListener("touchend", function (e) {
         e.preventDefault();
-        contactButton.classList.toggle("active");
+        copyEmail();
 
         setTimeout(() => {
-          contactButton.classList.remove("active");
-        }, 3000);
+          this.classList.remove("active");
+        }, 300);
+      });
+
+      contactButton.addEventListener("click", function (e) {
+        e.preventDefault();
+      });
+    } else {
+      contactButton.addEventListener("click", function (e) {
+        e.preventDefault();
+        copyEmail();
+      });
+
+      contactButton.addEventListener("mouseenter", function () {
+        this.classList.add("hover");
+      });
+
+      contactButton.addEventListener("mouseleave", function () {
+        this.classList.remove("hover");
+      });
+    }
+  }
+
+  const addMobileHoverSupport = (selector) => {
+    const elements = document.querySelectorAll(selector);
+
+    elements.forEach((element) => {
+      if (isMobile()) {
+        element.addEventListener("touchstart", function () {
+          this.classList.add("mobile-hover");
+        });
+
+        element.addEventListener("touchend", function () {
+          setTimeout(() => {
+            this.classList.remove("mobile-hover");
+          }, 150);
+        });
+
+        element.addEventListener("touchcancel", function () {
+          this.classList.remove("mobile-hover");
+        });
       }
     });
-  }
+  };
+
+  addMobileHoverSupport(
+    "button, .button, .btn, a[href], .clickable, .interactive"
+  );
 });

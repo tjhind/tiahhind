@@ -34,7 +34,7 @@
     <meta name="theme-color" content="#ffffff" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tiah Hind | Full Stack Developer</title>
+    <title>Tiah Hind | Software Developer</title>
     <link rel="stylesheet" href="css/styles.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Khmer&display=swap"
@@ -152,46 +152,61 @@
         </section>
         <section id="experience">
           <h3>My Experience</h3>
-          <div id="'verticode">
-            <p>
-              Working at Verticode, I've had the privilege of leading the
-              development of over 20 projects from initiation to completion,
-              spanning a wide range of business domains including healthcare,
-              fintech, edtech, and HR.
-            </p>
-            <p>Skincare advice chatbot</p>
-            <p>Secondhand furniture marketplace</p>
-            <p>Social media insights explorer</p>
-            <p>Loan calculator</p>
-            <p>Freelancer job site</p>
-            <p>Social media platform for session musicians</p>
-            <p>Cashflow monitoring tool for business owners</p>
-            <p>Career pivoting advice solutions app</p>
-            <p>Clinical trials participation app</p>
-            <p>Language school management platform</p>
-            <p>Landlord and tenant communications management app</p>
-            <p>AI Human Resources insight generator</p>
-            <p>Employee performance monitoring tool</p>
+          <div id="experience-container">
+            <img src="./assets/verticode-logo.svg" id="verticode-logo" />
+            <div id="verticode-description">
+              <p>
+                Working at Verticode, I've had the privilege of leading the
+                development of <b>over 20 projects</b> from start to finish,
+                spanning a wide range of business domains.
+              </p>
+            </div>
+          </div>
+          <div>
+            <div id="sector-grid">
+              <div class="sector-card">Healthcare</div>
+              <div class="sector-card">Beauty & Wellness</div>
+              <div class="sector-card">Fintech</div>
+              <div class="sector-card">Human Resources Tech</div>
+              <div class="sector-card">Edtech</div>
+              <div class="sector-card">Consumer Goods</div>
+              <div class="sector-card">Real Estate</div>
+            </div>
+
+            <div id="experience-grid">
+              <p>Skincare advice chatbot</p>
+              <p>Secondhand furniture marketplace</p>
+              <p>Social media insights explorer</p>
+              <p>Loan calculator</p>
+              <p>Freelancer job site</p>
+              <p>Social media platform for session musicians</p>
+              <p>Cashflow monitoring tool for business owners</p>
+              <p>Career pivoting advice solutions app</p>
+              <p>Clinical trials participation app</p>
+              <p>Language school management platform edtech tool</p>
+              <p>Landlord and tenant communications management app</p>
+              <p>AI Human Resources insight generator</p>
+              <p>Employee performance monitoring tool</p>
+            </div>
 
             <p>
               I've also enjoyed leading areas of internal development which have
               resulted in streamlined workflows amongst the team.
             </p>
           </div>
-          <div id="personal-projects">
-            <p>Outside of work I've got a few personal projects.</p>
-            <p>
-              Live auctioning platform for bidding on last-minute cinema tickets
-              on both iOS and Android.
-            </p>
-            <p>Manage a shopify website.</p>
-            <p>
-              Case studies page: a average engagement time per session of 1m
-              54s, which is 52% higher than the rest of the website during that
-              time.
-            </p>
-          </div>
         </section>
+        <div id="personal-projects">
+          <p>Outside of work I've got a few personal projects.</p>
+          <p>
+            Live auctioning platform for bidding on last-minute cinema tickets
+            on both iOS and Android.
+          </p>
+          <p>Manage a shopify website.</p>
+          <p>
+            Case studies page: a average engagement time per session of 1m 54s,
+            which is 52% higher than the rest of the website during that time.
+          </p>
+        </div>
         <section id="stack">
           <div class="stack-grid">
             <img
@@ -234,17 +249,18 @@
             alt="LinkedIn Logo"
         /></a>
       </div>
-      <div class="copyright-wrapper">
-        <p>&copy;</p>
-        <img
-          src="./assets/logo.png"
-          class="small-logo"
-          alt="Tiah Hind Logo"
-        /><span id="currentYear"></span>
-        <p>. All Rights Reserved.</p>
-      </div>
+
+      <p>
+        &copy; Tiah Hind <span id="currentYear"></span>. All Rights Reserved.
+      </p>
     </footer>
 
     <script src="js/main.js"></script>
+    <script type="module">
+      import {
+        animate,
+        scroll,
+      } from "https://cdn.jsdelivr.net/npm/motion@latest/+esm";
+    </script>
   </body>
 </html>
