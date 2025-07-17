@@ -1,0 +1,533 @@
+/* Base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "DM Sans", sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+/* Typography */
+h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  line-height: 1;
+}
+
+h3 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  line-height: 1;
+}
+
+a {
+  text-decoration: none;
+  color: #333;
+}
+
+b {
+  font-weight: 500;
+}
+
+/* Buttons - consolidated */
+button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  outline: none;
+  text-align: inherit;
+  text-decoration: none;
+  appearance: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+button::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+.btn {
+  display: inline-block;
+  background-color: #333;
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border-radius: 4px;
+  margin: 1rem;
+  transition: background-color 0.3s;
+}
+
+.btn:hover {
+  background-color: #555;
+}
+
+/* Layout */
+.page-container {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 80px;
+}
+
+/* Header */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: white;
+  padding: 10px 25px;
+  letter-spacing: 0.05em;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Contact button */
+.contact-button {
+  font-size: 0.8rem;
+  display: flex;
+  align-items: end;
+  justify-content: end;
+  align-self: end;
+  width: 200px;
+  gap: 1px;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.contact-button .default-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  transition: opacity 0.3s ease;
+}
+
+.contact-button .hover-content {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: end;
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+}
+
+.contact-button:hover .default-text,
+.contact-button.active .default-text {
+  opacity: 0;
+}
+
+.contact-button:hover .hover-content,
+.contact-button.active .hover-content {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.contact-button:hover {
+  transform: translateY(-5px);
+}
+
+.email-wrapper {
+  position: relative;
+  height: 1.2em;
+  display: inline-block;
+}
+
+.email-text {
+  color: #000;
+  cursor: pointer;
+}
+
+.copy-confirmation {
+  position: absolute;
+  color: #7b7b7b;
+  top: 0;
+  right: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.show-confirmation .email-text {
+  opacity: 0;
+}
+
+.show-confirmation .copy-confirmation {
+  opacity: 1;
+}
+
+/* Icons */
+.small-icon {
+  margin-top: 10px;
+  width: 20px;
+  height: 20px;
+}
+
+.small-logo {
+  width: 20px;
+  height: 20px;
+  margin-right: 6px;
+  margin-left: 2px;
+}
+
+.arrow-icon {
+  font-size: 0.8em;
+  margin-top: 2px;
+}
+
+/* Hero section */
+#hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background-color: #f9f9f9;
+  overflow: hidden;
+  padding-top: 24px;
+}
+
+#hero-title-container {
+  max-width: 100%;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+#hero h1 {
+  font-size: 3rem;
+}
+
+#hero h2 {
+  font-size: 2rem;
+  font-weight: 300;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+#hero h3 {
+  font-size: 2rem;
+}
+
+#hero-image-container {
+  width: 100%;
+  display: flex;
+  flex: 1;
+}
+
+#hero-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  object-position: top;
+}
+
+/* About section */
+#about {
+  margin-top: 10px;
+  font-weight: 300;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+/* Passionate about section */
+#passionate-about h3 {
+  text-align: center;
+  margin-bottom: 3rem;
+  font-size: 1.7rem;
+}
+
+.passion-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.passion-item {
+  position: relative;
+  cursor: pointer;
+  text-align: center;
+  transition: transform 0.2s;
+}
+
+.passion-item:hover {
+  transform: translateY(-5px);
+}
+
+.passion-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: #333;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.passion-title {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.passion-description {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(249, 249, 249, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 8px;
+  font-size: 0.8rem;
+}
+
+.passion-item:hover .passion-icon,
+.passion-item:hover .passion-title {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+.passion-item:hover .passion-description {
+  opacity: 1;
+}
+
+/* Stack section */
+#stack {
+  font-size: 1.5rem;
+  font-weight: 400;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.stack-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.stack-logo {
+  max-height: 50px;
+}
+
+/* Experience section */
+#experience {
+  text-align: center;
+}
+
+#experience h3 {
+  text-align: center;
+  font-size: 1.7rem;
+}
+
+.experience-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.project-card {
+  border: 1px solid #eee;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.project-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.project-card h3,
+.project-card p {
+  padding: 0 1rem;
+  margin: 1rem 0;
+}
+
+/* Form elements */
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+footer {
+  text-align: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  background-color: #f9f9f9;
+  margin-top: 48px;
+  padding: 1.5rem;
+}
+
+#footer-contact {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.copyright-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+/* Media Queries */
+
+/* Small tablet breakpoint (540px) - Hero section only */
+@media (min-width: 540px) {
+  #hero {
+    flex-direction: row;
+    padding: 0;
+    gap: 0;
+    height: auto;
+  }
+
+  #hero-title-container {
+    max-width: 50%;
+    width: 50%;
+    text-align: left;
+    padding-left: 5%;
+  }
+
+  #hero-image-container {
+    flex: 1;
+    height: 50vh;
+    align-items: flex-end;
+  }
+
+  #hero-image {
+    height: 100%;
+    max-height: 100vh;
+    width: auto;
+  }
+}
+
+/* Tablet (768px) */
+@media (min-width: 768px) {
+  h1 {
+    font-size: 5rem;
+  }
+
+  .page-container {
+    padding: 24px;
+    row-gap: 80px;
+  }
+
+  .logo {
+    font-size: 1.8rem;
+  }
+
+  .contact-button {
+    font-size: 1rem;
+    width: 300px;
+    padding: 10px 15px;
+  }
+
+  .contact-button .hover-content {
+    flex-direction: row;
+    left: 0;
+    padding: 10px 15px;
+  }
+
+  .project-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Laptop (1024px) */
+@media (min-width: 1024px) {
+  #hero {
+    height: 100vh;
+  }
+
+  #hero-title-container {
+    padding-left: 8%;
+  }
+
+  #hero-image-container {
+    height: 100%;
+  }
+
+  #hero h1 {
+    font-size: 5rem;
+  }
+
+  #hero h2,
+  #hero h3 {
+    font-size: 3rem;
+  }
+
+  #about {
+    font-size: 1.4rem;
+  }
+
+  .passion-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .project-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Desktop/wide screen (1440px) */
+@media (min-width: 1440px) {
+  h1 {
+    font-size: 7rem;
+  }
+
+  #hero-title-container {
+    padding-left: 10%;
+  }
+
+  #hero h2,
+  #hero h3 {
+    font-size: 3.5rem;
+  }
+
+  .project-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+}

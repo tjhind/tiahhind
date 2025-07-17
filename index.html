@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="./favicon/favicon-16x16.png"
+    />
+    <link rel="manifest" href="./favicon/site.webmanifest" />
+    <link
+      rel="mask-icon"
+      href="./favicon/safari-pinned-tab.svg"
+      color="#5bbad5"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <link rel="shortcut icon" href="./favicon/favicon.ico" />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="msapplication-config" content="./favicon/browserconfig.xml" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tiah Hind | Full Stack Developer</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Khmer&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="logo"><a href="/">Tiah Hind</a></div>
+        <div class="contact-container">
+          <button class="contact-button" onclick="copyEmailToClipboard()">
+            <span class="default-text">
+              <a href="#">Say Hello</a>
+              <i class="arrow-icon fas fa-arrow-right"></i>
+            </span>
+            <div class="hover-content">
+              <div class="email-wrapper">
+                <span class="email-text" id="email">hello@tiahhind.com</span>
+                <span class="copy-confirmation" id="copy-confirmation"
+                  >email copied</span
+                >
+              </div>
+
+              <a href="https://www.linkedin.com/in/tiahhind/" target="_blank">
+                <img
+                  src="./assets/linkedin-logo.svg"
+                  class="small-icon"
+                  alt="LinkedIn Logo"
+                />
+              </a>
+            </div>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section id="hero">
+        <div id="hero-title-container">
+          <h1>
+            I write <br />code that<br />
+            connects.
+          </h1>
+          <h2>
+            Solutions-focused<br />
+            full stack developer
+          </h2>
+          <h3>Tiah Hind</h3>
+        </div>
+        <div id="hero-image-container">
+          <img
+            src="./assets/tiah-transparent.png"
+            id="hero-image"
+            alt="Tiah smiles at the camera"
+          />
+        </div>
+      </section>
+      <div class="page-container">
+        <section id="about">
+          <p>
+            Specialised in the development of end-to-end tech for early-stage
+            start ups, I'm experienced in, and excited by, building products
+            that drive
+            <b>meaningful user adoption</b> and <b>retention.</b>
+          </p>
+        </section>
+
+        <section id="passionate-about">
+          <h3>What I'm passionate about</h3>
+          <div class="passion-grid">
+            <div class="passion-item">
+              <i class="passion-icon fas fa-lightbulb"></i>
+              <div class="passion-title">Vision-driven development</div>
+              <div class="passion-description">
+                I believe in building products with a clear purpose. I translate
+                ideas into functional, scalable solutions that address real user
+                needs.
+              </div>
+            </div>
+
+            <div class="passion-item">
+              <i class="passion-icon fas fa-sync-alt"></i>
+              <div class="passion-title">
+                Feedback gathering<br />
+                & iteration
+              </div>
+              <div class="passion-description">
+                Building with the help of hands-on user feedback and testing
+                ensures that products evolve meaningfully.
+              </div>
+            </div>
+
+            <div class="passion-item">
+              <i class="passion-icon fas fa-puzzle-piece"></i>
+              <div class="passion-title">
+                Elegant solutions<br />to problems
+              </div>
+              <div class="passion-description">
+                Complex functionality doesn't need a complex interface.<br />
+                I'm enthusiastic about crafting sleek, intuitive UX.
+              </div>
+            </div>
+
+            <div class="passion-item">
+              <i class="passion-icon fas fa-code"></i>
+              <div class="passion-title">Proprietary,<br />full-stack code</div>
+              <div class="passion-description">
+                I specialise in creating custom solutions from the ground up,
+                building unique experiences without reliance on off-the-shelf
+                components.
+              </div>
+            </div>
+          </div>
+        </section>
+        <section id="experience">
+          <h3>My Experience</h3>
+          <div id="'verticode">
+            <p>
+              Working at Verticode, I've had the privilege of leading the
+              development of over 20 projects from initiation to completion,
+              spanning a wide range of business domains including healthcare,
+              fintech, edtech, and HR.
+            </p>
+            <p>Skincare advice chatbot</p>
+            <p>Secondhand furniture marketplace</p>
+            <p>Social media insights explorer</p>
+            <p>Loan calculator</p>
+            <p>Freelancer job site</p>
+            <p>Social media platform for session musicians</p>
+            <p>Cashflow monitoring tool for business owners</p>
+            <p>Career pivoting advice solutions app</p>
+            <p>Clinical trials participation app</p>
+            <p>Language school management platform</p>
+            <p>Landlord and tenant communications management app</p>
+            <p>AI Human Resources insight generator</p>
+            <p>Employee performance monitoring tool</p>
+
+            <p>
+              I've also enjoyed leading areas of internal development which have
+              resulted in streamlined workflows amongst the team.
+            </p>
+          </div>
+          <div id="personal-projects">
+            <p>Outside of work I've got a few personal projects.</p>
+            <p>
+              Live auctioning platform for bidding on last-minute cinema tickets
+              on both iOS and Android.
+            </p>
+            <p>Manage a shopify website.</p>
+            <p>
+              Case studies page: a average engagement time per session of 1m
+              54s, which is 52% higher than the rest of the website during that
+              time.
+            </p>
+          </div>
+        </section>
+        <section id="stack">
+          <div class="stack-grid">
+            <img
+              src="./assets/mongodb-logo.svg"
+              class="stack-logo"
+              alt="mongodb logo"
+            />
+            <img
+              src="./assets/express-logo.png"
+              class="stack-logo"
+              alt="express.js logo"
+            />
+            <img
+              src="./assets/react-logo.webp"
+              class="stack-logo"
+              alt="react logo"
+            />
+            <img
+              src="./assets/nodejs-logo.webp"
+              class="stack-logo"
+              alt="node.js logo"
+            />
+            <img
+              src="./assets/shopify-logo.webp"
+              class="stack-logo"
+              alt="Shopify logo"
+            />
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      <div id="footer-contact">
+        <a href="mailto:hello@tiahhind.com">hello@tiahhind.com</a>
+        <a href="https://www.linkedin.com/in/tiahhind/" target="_blank">
+          <img
+            src="./assets/linkedin-logo.svg"
+            class="small-icon"
+            alt="LinkedIn Logo"
+        /></a>
+      </div>
+      <div class="copyright-wrapper">
+        <p>&copy;</p>
+        <img
+          src="./assets/logo.png"
+          class="small-logo"
+          alt="Tiah Hind Logo"
+        /><span id="currentYear"></span>
+        <p>. All Rights Reserved.</p>
+      </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>
