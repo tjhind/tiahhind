@@ -5,6 +5,18 @@
   box-sizing: border-box;
 }
 
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 body {
   font-family: "DM Sans", sans-serif;
   line-height: 1.6;
@@ -260,7 +272,7 @@ nav {
 }
 
 /* Passionate about section */
-#passionate-about h3 {
+#passionate-about h2 {
   text-align: center;
   margin-bottom: 3rem;
   font-size: 1.7rem;
@@ -341,7 +353,9 @@ nav {
 /* Stack section */
 #stack {
   font-size: 1.5rem;
+  opacity: 0.7;
   font-weight: 400;
+  margin-bottom: 2rem;
   display: flex;
   justify-content: center;
   width: 100%;
@@ -351,11 +365,12 @@ nav {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 2rem;
-  margin-top: 2rem;
+  width: 100%;
+  justify-items: center;
 }
 
 .stack-logo {
-  max-height: 50px;
+  max-height: 70px;
 }
 
 .screenshot {
@@ -367,7 +382,7 @@ nav {
   text-align: center;
 }
 
-#experience h3 {
+#products-heading {
   text-align: center;
   font-size: 1.7rem;
   margin-bottom: 3rem;
@@ -393,10 +408,15 @@ nav {
 #sector-container {
   display: flex;
   flex-direction: column;
-  align-items: start;
+  align-items: center;
   gap: 0.1rem;
   margin-top: 2rem;
   margin-bottom: 4rem;
+}
+
+#sector-container h4 {
+  margin-top: 2rem;
+  margin-bottom: 1.3rem;
 }
 .sector-card {
   display: inline-flex;
@@ -411,7 +431,8 @@ nav {
 .sector-row {
   display: flex;
   flex-direction: wrap;
-  align-items: flex-start;
+  align-items: start;
+  align-self: start;
   flex-wrap: wrap;
   gap: 1rem;
 }
@@ -467,6 +488,7 @@ footer {
 
 #footer-contact {
   display: flex;
+  font-style: normal;
   align-items: center;
   gap: 7px;
 }
