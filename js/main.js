@@ -119,6 +119,7 @@ document.addEventListener("DOMContentLoaded", function () {
   addMobileHoverSupport(
     "button, .button, .btn, a[href], .clickable, .interactive"
   );
+
   if (isMobile()) {
     document.querySelectorAll(".passion-item").forEach((item) => {
       item.addEventListener("touchstart", function (e) {
@@ -138,4 +139,32 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   }
+
+  function setInitialVh() {
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty("--vh", `${vh}px`);
+  }
+
+  setInitialVh();
+
+  let resizeTimer;
+  window.addEventListener("resize", () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      const currentVh = parseFloat(
+        document.documentElement.style.getPropertyValue("--vh")
+      );
+      const newVh = window.innerHeight * 0.01;
+
+      if (Math.abs(newVh - currentVh) > 5) {
+        setInitialVh();
+      }
+    }, 100);
+  });
+
+  window.addEventListener("orientationchange", () => {
+    setTimeout(() => {
+      setInitialVh();
+    }, 500);
+  });
 });
