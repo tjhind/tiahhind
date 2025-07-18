@@ -35,6 +35,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const contactButton = document.querySelector(".contact-button");
   const confirmation = document.getElementById("copy-confirmation");
+  const emailText = document.getElementById("email");
+  const linkedinLink = document.querySelector(
+    ".contact-button a[href*='linkedin']"
+  );
 
   if (contactButton) {
     const copyEmail = async () => {
@@ -61,35 +65,62 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     if (isMobile()) {
+      let isContentVisible = false;
+
       contactButton.addEventListener("touchstart", function (e) {
-        e.preventDefault();
-        this.classList.add("active");
+        if (!isContentVisible) {
+          e.preventDefault();
+          this.classList.add("active");
+          isContentVisible = true;
+        }
       });
 
-      contactButton.addEventListener("touchend", function (e) {
-        e.preventDefault();
-        copyEmail();
+      if (emailText) {
+        emailText.addEventListener("touchstart", function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+        });
 
-        setTimeout(() => {
-          this.classList.remove("active");
-        }, 300);
-      });
+        emailText.addEventListener("touchend", function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          copyEmail();
+        });
+      }
 
-      contactButton.addEventListener("click", function (e) {
-        e.preventDefault();
+      document.addEventListener("touchstart", function (e) {
+        if (!contactButton.contains(e.target)) {
+          contactButton.classList.remove("active");
+          isContentVisible = false;
+        }
       });
     } else {
-      contactButton.addEventListener("click", function (e) {
-        e.preventDefault();
-        copyEmail();
-      });
+      let isHovered = false;
 
       contactButton.addEventListener("mouseenter", function () {
         this.classList.add("hover");
+        isHovered = true;
       });
 
       contactButton.addEventListener("mouseleave", function () {
         this.classList.remove("hover");
+        isHovered = false;
+      });
+
+      if (emailText) {
+        emailText.addEventListener("click", function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          if (isHovered) {
+            copyEmail();
+          }
+        });
+      }
+
+      contactButton.addEventListener("click", function (e) {
+        if (e.target === this || e.target.closest(".default-text")) {
+          e.preventDefault();
+        }
       });
     }
   }
@@ -117,7 +148,7 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
   addMobileHoverSupport(
-    "button, .button, .btn, a[href], .clickable, .interactive"
+    "button:not(.contact-button), .button, .btn, a[href]:not(.contact-button a), .clickable, .interactive"
   );
 
   if (isMobile()) {
@@ -139,7 +170,6 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   }
-
   function setInitialVh() {
     const vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty("--vh", `${vh}px`);
