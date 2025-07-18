@@ -90,7 +90,7 @@ button::-moz-focus-inner {
 
 /* Layout */
 .page-container {
-  padding: 10px;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
   row-gap: 80px;
@@ -277,14 +277,14 @@ nav {
 #about {
   margin-top: 10px;
   font-weight: 300;
-  font-size: 1.4rem;
+  font-size: 1.35rem;
   text-align: center;
 }
 
 .passion-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
+  gap: 1rem;
   margin-top: 2rem;
 }
 
@@ -314,14 +314,13 @@ nav {
 
 .passion-icon {
   font-size: 4rem;
-  margin-bottom: 1rem;
-  color: #333;
+  margin: 1rem;
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .passion-title {
   font-weight: 600;
-  margin-bottom: 0.5rem;
+  margin: 1rem;
   font-size: 1.2rem;
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
@@ -361,17 +360,13 @@ nav {
   width: 100%;
 }
 
-#stack-heading {
-  font-size: 1.5rem;
-  margin-bottom: 2rem;
-}
-
 .stack-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 0.5rem;
   width: 100%;
   justify-items: center;
+  margin-bottom: 4rem;
 }
 
 .stack-logo {
@@ -389,9 +384,9 @@ nav {
 
 #products-heading {
   text-align: center;
-  font-size: 1.2rem;
-  margin-bottom: 1rem;
-  margin-top: 2rem;
+  font-size: 1.3rem;
+  margin-bottom: 2rem;
+  margin-top: 3rem;
 }
 
 #experience-container {
@@ -416,8 +411,8 @@ nav {
   flex-direction: column;
   align-items: center;
   gap: 0.1rem;
-  margin-top: 2rem;
-  margin-bottom: 4rem;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
 }
 
 #sector-container h4 {
@@ -437,6 +432,7 @@ nav {
   display: flex;
   flex-direction: wrap;
   align-items: center;
+  text-align: left;
   align-self: start;
   flex-wrap: wrap;
   gap: 1rem;
@@ -474,13 +470,18 @@ nav {
   color: #333;
 }
 
-#other-projects {
+#other-work {
   text-align: center;
+  margin-bottom: 4rem;
 }
 
-#other-projects h3 {
+#work-heading {
+  text-align: center;
   font-size: 1.3rem;
+  margin-bottom: 2rem;
+  margin-top: 5rem;
 }
+
 footer {
   text-align: center;
   align-items: center;
@@ -500,7 +501,7 @@ footer {
 
 /* Media Queries */
 
-/* Small tablet breakpoint (540px) - Hero section only */
+/* In between breakpoint (540px) - Mostly for hero section */
 @media (min-width: 540px) {
   #hero {
     flex-direction: row;
@@ -518,7 +519,7 @@ footer {
 
   #hero-image-container {
     flex: 1;
-    height: 50vh;
+    height: 60vh;
     align-items: flex-end;
   }
 
@@ -526,6 +527,9 @@ footer {
     height: 100%;
     max-height: 100vh;
     width: auto;
+  }
+  .stack-logo {
+    max-height: 100px;
   }
 }
 
@@ -536,7 +540,7 @@ footer {
   }
 
   .page-container {
-    padding: 24px;
+    padding: 3rem;
     row-gap: 80px;
   }
 
@@ -558,6 +562,10 @@ footer {
 
   .project-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stack-logo {
+    max-height: 100px;
   }
 }
 
@@ -594,6 +602,13 @@ footer {
 
   .project-grid {
     grid-template-columns: repeat(3, 1fr);
+  }
+
+  .stack-grid {
+    max-width: fit-content;
+    gap: 4rem;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
