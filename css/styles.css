@@ -4,7 +4,21 @@
   padding: 0;
   box-sizing: border-box;
 }
+.skip-link {
+  position: absolute;
+  top: -80px;
+  left: 0;
+  background: #000;
+  color: #fff;
+  padding: 8px 16px;
+  z-index: 100;
+  text-decoration: none;
+  transition: top 0.3s;
+}
 
+.skip-link:focus {
+  top: 0;
+}
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -521,6 +535,7 @@ footer {
     flex: 1;
     height: 60vh;
     align-items: flex-end;
+    margin-left: 0px;
   }
 
   #hero-image {
