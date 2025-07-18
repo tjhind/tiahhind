@@ -119,4 +119,30 @@ document.addEventListener("DOMContentLoaded", function () {
   addMobileHoverSupport(
     "button, .button, .btn, a[href], .clickable, .interactive"
   );
+  if (isMobile()) {
+    document.querySelectorAll(".passion-item").forEach((item) => {
+      item.addEventListener("touchstart", function (e) {
+        document.querySelectorAll(".passion-item").forEach((el) => {
+          if (el !== this) el.classList.remove("mobile-reveal");
+        });
+
+        this.classList.toggle("mobile-reveal");
+      });
+    });
+
+    document.addEventListener("touchstart", function (e) {
+      if (!e.target.closest(".passion-item")) {
+        document
+          .querySelectorAll(".passion-item")
+          .forEach((el) => el.classList.remove("mobile-reveal"));
+      }
+    });
+  }
+  function setVh() {
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty("--vh", `${vh}px`);
+  }
+
+  setVh();
+  window.addEventListener("resize", setVh);
 });
