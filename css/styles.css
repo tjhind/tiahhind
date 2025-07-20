@@ -57,13 +57,20 @@ h3 {
   line-height: 1;
 }
 
+h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  line-height: 1;
+}
+
 a {
   text-decoration: none;
   color: #333;
 }
 
 b {
-  font-weight: 600;
+  font-weight: 500;
 }
 
 /* Buttons - consolidated */
@@ -308,9 +315,10 @@ nav {
 }
 
 #hero-image-container {
-  width: 100%;
+  width: auto;
   display: flex;
   flex: 1;
+  height: 50%;
   justify-content: center;
 }
 
@@ -340,6 +348,9 @@ nav {
 
 .passion-item {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   cursor: pointer;
   text-align: center;
   transition: transform 0.2s;
@@ -365,6 +376,7 @@ nav {
 .passion-icon {
   font-size: 4rem;
   margin: 1rem;
+  opacity: 0.8;
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
@@ -458,7 +470,7 @@ nav {
   margin-left: -72px;
   font-size: 1rem;
   background-color: rgb(249, 249, 249, 0.5);
-  padding: 0.5em;
+  padding: 1rem;
   border-radius: 10px;
 }
 
@@ -491,7 +503,7 @@ nav {
   text-align: left;
   align-self: start;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 0.5rem;
 }
 
 .experience-wrapper {
@@ -579,16 +591,25 @@ footer {
     flex: 1;
     height: 60vh;
     align-items: flex-end;
-    margin-left: 0px;
   }
 
   #hero-image {
     height: 100%;
     max-height: 100vh;
     width: auto;
+    margin-left: -48px;
   }
   .stack-logo {
     max-height: 100px;
+  }
+  #products-heading {
+    font-size: 1.5rem;
+  }
+  #work-heading {
+    font-size: 1.5rem;
+  }
+  .experience-wrapper {
+    font-size: 1rem;
   }
 }
 
@@ -597,7 +618,9 @@ footer {
   h1 {
     font-size: 5rem;
   }
-
+  h4 {
+    font-size: 1.2rem;
+  }
   .page-container {
     padding: 3rem;
     row-gap: 80px;
@@ -607,8 +630,23 @@ footer {
     font-size: 1.8rem;
   }
 
+  #verticode-description {
+    font-size: 1.1rem;
+    padding: 2rem;
+  }
+
   .project-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .other-experience-header {
+    margin-top: 3rem;
+  }
+
+  .other-experience-container {
+    max-width: 80%;
+    justify-self: center;
+    font-size: 1.1rem;
   }
 
   .stack-logo {
@@ -640,17 +678,31 @@ footer {
   }
 
   #about {
-    font-size: 1.4rem;
+    font-size: 1.8rem;
   }
 
   .passion-grid {
     grid-template-columns: repeat(4, 1fr);
   }
 
+  .passion-description {
+    font-size: 1rem;
+  }
+  #experience-container {
+    justify-content: center;
+  }
+  .experience-wrapper {
+    font-size: 1.2rem;
+  }
+  #verticode-description {
+    max-width: 50%;
+  }
   .project-grid {
     grid-template-columns: repeat(3, 1fr);
   }
-
+  .metric-cards {
+    gap: 2rem;
+  }
   .stack-grid {
     max-width: fit-content;
     gap: 4rem;

@@ -1,3 +1,5 @@
+const { animate } = Motion;
+
 document.addEventListener("DOMContentLoaded", function () {
   // Smooth scrolling for internal anchor links
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
@@ -198,3 +200,5 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 500);
   });
 });
+// const element = document.querySelector("#about");
+// animate(element, { opacity: 1, rotate: 4 }, { type: "spring", stiffness: 300 });
