@@ -298,6 +298,7 @@ nav {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  background-color: transparent;
 }
 
 #hero h1 {
@@ -463,11 +464,6 @@ nav {
   gap: 1rem;
 }
 
-#experience-container {
-  display: flex;
-  align-items: center;
-}
-
 #verticode-logo {
   height: 12rem;
 }
@@ -612,6 +608,7 @@ footer {
   }
   #work-heading {
     font-size: 1.5rem;
+    margin-top: 7rem;
   }
   .experience-wrapper {
     font-size: 1rem;
@@ -627,17 +624,23 @@ footer {
     font-size: 1.2rem;
   }
   .page-container {
-    padding: 3rem;
-    row-gap: 80px;
+    padding: 1rem 3rem;
+    row-gap: 100px;
   }
 
   .logo {
     font-size: 1.8rem;
   }
 
+  #experience-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   #verticode-description {
-    font-size: 1.1rem;
     padding: 2rem;
+    max-width: 50%;
   }
 
   .project-grid {
@@ -682,7 +685,7 @@ footer {
   }
 
   #about {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
   }
 
   .passion-grid {
@@ -696,15 +699,13 @@ footer {
     justify-content: center;
   }
 
-  #verticode-description {
-    max-width: 50%;
-  }
   .project-grid {
     grid-template-columns: repeat(3, 1fr);
   }
   .metric-cards {
     gap: 2rem;
   }
+
   .stack-grid {
     max-width: fit-content;
     gap: 4rem;
