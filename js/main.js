@@ -63,6 +63,15 @@ document.addEventListener("DOMContentLoaded", function () {
         textArea.select();
         document.execCommand("copy");
         document.body.removeChild(textArea);
+
+        if (confirmation) {
+          const emailWrapper = confirmation.parentElement;
+          emailWrapper.classList.add("show-confirmation");
+
+          setTimeout(() => {
+            emailWrapper.classList.remove("show-confirmation");
+          }, 1500);
+        }
       }
     };
 
@@ -78,6 +87,12 @@ document.addEventListener("DOMContentLoaded", function () {
       });
 
       if (emailText) {
+        emailText.addEventListener("click", function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          copyEmail();
+        });
+
         emailText.addEventListener("touchstart", function (e) {
           e.preventDefault();
           e.stopPropagation();
@@ -91,6 +106,13 @@ document.addEventListener("DOMContentLoaded", function () {
       }
 
       document.addEventListener("touchstart", function (e) {
+        if (!contactButton.contains(e.target)) {
+          contactButton.classList.remove("active");
+          isContentVisible = false;
+        }
+      });
+
+      document.addEventListener("click", function (e) {
         if (!contactButton.contains(e.target)) {
           contactButton.classList.remove("active");
           isContentVisible = false;
@@ -113,9 +135,7 @@ document.addEventListener("DOMContentLoaded", function () {
         emailText.addEventListener("click", function (e) {
           e.preventDefault();
           e.stopPropagation();
-          if (isHovered) {
-            copyEmail();
-          }
+          copyEmail();
         });
       }
 
@@ -123,6 +143,12 @@ document.addEventListener("DOMContentLoaded", function () {
         if (e.target === this || e.target.closest(".default-text")) {
           e.preventDefault();
         }
+      });
+    }
+
+    if (linkedinLink) {
+      linkedinLink.addEventListener("click", function (e) {
+        e.stopPropagation();
       });
     }
   }
@@ -172,6 +198,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   }
+
   function setInitialVh() {
     const vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty("--vh", `${vh}px`);
@@ -200,5 +227,3 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 500);
   });
 });
-// const element = document.querySelector("#about");
-// animate(element, { opacity: 1, rotate: 4 }, { type: "spring", stiffness: 300 });
