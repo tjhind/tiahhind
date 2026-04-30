@@ -25,7 +25,7 @@ const hobbies = [
   },
   {
     icon: "/assets/header/laptop.webp",
-    label: "working on my side projects",
+    label: "working on side projects",
   },
   {
     icon: "/assets/about-me/tea.webp",
@@ -154,7 +154,6 @@ function PhotoCollage() {
           className="object-contain"
         />
       </div>
-
       {/* Notebook */}
       <div
         className="absolute flex items-center justify-center"
@@ -170,7 +169,6 @@ function PhotoCollage() {
           />
         </div>
       </div>
-
       {/* Pink seal */}
       <div
         className="absolute flex items-center justify-center"
@@ -237,7 +235,7 @@ function PhotoCollage() {
 
 export default function AboutMe() {
   return (
-    <section id="about" className="bg-[#EEEAE4]">
+    <section id="about" className="relative bg-[#EEEAE4]">
       <div className="max-w-[1440px] mx-auto px-6 md:px-10 lg:px-16 py-14 md:py-20">
         {/* Section label */}
         <div className="flex items-center gap-2 mb-10 md:mb-14">
@@ -256,7 +254,7 @@ export default function AboutMe() {
         <div className="flex flex-col lg:flex-row gap-16 lg:gap-20 items-start">
           {/* Photo collage */}
           <div className="flex justify-center w-full lg:w-auto">
-            <PhotoCollage />
+            {/* <PhotoCollage /> */}
           </div>
 
           {/* Bio text */}
@@ -311,6 +309,23 @@ export default function AboutMe() {
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Wave — same path as hero, flipped vertically so it curves upward.
+          fill matches the footer bar (#EEEAE4) for a seamless transition. */}
+      <div className="absolute bottom-0 left-0 w-full leading-[0]">
+        <svg
+          viewBox="0 0 1440 120"
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="none"
+          className="w-full block"
+          style={{ transform: "scaleY(-1)" }}
+        >
+          <path
+            d="M0,60 C300,120 600,0 900,60 C1050,90 1200,30 1440,60 L1440,120 L0,120 Z"
+            fill="#EEEAE4"
+          />
+        </svg>
       </div>
     </section>
   );

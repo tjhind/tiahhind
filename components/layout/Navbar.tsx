@@ -14,12 +14,12 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 bg-background border-b border-foreground/10">
+    <header className="sticky top-0 z-50 bg-background ">
       <nav className="max-w-[1440px] mx-auto px-6 md:px-10 lg:px-16 h-[60px] flex items-center justify-between">
         {/* Logo */}
         <Link
           href="/"
-          className="text-sm font-semibold tracking-tight flex items-center gap-1"
+          className=" font-semibold tracking-tight flex items-center gap-1"
         >
           tiah hind
           <span className="text-coral ml-0.5">✦</span>

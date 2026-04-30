@@ -89,7 +89,7 @@ export default function WhatIDo() {
           className="object-contain"
         />
       </div>
-      <div className="absolute -bottom-8 left-12 w-12 h-12 hidden md:block select-none pointer-events-none">
+      <div className="absolute bottom-0 left-12 w-12 h-12 hidden md:block select-none pointer-events-none">
         <Image
           src="/assets/throughout/yellow-gingham-star.webp"
           alt=""

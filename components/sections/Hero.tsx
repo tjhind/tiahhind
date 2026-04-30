@@ -1,149 +1,143 @@
 import Image from "next/image";
 import Button from "@/components/ui/Button";
 
-const stickers = [
-  // Left side
+interface Sticker {
+  src: string;
+  alt: string;
+  // Encodes all breakpoint-aware positioning, visibility, and sizing
+  className: string;
+  maxSize: number;
+}
+
+const stickers: Sticker[] = [
+  // fan
   {
     src: "/assets/header/fan.webp",
-    alt: "open book",
-    style: { top: "8%", left: "3%" },
-    size: 108,
-    rotate: "-10deg",
-    mobileHidden: false,
+    alt: "fan",
+    className:
+      "block rotate-[-30deg] top-[3%] left-[2%] w-[100px] md:w-[148px] lg:w-[148px]",
+    maxSize: 148,
   },
+  // sushi
   {
     src: "/assets/header/sushi.webp",
     alt: "sushi",
-    style: { top: "18%", left: "14%" },
-    size: 68,
-    rotate: "8deg",
-    mobileHidden: true,
+    className:
+      "rotate-[-20deg] w-[60px] top-[20%] left-[6%] md:left-[14%] md:w-[100px]",
+    maxSize: 72,
   },
+  // laptop
   {
     src: "/assets/header/laptop.webp",
     alt: "laptop",
-    style: { top: "40%", left: "2%" },
-    size: 96,
-    rotate: "5deg",
-    mobileHidden: true,
+    className:
+      "rotate-[-15deg] top-[32%] md:top-[42%] left-[1%] w-[100px] lg:left-[3%] md:w-[140px]",
+    maxSize: 140,
   },
+  // plant
   {
     src: "/assets/header/plant.webp",
-    alt: "cactus",
-    style: { top: "60%", left: "6%" },
-    size: 80,
-    rotate: "-4deg",
-    mobileHidden: true,
+    alt: "houseplant",
+    className:
+      " rotate-[-10deg] top-[63%] left-[1%] w-[78px] lg:left-[6%] md:w-[120px]",
+    maxSize: 120,
   },
-
-  // Top center
-  {
-    src: "/assets/header/bow.webp",
-    alt: "yellow bow",
-    style: { top: "3%", left: "47%" },
-    size: 64,
-    rotate: "4deg",
-    mobileHidden: true,
-  },
-  {
-    src: "/assets/header/green-fabric-star.webp",
-    alt: "green star",
-    style: { top: "30%", left: "39%" },
-    size: 32,
-    rotate: "0deg",
-    mobileHidden: true,
-  },
-
-  // Right side
-  {
-    src: "/assets/header/fish.webp",
-    alt: "fish",
-    style: { top: "5%", right: "4%" },
-    size: 124,
-    rotate: "10deg",
-    mobileHidden: false,
-  },
-  {
-    src: "/assets/header/roman-statue.webp",
-    alt: "robot character",
-    style: { top: "26%", right: "3%" },
-    size: 88,
-    rotate: "-4deg",
-    mobileHidden: true,
-  },
-  {
-    src: "/assets/header/hotpot.webp",
-    alt: "bowl of food",
-    style: { top: "52%", right: "12%" },
-    size: 100,
-    rotate: "6deg",
-    mobileHidden: true,
-  },
-  {
-    src: "/assets/header/latte.webp",
-    alt: "coffee cup",
-    style: { top: "68%", right: "4%" },
-    size: 84,
-    rotate: "-6deg",
-    mobileHidden: true,
-  },
-
-  // Bottom area
-  {
-    src: "/assets/header/dumplings.webp",
-    alt: "basket of dumplings",
-    style: { bottom: "10%", left: "27%" },
-    size: 72,
-    rotate: "5deg",
-    mobileHidden: true,
-  },
+  // hello-kitty-bee
   {
     src: "/assets/header/hello-kitty-bee.webp",
     alt: "hello kitty dressed as a bee",
-    style: { bottom: "10%", left: "5%" },
-    size: 96,
-    rotate: "5deg",
-    mobileHidden: true,
+    className:
+      " w-[150px] rotate-[5deg] top-[20%] right-[-10%] md:w-[100px] md:left-[50%] sm:bottom-[20%]",
+    maxSize: 300,
   },
+
+  // bow
   {
-    src: "/assets/header/goldfish-snack.webp",
-    alt: "wooden box",
-    style: { bottom: "8%", right: "38%" },
-    size: 56,
-    rotate: "-6deg",
-    mobileHidden: true,
+    src: "/assets/header/bow.webp",
+    alt: "yellow bow",
+    className:
+      "block rotate-[9deg] top-[2%] left-[44%] w-[80px] md:w-[58px] lg:w-[70px]",
+    maxSize: 70,
   },
+  // green star
   {
-    src: "/assets/header/blue-heart-button.webp",
-    alt: "blue heart",
-    style: { bottom: "5%", left: "44%" },
-    size: 48,
-    rotate: "5deg",
-    mobileHidden: false,
+    src: "/assets/header/green-fabric-star.webp",
+    alt: "green star",
+    className: "rotate-[0deg] top-[40%] right-[10%]  w-[36px]",
+    maxSize: 36,
   },
+
+  // fish
+  {
+    src: "/assets/header/fish.webp",
+    alt: "fish",
+    className:
+      "block rotate-[10deg] top-[3%] right-[2%] w-[100px] md:w-[116px] lg:w-[145px]",
+    maxSize: 145,
+  },
+  // roman-statue
+  {
+    src: "/assets/header/roman-statue.webp",
+    alt: "roman statue",
+    className:
+      "hidden md:block rotate-[-4deg] top-[26%] right-[1%] md:w-[86px] lg:right-[4%] lg:w-[110px]",
+    maxSize: 110,
+  },
+  // hotpot
+  {
+    src: "/assets/header/hotpot.webp",
+    alt: "bowl of food (hotpot)",
+    className:
+      "hidden md:block rotate-[6deg] top-[50%] right-[1%] md:w-[88px] lg:right-[9%] lg:w-[114px]",
+    maxSize: 114,
+  },
+  // latte
+  {
+    src: "/assets/header/latte.webp",
+    alt: "coffee cup",
+    className: " rotate-[10deg] top-[70%] right-[1%] w-[60px]  lg:right-[4%] ",
+    maxSize: 80,
+  },
+  // croissant
   {
     src: "/assets/header/croissant.webp",
     alt: "croissant",
-    style: { bottom: "8%", right: "12%" },
-    size: 92,
-    rotate: "-8deg",
-    mobileHidden: true,
+    className:
+      "hidden md:block rotate-[-8deg] bottom-[5%] right-[10%] w-[104px] lg:right-[2%] lg:w-[132px]",
+    maxSize: 132,
+  },
+
+  // dumplings
+  {
+    src: "/assets/header/dumplings.webp",
+    alt: "basket of dumplings",
+    className:
+      "hidden md:block rotate-[5deg] bottom-[10%] left-[12%] w-[80px] lg:w-[76px]",
+    maxSize: 80,
+  },
+  // goldfish-snack
+  {
+    src: "/assets/header/goldfish-snack.webp",
+    alt: "goldfish snack",
+    className:
+      " hidden lg:block rotate-[-6deg] bottom-[8%] right-[33%] lg:w-[58px]",
+    maxSize: 90,
   },
 ];
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden min-h-[560px] flex flex-col items-center justify-center px-6 bg-background">
-      {/* Wave divider — rendered first so stickers sit on top */}
+    <section className="relative overflow-hidden min-h-[600px] md:min-h-[700px] flex flex-col items-center justify-start px-6 bg-background">
+      {/* Wave divider — rendered first so stickers layer on top */}
       <div className="absolute bottom-0 left-0 w-full">
         <svg
-          viewBox="0 0 1440 80"
+          viewBox="0 0 1440 120"
           xmlns="http://www.w3.org/2000/svg"
           preserveAspectRatio="none"
           className="w-full block"
         >
           <path
-            d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z"
+            d="M0,60 C300,120 600,0 900,60 C1050,90 1200,30 1440,60 L1440,120 L0,120 Z"
             fill="#EEEAE4"
           />
         </svg>
@@ -153,29 +147,23 @@ export default function Hero() {
       {stickers.map((sticker) => (
         <div
           key={sticker.src}
-          className={`absolute select-none pointer-events-none ${
-            sticker.mobileHidden ? "hidden md:block" : "block"
-          }`}
-          style={{
-            ...sticker.style,
-            transform: `rotate(${sticker.rotate})`,
-          }}
+          className={`absolute select-none pointer-events-none ${sticker.className}`}
         >
           <Image
             src={sticker.src}
             alt={sticker.alt}
-            width={sticker.size}
-            height={sticker.size}
-            className="object-contain drop-shadow-sm"
+            width={sticker.maxSize}
+            height={sticker.maxSize}
+            className="object-contain drop-shadow-sm w-full"
             style={{ height: "auto" }}
           />
         </div>
       ))}
 
-      {/* Central content */}
-      <div className="relative z-10 flex flex-col items-center text-center max-w-xl mx-auto py-12">
+      {/* Central content — z-10 keeps it above all stickers */}
+      <div className="relative z-10 flex flex-col items-center text-center max-w-xl mx-auto pt-12 md:pt-0">
         {/* Handwritten heading */}
-        <div className="w-[280px] sm:w-[360px] md:w-[440px] lg:w-[520px] mb-6">
+        <div className="w-[360px] md:w-[540px] lg:w-[520px] mb-6 md:mb-0">
           <Image
             src="/assets/header/hi-im-tiah.png"
             alt="hi, i'm tiah"
@@ -187,16 +175,20 @@ export default function Hero() {
           />
         </div>
 
-        <p className="text-lg sm:text-xl md:text-2xl font-medium leading-snug text-foreground mb-3 max-w-sm md:max-w-md">
-          I build thoughtful digital products that turn{" "}
-          <span className="italic">ideas</span> into reality.
+        <p className="text-lg sm:text-xl mt-10 md:-mt-8 md:text-2xl font-medium leading-snug text-foreground max-w-xs md:max-w-md px-2">
+          I build thoughtful digital products
+          <br /> that turn{" "}
+          <span className="font-bold underline text-coral underline-offset-4">
+            ideas
+          </span>{" "}
+          into reality.
         </p>
 
-        <p className="text-sm md:text-base text-foreground/60 leading-relaxed mb-8 max-w-xs md:max-w-sm">
-          Full-stack software developer
+        <p className="text-sm md:text-base text-foreground/60 leading-relaxed my-8 max-w-xs md:max-w-sm">
+          full-stack software developer
         </p>
 
-        <div className="flex items-center gap-3 flex-wrap justify-center">
+        <div className="flex items-center gap-3 flex-wrap justify-center my-6 md:my-0">
           <Button href="#work">view my work ↗</Button>
           <Button href="#contact" variant="outline">
             work with me ↗
