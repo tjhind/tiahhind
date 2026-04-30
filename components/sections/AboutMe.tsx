@@ -1,77 +1,85 @@
 import Image from "next/image";
 
 const hobbies = [
-  { icon: "/assets/header/roman-statue.webp", label: "going to art museums" },
-  { icon: "/assets/header/plant.webp", label: "hiking" },
-  { icon: "/assets/throughout/pink-sequin-star.webp", label: "reading poetry and writing (bad) poems" },
-  { icon: "/assets/header/blue-heart-button.webp", label: "hip hop" },
-  { icon: "/assets/header/fan.webp", label: "solo travel" },
-  { icon: "/assets/header/teabag.webp", label: "yorkshire tea" },
-  { icon: "/assets/throughout/yellow-gingham-star.webp", label: "road trips" },
-  { icon: "/assets/header/laptop.webp", label: "working on my personal projects (like pim)" },
+  {
+    icon: "/assets/header/roman-statue.webp",
+    label: "visiting art museums",
+  },
+  { icon: "/assets/about-me/trainer-shoe.webp", label: "going on hikes" },
+  {
+    icon: "/assets/about-me/sudoku-and-glasses.webp",
+    label: "writing questionable poetry",
+  },
+  {
+    icon: "/assets/about-me/headphones.webp",
+    label: "listening to podcasts",
+  },
+  {
+    icon: "/assets/about-me/globe.webp",
+    label: "planning my next trip",
+  },
+
+  {
+    icon: "/assets/about-me/vinyl-record.webp",
+    label: "seeing live music",
+  },
+  {
+    icon: "/assets/header/laptop.webp",
+    label: "working on my side projects",
+  },
+  {
+    icon: "/assets/about-me/tea.webp",
+    label: "drinking tea (yorkshire, obvs)",
+  },
 ];
 
 const photos = [
   {
     src: "/assets/about-me/2.png",
     alt: "Tiah Hind",
-    rotate: "-6deg",
-    style: { top: "0px", left: "0px" },
-    width: 160,
-    height: 210,
+    rotate: "-7deg",
+    style: { top: "25px", left: "10px" },
+    width: 155,
+    height: 205,
     zIndex: 2,
   },
   {
     src: "/assets/about-me/1.png",
     alt: "Tiah at the Great Wall of China",
-    rotate: "5deg",
-    style: { top: "16px", left: "130px" },
-    width: 140,
-    height: 185,
+    rotate: "9deg",
+    style: { top: "10px", left: "195px" },
+    width: 135,
+    height: 175,
     zIndex: 3,
   },
   {
     src: "/assets/about-me/4.png",
     alt: "Tiah in Japan",
-    rotate: "-3deg",
-    style: { top: "155px", left: "20px" },
-    width: 145,
-    height: 190,
+    rotate: "-4deg",
+    style: { top: "235px", left: "20px" },
+    width: 140,
+    height: 185,
     zIndex: 4,
   },
   {
     src: "/assets/about-me/3.png",
     alt: "Tiah travelling",
-    rotate: "7deg",
-    style: { top: "170px", left: "165px" },
-    width: 130,
-    height: 170,
+    rotate: "11deg",
+    style: { top: "245px", left: "200px" },
+    width: 125,
+    height: 160,
     zIndex: 5,
   },
 ];
 
 function PhotoCollage() {
   return (
-    <div className="relative w-[320px] h-[390px] md:w-[360px] md:h-[440px] shrink-0">
-      {/* Pink/salmon backing card behind the photo stack */}
-      <div
-        className="absolute"
-        style={{
-          backgroundColor: "#F4928E",
-          width: "170px",
-          height: "220px",
-          top: "-8px",
-          left: "-12px",
-          transform: "rotate(-8deg)",
-          zIndex: 1,
-        }}
-      />
-
+    <div className="relative w-[360px] h-[460px] md:w-[400px] md:h-[480px] shrink-0">
       {/* Raw photos — no border, no frame, no rounded corners */}
       {photos.map((photo, i) => (
         <div
           key={i}
-          className="absolute overflow-hidden shadow-sm"
+          className="absolute overflow-hidden"
           style={{
             ...photo.style,
             transform: `rotate(${photo.rotate})`,
@@ -90,58 +98,137 @@ function PhotoCollage() {
         </div>
       ))}
 
-      {/* Camera emoji */}
-      <div
-        className="absolute text-xl select-none"
-        style={{ top: "-20px", right: "50px", zIndex: 6 }}
-      >
-        📷
-      </div>
-
       {/* Blue heart sticker */}
       <div
-        className="absolute w-8 h-8"
+        className="absolute w-16 h-16"
         style={{ bottom: "24px", left: "4px", zIndex: 6 }}
       >
         <Image
           src="/assets/header/blue-heart-button.webp"
           alt=""
           fill
-          sizes="32px"
+          sizes="48px"
           className="object-contain"
         />
       </div>
-
+      {/* Pastel de nata */}
+      <div
+        className="absolute w-24 h-24"
+        style={{ top: "-48px", left: "64px", zIndex: 6 }}
+      >
+        <div className="w-full h-full">
+          <Image
+            src="/assets/header/pastel-de-nata.webp"
+            alt=""
+            fill
+            sizes="200px"
+            className="object-contain"
+          />
+        </div>
+      </div>
+      {/* Toast */}
+      <div
+        className="absolute w-24 h-24"
+        style={{ top: "200px", right: "-64px", zIndex: 6 }}
+      >
+        <div className="w-full h-full">
+          <Image
+            src="/assets/header/banana-peanut-butter-honey-toast.webp"
+            alt=""
+            fill
+            sizes="200px"
+            className="object-contain"
+          />
+        </div>
+      </div>
       {/* Green star sticker */}
       <div
-        className="absolute w-6 h-6"
+        className="absolute w-24 h-24"
         style={{ top: "8px", right: "8px", zIndex: 6 }}
       >
         <Image
           src="/assets/header/green-fabric-star.webp"
           alt=""
           fill
-          sizes="24px"
+          sizes="64px"
           className="object-contain"
         />
       </div>
 
-      {/* Pause button */}
+      {/* Notebook */}
       <div
         className="absolute flex items-center justify-center"
-        style={{ bottom: "56px", right: "16px", zIndex: 6 }}
+        style={{ bottom: "12px", right: "-24px", zIndex: 6 }}
       >
-        <div className="w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center">
-          <svg
-            width="14"
-            height="14"
-            viewBox="0 0 14 14"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <rect x="2" y="1" width="4" height="12" rx="1" fill="#1a1a1a" />
-            <rect x="8" y="1" width="4" height="12" rx="1" fill="#1a1a1a" />
-          </svg>
+        <div className="w-36 h-36">
+          <Image
+            src="/assets/about-me/notebook.png"
+            alt=""
+            fill
+            sizes="96px"
+            className="object-contain"
+          />
+        </div>
+      </div>
+
+      {/* Pink seal */}
+      <div
+        className="absolute flex items-center justify-center"
+        style={{ bottom: "190px", left: "170px", zIndex: 6 }}
+      >
+        <div className="w-24 h-24">
+          <Image
+            src="/assets/about-me/pink-wax-seal-with-bow.webp"
+            alt=""
+            fill
+            sizes="100px"
+            className="object-contain"
+          />
+        </div>
+      </div>
+      {/* Masking Tape */}
+      <div
+        className="absolute flex items-center justify-center"
+        style={{ top: "-36px", right: "120px", zIndex: 6 }}
+      >
+        <div className="w-24 h-24">
+          <Image
+            src="/assets/about-me/masking-tape.png"
+            alt=""
+            fill
+            sizes="100px"
+            className="object-contain"
+          />
+        </div>
+      </div>
+      {/* Teabag */}
+      <div
+        className="absolute flex items-center justify-center"
+        style={{ top: "36px", left: "-100px", zIndex: 6 }}
+      >
+        <div className="w-36 h-36">
+          <Image
+            src="/assets/header/teabag.webp"
+            alt=""
+            fill
+            sizes="400px"
+            className="object-contain"
+          />
+        </div>
+      </div>
+      {/* Washi Tape */}
+      <div
+        className="absolute flex items-center justify-center"
+        style={{ bottom: "210px", left: "120px", zIndex: 6 }}
+      >
+        <div className="w-24 h-24">
+          <Image
+            src="/assets/about-me/pink-washi-tape.png"
+            alt=""
+            fill
+            sizes="100px"
+            className="object-contain"
+          />
         </div>
       </div>
     </div>
@@ -150,23 +237,22 @@ function PhotoCollage() {
 
 export default function AboutMe() {
   return (
-    <section id="about" className="border-t border-foreground/10 bg-background">
+    <section id="about" className="bg-[#EEEAE4]">
       <div className="max-w-[1440px] mx-auto px-6 md:px-10 lg:px-16 py-14 md:py-20">
         {/* Section label */}
         <div className="flex items-center gap-2 mb-10 md:mb-14">
-          <span className="text-xs font-medium tracking-widest text-foreground/50">
+          <span className="font-medium font-semibold tracking-wide text-xl">
             about me
           </span>
           <Image
             src="/assets/throughout/3-line-sparkle-accent.png"
             alt=""
-            width={16}
-            height={16}
-            className="opacity-50"
+            width={96}
+            height={96}
+            className="-ml-12"
             style={{ height: "auto" }}
           />
         </div>
-
         <div className="flex flex-col lg:flex-row gap-16 lg:gap-20 items-start">
           {/* Photo collage */}
           <div className="flex justify-center w-full lg:w-auto">
@@ -177,15 +263,29 @@ export default function AboutMe() {
           <div className="w-full lg:flex-1 max-w-lg">
             <div className="space-y-4 text-sm md:text-base text-foreground/70 leading-relaxed mb-8">
               <p>
-                I&apos;m a full-stack developer, problem solver and creative at
-                heart.
+                I&apos;m a full-stack developer, problem solver, and creative at
+                heart - I love building thoughtful and visually stunning
+                products from the ground up.
               </p>
+
               <p>
-                I love turning messy ideas into clean, intuitive products that
-                people enjoy using.
+                I&apos;ve spent the last few years working with early-stage
+                startups, helping turn half-formed, messy ideas into real,
+                working apps. Honestly, that&apos;s my favourite part - I love a
+                bit of chaos. The more undefined and scrappy something is, the
+                more excited I get.
               </p>
+
               <p>
-                When I&apos;m not coding, you&apos;ll probably find me...
+                There&apos;s something really satisfying about taking something
+                that feels all over the place and shaping it into something
+                clear, simple, and genuinely enjoyable to use. That space
+                between chaos and clarity is where I do my best work.
+              </p>
+
+              <p>
+                When I&apos;m not coding, I&apos;m usually off doing something
+                that fuels that same curiosity...
               </p>
             </div>
 
@@ -194,14 +294,14 @@ export default function AboutMe() {
               {hobbies.map((hobby) => (
                 <div
                   key={hobby.label}
-                  className="flex items-start gap-2 text-sm text-foreground/70"
+                  className="flex items-center gap-4 text-sm text-foreground/70"
                 >
-                  <div className="relative w-4 h-4 mt-0.5 shrink-0">
+                  <div className="relative w-16 h-16 mt-0.5 shrink-0">
                     <Image
                       src={hobby.icon}
                       alt=""
                       fill
-                      sizes="16px"
+                      sizes="64px"
                       className="object-contain"
                     />
                   </div>

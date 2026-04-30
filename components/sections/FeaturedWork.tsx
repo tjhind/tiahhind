@@ -15,7 +15,7 @@ const projects: Project[] = [
     id: "pim",
     name: "pim",
     description:
-      "A productivity app that helps you plan your day, focus better and get things done.",
+      "A travel app that helps you remember all of the amazing people you met.",
     tags: ["React Native", "TypeScript", "Supabase", "Tailwind"],
     type: "mobile",
     icon: "/assets/header/blue-heart-button.webp",
@@ -27,7 +27,7 @@ const projects: Project[] = [
       "An e-commerce store for raw, natural honey built with a focus on storytelling and trust.",
     tags: ["Next.js", "TypeScript", "Sanity", "Tailwind"],
     type: "laptop",
-    icon: "/assets/throughout/pink-sequin-star.webp",
+    icon: "/assets/header/yellow-plastic-star.webp",
   },
 ];
 
@@ -51,7 +51,7 @@ function PhoneMockup() {
   ];
 
   return (
-    <div className="flex items-end justify-center h-[380px] md:h-[460px]">
+    <div className="flex items-center justify-center h-[380px] md:h-[460px]">
       {phones.map((phone, i) => (
         <div
           key={i}
@@ -124,17 +124,16 @@ export default function FeaturedWork() {
     <section id="work" className="bg-[#EEEAE4]">
       <div className="max-w-[1440px] mx-auto px-6 md:px-10 lg:px-16 pt-10 md:pt-12 pb-16 md:pb-20">
         {/* Section label */}
-        <div className="flex items-center gap-2 mb-6 md:mb-8">
-          <span className="text-xs font-medium tracking-widest text-foreground/50">
+        <div className="flex items-center">
+          <span className="font-medium font-semibold tracking-wide text-xl">
             featured work
           </span>
           <Image
             src="/assets/throughout/3-line-sparkle-accent.png"
             alt=""
-            width={16}
-            height={16}
-            className="opacity-50"
-            style={{ height: "auto" }}
+            width={96}
+            height={96}
+            className="-ml-10"
           />
         </div>
 
@@ -149,11 +148,7 @@ export default function FeaturedWork() {
             >
               {/* Mockup */}
               <div className="w-full lg:w-1/2 flex items-center justify-center">
-                {project.type === "mobile" ? (
-                  <PhoneMockup />
-                ) : (
-                  <LaptopMockup />
-                )}
+                {project.type === "mobile" ? <PhoneMockup /> : <LaptopMockup />}
               </div>
 
               {/* Project details */}
@@ -161,14 +156,14 @@ export default function FeaturedWork() {
                 <p className="text-xs font-medium uppercase tracking-widest text-foreground/40 mb-3">
                   {String(i + 1).padStart(2, "0")}
                 </p>
-                <h3 className="text-2xl md:text-3xl font-semibold mb-4 flex items-center gap-2">
+                <h3 className="text-2xl md:text-3xl font-semibold mb-4 flex items-center ">
                   {project.name}
-                  <span className="relative inline-block w-6 h-6 shrink-0">
+                  <span className="relative inline-block w-24 h-24 shrink-0">
                     <Image
                       src={project.icon}
                       alt=""
                       fill
-                      sizes="24px"
+                      sizes="96px"
                       className="object-contain"
                     />
                   </span>

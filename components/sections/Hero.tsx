@@ -98,6 +98,14 @@ const stickers = [
     mobileHidden: true,
   },
   {
+    src: "/assets/header/hello-kitty-bee.webp",
+    alt: "hello kitty dressed as a bee",
+    style: { bottom: "10%", left: "5%" },
+    size: 96,
+    rotate: "5deg",
+    mobileHidden: true,
+  },
+  {
     src: "/assets/header/goldfish-snack.webp",
     alt: "wooden box",
     style: { bottom: "8%", right: "38%" },
@@ -185,8 +193,7 @@ export default function Hero() {
         </p>
 
         <p className="text-sm md:text-base text-foreground/60 leading-relaxed mb-8 max-w-xs md:max-w-sm">
-          Full-stack developer helping early-stage startups turn ideas into
-          real, scalable products.
+          Full-stack software developer
         </p>
 
         <div className="flex items-center gap-3 flex-wrap justify-center">

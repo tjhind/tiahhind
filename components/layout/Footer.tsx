@@ -7,12 +7,16 @@ export default function Footer() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const target = document.getElementById("work");
+    const target = document.querySelector("section");
     if (!target) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setVisible(!entry.isIntersecting);
+        if (!entry.isIntersecting && entry.boundingClientRect.top < 0) {
+          setVisible(true);
+        } else {
+          setVisible(false);
+        }
       },
       { threshold: 0 }
     );

@@ -5,10 +5,8 @@ import Link from "next/link";
 import Button from "@/components/ui/Button";
 
 const navLinks = [
-  { label: "work", href: "#work" },
+  { label: "work", href: "#what-i-do" },
   { label: "about", href: "#about" },
-  { label: "skills", href: "#skills" },
-  { label: "blog", href: "#blog" },
   { label: "contact", href: "#contact" },
 ];
 
