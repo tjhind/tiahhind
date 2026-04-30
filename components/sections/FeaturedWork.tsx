@@ -142,7 +142,7 @@ export default function FeaturedWork() {
       <div className="max-w-[1440px] mx-auto px-6 md:px-10 lg:px-16 pt-10 md:pt-12 pb-16 md:pb-20">
         {/* Section label */}
         <div className="flex items-center">
-          <span className="font-medium font-semibold tracking-wide text-xl">
+          <span className="font-medium font-semibold tracking-wide text-xl lg:text-2xl">
             featured work
           </span>
           <Image

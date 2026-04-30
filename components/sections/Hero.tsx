@@ -15,23 +15,31 @@ const stickers: Sticker[] = [
     src: "/assets/header/fan.webp",
     alt: "fan",
     className:
-      "block rotate-[-30deg] top-[3%] left-[2%] w-[100px] md:w-[148px] lg:w-[148px]",
-    maxSize: 148,
+      " rotate-[-30deg] top-[3%] left-[2%] w-[100px] md:w-[148px] lg:w-[180px]",
+    maxSize: 180,
+  },
+  // pastel de nata
+  {
+    src: "/assets/header/pastel-de-nata.webp",
+    alt: "pastel de nata",
+    className:
+      " rotate-[-10deg] hidden lg:block top-[6%] left-[25%] w-[120px] ",
+    maxSize: 120,
   },
   // sushi
   {
     src: "/assets/header/sushi.webp",
     alt: "sushi",
     className:
-      "rotate-[-20deg] w-[60px] top-[20%] left-[6%] md:left-[14%] md:w-[100px]",
-    maxSize: 72,
+      "rotate-[-20deg] w-[60px] top-[20%] left-[6%] md:left-[14%] md:w-[100px] lg:w-[140px]",
+    maxSize: 140,
   },
   // laptop
   {
     src: "/assets/header/laptop.webp",
     alt: "laptop",
     className:
-      "rotate-[-15deg] top-[32%] md:top-[42%] left-[1%] w-[100px] lg:left-[3%] md:w-[140px]",
+      "rotate-[-15deg] top-[32%] md:top-[42%] left-[1%] w-[100px] lg:left-[3%] md:w-[140px] lg:w-[160px]",
     maxSize: 140,
   },
   // plant
@@ -47,7 +55,7 @@ const stickers: Sticker[] = [
     src: "/assets/header/hello-kitty-bee.webp",
     alt: "hello kitty dressed as a bee",
     className:
-      " w-[150px] rotate-[5deg] top-[20%] right-[-10%] md:w-[100px] md:left-[50%] sm:bottom-[20%]",
+      "w-[150px] rotate-[5deg] top-[20%] right-[-10%] md:w-[100px] md:left-[50%] md:top-auto md:bottom-[5%] lg:left-[20%] lg:bottom-[5%] lg:w-[200px]",
     maxSize: 300,
   },
 
@@ -56,7 +64,7 @@ const stickers: Sticker[] = [
     src: "/assets/header/bow.webp",
     alt: "yellow bow",
     className:
-      "block rotate-[9deg] top-[2%] left-[44%] w-[80px] md:w-[58px] lg:w-[70px]",
+      "block rotate-[9deg] top-[2%] left-[44%] w-[80px] md:w-[58px] lg:w-[70px] lg:top-[40%] lg:left-[20%]",
     maxSize: 70,
   },
   // green star
@@ -80,22 +88,23 @@ const stickers: Sticker[] = [
     src: "/assets/header/roman-statue.webp",
     alt: "roman statue",
     className:
-      "hidden md:block rotate-[-4deg] top-[26%] right-[1%] md:w-[86px] lg:right-[4%] lg:w-[110px]",
-    maxSize: 110,
+      "hidden md:block rotate-[-4deg] top-[26%] right-[1%] md:w-[86px] lg:right-[4%] lg:w-[130px] lg:top-[20%]",
+    maxSize: 130,
   },
   // hotpot
   {
     src: "/assets/header/hotpot.webp",
     alt: "bowl of food (hotpot)",
     className:
-      "hidden md:block rotate-[6deg] top-[50%] right-[1%] md:w-[88px] lg:right-[9%] lg:w-[114px]",
-    maxSize: 114,
+      "hidden md:block rotate-[6deg] top-[50%] right-[1%] md:w-[88px] lg:right-[9%] lg:w-[130px]",
+    maxSize: 130,
   },
   // latte
   {
     src: "/assets/header/latte.webp",
     alt: "coffee cup",
-    className: " rotate-[10deg] top-[70%] right-[1%] w-[60px]  lg:right-[4%] ",
+    className:
+      " rotate-[10deg] top-[70%] right-[1%] w-[60px] lg:right-[4%] lg:w-[80px]",
     maxSize: 80,
   },
   // croissant
@@ -103,7 +112,7 @@ const stickers: Sticker[] = [
     src: "/assets/header/croissant.webp",
     alt: "croissant",
     className:
-      "hidden md:block rotate-[-8deg] bottom-[5%] right-[10%] w-[104px] lg:right-[2%] lg:w-[132px]",
+      "hidden md:block rotate-[-8deg] bottom-[5%] right-[10%] w-[104px] lg:right-[20%] lg:w-[132px] lg:bottom-[15%]",
     maxSize: 132,
   },
 
@@ -112,8 +121,8 @@ const stickers: Sticker[] = [
     src: "/assets/header/dumplings.webp",
     alt: "basket of dumplings",
     className:
-      "hidden md:block rotate-[5deg] bottom-[10%] left-[12%] w-[80px] lg:w-[76px]",
-    maxSize: 80,
+      "hidden md:block rotate-[5deg] bottom-[10%] left-[12%] w-[80px] lg:w-[76px] lg:left-[20%] lg:bottom-[30%] lg:w-[120px]",
+    maxSize: 120,
   },
   // goldfish-snack
   {
@@ -127,7 +136,7 @@ const stickers: Sticker[] = [
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden min-h-[600px] md:min-h-[700px] flex flex-col items-center justify-start px-6 bg-background">
+    <section className="relative overflow-hidden min-h-[600px] md:min-h-[700px] flex flex-col items-center justify-start sm:px-6 bg-background">
       {/* Wave divider — rendered first so stickers layer on top */}
       <div className="absolute bottom-0 left-0 w-full">
         <svg
@@ -142,58 +151,77 @@ export default function Hero() {
           />
         </svg>
       </div>
+      <div className="relative w-full max-w-[1500px] min-h-[600px] md:min-h-[700px] mx-auto">
+        {/* Stickers */}
+        {stickers.map((sticker) => (
+          <div
+            key={sticker.src}
+            className={`absolute select-none pointer-events-none ${sticker.className}`}
+          >
+            <Image
+              src={sticker.src}
+              alt={sticker.alt}
+              width={sticker.maxSize}
+              height={sticker.maxSize}
+              className="object-contain drop-shadow-sm w-full"
+              style={{ height: "auto" }}
+            />
+          </div>
+        ))}
+        {/* Central content — z-10 keeps it above all stickers */}
+        <div className="relative z-10 flex flex-col items-center text-center max-w-xl mx-auto py-12 md:pt-0">
+          {/* Handwritten heading */}
+          <div className="relative w-[360px] md:w-[540px] lg:w-[520px] mb-6 md:mb-0">
+            <Image
+              src="/assets/header/hi-im-tiah.png"
+              alt="hi, i'm tiah"
+              width={520}
+              height={300}
+              className="w-full"
+              style={{ height: "auto" }}
+              priority
+            />
 
-      {/* Stickers */}
-      {stickers.map((sticker) => (
-        <div
-          key={sticker.src}
-          className={`absolute select-none pointer-events-none ${sticker.className}`}
-        >
-          <Image
-            src={sticker.src}
-            alt={sticker.alt}
-            width={sticker.maxSize}
-            height={sticker.maxSize}
-            className="object-contain drop-shadow-sm w-full"
-            style={{ height: "auto" }}
-          />
-        </div>
-      ))}
+            {/* Pronunciation annotation — circle sits over "tiah" / the star-burst mark,
+              arrow + teabag extend to the right. White background dissolves via multiply. */}
+            {/* TODO: review on mobile — hidden below md to avoid crowding */}
+            <div
+              className="hidden md:block absolute top-[50%] left-[46%] w-[160px] lg:w-[220px] pointer-events-none select-none"
+              style={{ mixBlendMode: "multiply" as const }}
+            >
+              <Image
+                src="/assets/header/its-pronounced-tiah.png"
+                alt="it's pronounced -ah (like tea)"
+                width={1543}
+                height={1019}
+                className="w-full"
+                style={{ height: "auto" }}
+              />
+            </div>
+          </div>
 
-      {/* Central content — z-10 keeps it above all stickers */}
-      <div className="relative z-10 flex flex-col items-center text-center max-w-xl mx-auto pt-12 md:pt-0">
-        {/* Handwritten heading */}
-        <div className="w-[360px] md:w-[540px] lg:w-[520px] mb-6 md:mb-0">
-          <Image
-            src="/assets/header/hi-im-tiah.png"
-            alt="hi, i'm tiah"
-            width={520}
-            height={300}
-            className="w-full"
-            style={{ height: "auto" }}
-            priority
-          />
-        </div>
+          <p className="text-lg sm:text-xl mt-10 md:-mt-8 md:text-2xl font-medium leading-snug text-foreground max-w-xs md:max-w-md px-2">
+            I build thoughtful digital products
+            <br /> that turn{" "}
+            <span className="font-bold underline text-coral underline-offset-4">
+              ideas
+            </span>{" "}
+            into reality.
+          </p>
 
-        <p className="text-lg sm:text-xl mt-10 md:-mt-8 md:text-2xl font-medium leading-snug text-foreground max-w-xs md:max-w-md px-2">
-          I build thoughtful digital products
-          <br /> that turn{" "}
-          <span className="font-bold underline text-coral underline-offset-4">
-            ideas
-          </span>{" "}
-          into reality.
-        </p>
+          <p className="text-sm md:text-base text-foreground/60 leading-relaxed my-8 max-w-xs md:max-w-sm">
+            full-stack software developer
+            <br />
+            based in the UK, available worldwide
+          </p>
 
-        <p className="text-sm md:text-base text-foreground/60 leading-relaxed my-8 max-w-xs md:max-w-sm">
-          full-stack software developer
-        </p>
-
-        <div className="flex items-center gap-3 flex-wrap justify-center my-6 md:my-0">
-          <Button href="#work">view my work ↗</Button>
-          <Button href="#contact" variant="outline">
-            work with me ↗
-          </Button>
-        </div>
+          <div className="flex items-center gap-3 flex-wrap justify-center my-6 md:my-0">
+            <Button href="#work">view my work ↗</Button>
+            <Button href="#contact" variant="outline">
+              work with me ↗
+            </Button>
+          </div>
+        </div>{" "}
       </div>
     </section>
   );

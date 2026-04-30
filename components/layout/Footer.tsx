@@ -4,28 +4,42 @@ import { useEffect, useState } from "react";
 import Button from "@/components/ui/Button";
 
 export default function Footer() {
-  const [visible, setVisible] = useState(false);
+  const [heroGone, setHeroGone] = useState(false);
+  const [atBottom, setAtBottom] = useState(false);
 
   useEffect(() => {
-    const target = document.querySelector("section");
-    if (!target) return;
+    const hero = document.querySelector("section");
+    if (!hero) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (!entry.isIntersecting && entry.boundingClientRect.top < 0) {
-          setVisible(true);
+          setHeroGone(true);
         } else {
-          setVisible(false);
+          setHeroGone(false);
         }
       },
-      { threshold: 0 }
+      { threshold: 0 },
     );
 
-    observer.observe(target);
+    observer.observe(hero);
     return () => observer.disconnect();
   }, []);
 
-  if (!visible) return null;
+  useEffect(() => {
+    const bottom = document.getElementById("about-bottom");
+    if (!bottom) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setAtBottom(entry.isIntersecting),
+      { threshold: 0 },
+    );
+
+    observer.observe(bottom);
+    return () => observer.disconnect();
+  }, []);
+
+  if (!heroGone || atBottom) return null;
 
   return (
     <footer className="fixed bottom-0 left-0 right-0 z-50 bg-[#EEEAE4] border-t border-foreground/10">
@@ -34,14 +48,13 @@ export default function Footer() {
 
         <div className="w-px h-5 bg-foreground/20 mx-5 shrink-0" />
 
-        <a
-          href="mailto:hello@tiahhind.com"
-          className="text-sm text-foreground/60 hover:text-foreground transition-colors"
-        >
-          hello@tiahhind.com
-        </a>
-
-        <div className="ml-auto">
+        <div className="flex-1 flex items-end justify-end gap-3 flex-wrap">
+          <a
+            href="mailto:hello@tiahhind.com"
+            className="text-sm text-foreground/60 hover:text-foreground transition-colors"
+          >
+            hello@tiahhind.com
+          </a>{" "}
           <a
             href="https://linkedin.com/in/tiahhind"
             target="_blank"

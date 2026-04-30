@@ -13,7 +13,7 @@ const services: Service[] = [
   {
     title: "mvp development",
     description:
-      "I've shipped over 20 full-stack applications for up and coming start-ups.",
+      "I've shipped over 20 full-stack applications for up and coming start-ups over 10+ business domains.",
     bullets: [
       "Rapid prototyping and iteration",
       "Scalable architecture",
@@ -99,10 +99,10 @@ export default function WhatIDo() {
         />
       </div>
 
-      <div className="max-w-[1440px] mx-auto px-6 md:px-10 lg:px-16 py-14 md:py-16">
+      <div className="max-w-[1440px] mx-auto px-6 md:px-10 lg:px-16 pb-14 ">
         {/* Section label */}
         <div className="flex items-center gap-2 mb-10 md:mb-12">
-          <span className="font-medium font-semibold tracking-wide text-xl">
+          <span className="font-medium font-semibold tracking-wide text-xl lg:text-2xl">
             what i do
           </span>
           <Image

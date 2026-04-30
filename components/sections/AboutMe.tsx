@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Button from "@/components/ui/Button";
 
 const hobbies = [
   {
@@ -111,25 +112,11 @@ function PhotoCollage() {
           className="object-contain"
         />
       </div>
-      {/* Pastel de nata */}
-      <div
-        className="absolute w-24 h-24"
-        style={{ top: "-48px", left: "64px", zIndex: 6 }}
-      >
-        <div className="w-full h-full">
-          <Image
-            src="/assets/header/pastel-de-nata.webp"
-            alt=""
-            fill
-            sizes="200px"
-            className="object-contain"
-          />
-        </div>
-      </div>
+
       {/* Toast */}
       <div
         className="absolute w-24 h-24"
-        style={{ top: "200px", right: "-64px", zIndex: 6 }}
+        style={{ top: "160px", right: "-10px", zIndex: 6 }}
       >
         <div className="w-full h-full">
           <Image
@@ -236,10 +223,10 @@ function PhotoCollage() {
 export default function AboutMe() {
   return (
     <section id="about" className="relative bg-[#EEEAE4]">
-      <div className="max-w-[1440px] mx-auto px-6 md:px-10 lg:px-16 py-14 md:py-20">
+      <div className="max-w-[1440px] mx-auto px-6 md:px-10 lg:px-16 pt-14 md:pt-20 pb-36">
         {/* Section label */}
         <div className="flex items-center gap-2 mb-10 md:mb-14">
-          <span className="font-medium font-semibold tracking-wide text-xl">
+          <span className="font-medium font-semibold tracking-wide text-xl lg:text-2xl">
             about me
           </span>
           <Image
@@ -254,15 +241,15 @@ export default function AboutMe() {
         <div className="flex flex-col lg:flex-row gap-16 lg:gap-20 items-start">
           {/* Photo collage */}
           <div className="flex justify-center w-full lg:w-auto">
-            {/* <PhotoCollage /> */}
+            <PhotoCollage />
           </div>
 
           {/* Bio text */}
           <div className="w-full lg:flex-1 max-w-lg">
-            <div className="space-y-4 text-sm md:text-base text-foreground/70 leading-relaxed mb-8">
+            <div className="space-y-4 text-sm text-foreground/60 leading-relaxed mb-8">
               <p>
                 I&apos;m a full-stack developer, problem solver, and creative at
-                heart - I love building thoughtful and visually stunning
+                heart - I enjoy building thoughtful and visually stunning
                 products from the ground up.
               </p>
 
@@ -309,21 +296,47 @@ export default function AboutMe() {
             </div>
           </div>
         </div>
+
+        {/* Contact bar — mirrors the sticky footer; hides the sticky footer when visible */}
+        <div
+          id="about-bottom"
+          className="mt-12 md:mt-16 pt-5 border-t border-foreground/10 flex items-center gap-3 flex-wrap"
+        >
+          <Button href="#contact">let&apos;s connect ↗</Button>
+          <div className="w-px h-5  mx-2 shrink-0" />
+          <div className="ml-auto flex items-center gap-4">
+            <a
+              href="mailto:hello@tiahhind.com"
+              className="text-sm text-foreground/60 hover:text-foreground transition-colors"
+            >
+              hello@tiahhind.com
+            </a>
+
+            <a
+              href="https://linkedin.com/in/tiahhind"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              className="text-2xl font-bold text-foreground/70 hover:text-foreground transition-colors"
+            >
+              in
+            </a>
+          </div>
+        </div>
       </div>
 
-      {/* Wave — same path as hero, flipped vertically so it curves upward.
-          fill matches the footer bar (#EEEAE4) for a seamless transition. */}
+      {/* Wave — page background color (#FAF8F5) curves into the bottom of this
+          #EEEAE4 section, creating a smooth wavy boundary before the page bg below. */}
       <div className="absolute bottom-0 left-0 w-full leading-[0]">
         <svg
           viewBox="0 0 1440 120"
           xmlns="http://www.w3.org/2000/svg"
           preserveAspectRatio="none"
           className="w-full block"
-          style={{ transform: "scaleY(-1)" }}
         >
           <path
             d="M0,60 C300,120 600,0 900,60 C1050,90 1200,30 1440,60 L1440,120 L0,120 Z"
-            fill="#EEEAE4"
+            fill="#FAF8F5"
           />
         </svg>
       </div>

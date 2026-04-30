@@ -14,6 +14,9 @@ export default function Home() {
         <WhatIDo />
         <FeaturedWork />
         <AboutMe />
+        <div className="flex w-full justify-center text-xs text-foreground/60 px-6">
+          © {new Date().getFullYear()} tiah hind. all rights reserved.
+        </div>
       </main>
       <Footer />
     </div>
