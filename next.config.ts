@@ -8,6 +8,7 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: process.env.NODE_ENV === "development",
   },
+  allowedDevOrigins: ["192.168.1.91"],
 };
 
 export default nextConfig;
