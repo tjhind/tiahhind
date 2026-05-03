@@ -117,7 +117,8 @@ export default function WhatIDo() {
             alt=""
             width={96}
             height={96}
-            className="-ml-12 h-auto w-auto"
+            className="-ml-12"
+            style={{ height: "auto" }}
           />
         </div>
 

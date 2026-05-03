@@ -240,7 +240,8 @@ export default function AboutMe() {
             alt=""
             width={96}
             height={96}
-            className="-ml-12 h-auto w-auto"
+            className="-ml-12"
+            style={{ height: "auto" }}
           />
         </div>
 
@@ -250,56 +251,59 @@ export default function AboutMe() {
             <PhotoCollage />
           </div>
 
-          {/* Bio text */}
-          <div className="w-full lg:flex-1 max-w-lg">
-            <div className="space-y-4 text-sm text-foreground/60 leading-relaxed">
-              <p>
-                I&apos;m a full-stack developer, problem solver, and creative at
-                heart - I enjoy building thoughtful and visually stunning
-                products from the ground up.
-              </p>
+          {/* Bio + hobbies wrapper */}
+          <div className="w-full flex flex-col xl:flex-row gap-12 lg:gap-14 xl:gap-20 lg:flex-1">
+            {/* Bio text */}
+            <div className="w-full max-w-lg xl:flex-1">
+              <div className="space-y-4 text-sm text-foreground/60 leading-relaxed">
+                <p>
+                  I&apos;m a full-stack developer, problem solver, and creative
+                  at heart - I enjoy building thoughtful and visually stunning
+                  products from the ground up.
+                </p>
 
-              <p>
-                I&apos;ve spent the last few years working with early-stage
-                startups, helping turn half-formed, messy ideas into real,
-                working apps. Honestly, that&apos;s my favourite part - I love a
-                bit of chaos. The more undefined and scrappy something is, the
-                more excited I get.
-              </p>
+                <p>
+                  I&apos;ve spent the last few years working with early-stage
+                  startups, helping turn half-formed, messy ideas into real,
+                  working apps. Honestly, that&apos;s my favourite part - I love
+                  a bit of chaos. The more undefined and scrappy something is,
+                  the more excited I get.
+                </p>
 
-              <p>
-                There&apos;s something really satisfying about taking something
-                that feels all over the place and shaping it into something
-                clear, simple, and genuinely enjoyable to use. That space
-                between chaos and clarity is where I do my best work.
-              </p>
+                <p>
+                  There&apos;s something really satisfying about taking
+                  something that feels all over the place and shaping it into
+                  something clear, simple, and genuinely enjoyable to use. That
+                  space between chaos and clarity is where I do my best work.
+                </p>
 
-              <p>
-                When I&apos;m not coding, I&apos;m usually off doing something
-                that fuels that same curiosity...
-              </p>
-            </div>
-          </div>
-
-          {/* Hobbies grid */}
-          <div className="w-full lg:w-[360px] xl:w-[420px] grid grid-cols-2 gap-x-6 gap-y-3 lg:gap-y-10">
-            {hobbies.map((hobby) => (
-              <div
-                key={hobby.label}
-                className="flex items-center gap-4 text-sm text-foreground/70"
-              >
-                <div className="relative w-16 h-16 mt-0.5 shrink-0">
-                  <Image
-                    src={hobby.icon}
-                    alt=""
-                    fill
-                    sizes="64px"
-                    className="object-contain"
-                  />
-                </div>
-                <span>{hobby.label}</span>
+                <p>
+                  When I&apos;m not coding, I&apos;m usually off doing something
+                  that fuels that same curiosity...
+                </p>
               </div>
-            ))}
+            </div>
+
+            {/* Hobbies grid */}
+            <div className="w-full lg:max-w-lg xl:max-w-none xl:w-[420px] grid grid-cols-2 xl:grid-cols-2 gap-x-6 gap-y-3 xl:gap-y-3">
+              {hobbies.map((hobby) => (
+                <div
+                  key={hobby.label}
+                  className="flex items-center gap-4 text-sm tracking-tight text-foreground/70"
+                >
+                  <div className="relative w-16 h-16 mt-0.5 shrink-0">
+                    <Image
+                      src={hobby.icon}
+                      alt=""
+                      fill
+                      sizes="64px"
+                      className="object-contain"
+                    />
+                  </div>
+                  <span>{hobby.label}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
@@ -333,7 +337,6 @@ export default function AboutMe() {
         </div>
       </div>
 
-      {/* Wave — decorative only, so it should never intercept taps/clicks */}
       <div className="absolute bottom-0 left-0 w-full leading-[0] pointer-events-none z-0">
         <svg
           viewBox="0 0 1440 120"

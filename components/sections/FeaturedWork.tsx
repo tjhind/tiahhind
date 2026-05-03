@@ -164,7 +164,8 @@ export default function FeaturedWork() {
             alt=""
             width={96}
             height={96}
-            className="-ml-10 h-auto w-auto"
+            className="-ml-10"
+            style={{ height: "auto" }}
           />
         </div>
 

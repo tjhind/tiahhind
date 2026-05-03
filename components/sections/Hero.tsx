@@ -22,8 +22,8 @@ const stickers: Sticker[] = [
   {
     src: "/assets/header/pastel-de-nata.webp",
     alt: "pastel de nata",
-    className: "rotate-[-10deg] hidden lg:block top-[6%] left-[25%] w-[120px]",
-    maxSize: 120,
+    className: "rotate-[-10deg] hidden lg:block top-[6%] left-[22%] w-[130px]",
+    maxSize: 130,
   },
   // sushi
   {
@@ -77,8 +77,8 @@ const stickers: Sticker[] = [
     src: "/assets/header/fish.webp",
     alt: "fish",
     className:
-      "block rotate-[10deg] top-[3%] right-[2%] w-[100px] md:w-[116px] lg:w-[145px]",
-    maxSize: 145,
+      "block rotate-[10deg] top-[3%] right-[2%] w-[100px] md:w-[116px] lg:w-[155px]",
+    maxSize: 155,
   },
   // roman-statue
   {
@@ -88,13 +88,29 @@ const stickers: Sticker[] = [
       "hidden md:block rotate-[-4deg] top-[26%] right-[1%] md:w-[86px] lg:right-[4%] lg:w-[130px] lg:top-[20%]",
     maxSize: 130,
   },
+  // flowers
+  {
+    src: "/assets/about-me/flowers.webp",
+    alt: "a bunch of tulips",
+    className:
+      "hidden md:block rotate-[-13deg] top-[16%] right-[15%] md:w-[86px] lg:right-[16%] lg:w-[120px] lg:top-[20%]",
+    maxSize: 130,
+  },
   // hotpot
   {
     src: "/assets/header/hotpot.webp",
-    alt: "bowl of food (hotpot)",
+    alt: "bowl of hotpot",
     className:
       "hidden md:block rotate-[6deg] top-[50%] right-[1%] md:w-[88px] lg:right-[9%] lg:w-[130px]",
     maxSize: 130,
+  },
+
+  // green button
+  {
+    src: "/assets/throughout/green-flower-button.webp",
+    alt: "green button shaped as a flower",
+    className: "hidden lg:block rotate-[6deg] top-[50%] right-[20%] w-[40px]",
+    maxSize: 40,
   },
   // latte
   {
@@ -115,7 +131,7 @@ const stickers: Sticker[] = [
   // dumplings
   {
     src: "/assets/header/dumplings.webp",
-    alt: "basket of dumplings",
+    alt: "basket of steamed dumplings",
     className:
       "hidden md:block rotate-[5deg] bottom-[10%] left-[12%] w-[80px] lg:left-[20%] lg:bottom-[30%] lg:w-[120px]",
     maxSize: 120,
@@ -125,15 +141,17 @@ const stickers: Sticker[] = [
     src: "/assets/header/goldfish-snack.webp",
     alt: "goldfish snack",
     className:
-      "hidden lg:block rotate-[-6deg] bottom-[8%] right-[33%] lg:w-[58px]",
+      "hidden lg:block rotate-[-6deg] bottom-[8%] right-[33%] lg:w-[80px]",
     maxSize: 90,
   },
 ];
 
 export default function Hero() {
   return (
-    <section id="hero" className="relative min-h-[600px] md:min-h-[700px] flex flex-col items-center justify-start sm:px-6 bg-background">
-      {/* Wave divider — rendered first so stickers layer on top */}
+    <section
+      id="hero"
+      className="relative min-h-[600px] md:min-h-[700px] flex flex-col items-center justify-start sm:px-6 bg-background"
+    >
       <div className="absolute bottom-0 left-0 w-full">
         <svg
           viewBox="0 0 1440 120"
@@ -160,7 +178,8 @@ export default function Hero() {
               alt={sticker.alt}
               width={sticker.maxSize}
               height={sticker.maxSize}
-              className="block w-full h-auto object-contain drop-shadow-sm"
+              className="block w-full object-contain drop-shadow-sm"
+              style={{ height: "auto" }}
             />
           </div>
         ))}
@@ -174,12 +193,13 @@ export default function Hero() {
               alt="hi, i'm tiah"
               width={520}
               height={300}
-              className="block w-full h-auto"
+              className="block w-full w-auto"
+              style={{ height: "auto" }}
               priority
             />
           </div>
 
-          <p className="text-lg sm:text-xl mt-10 md:-mt-8 md:text-2xl font-medium leading-snug text-foreground max-w-xs md:max-w-md px-2">
+          <p className="text-lg sm:text-xl  md:-mt-8 md:text-2xl font-medium leading-snug text-foreground max-w-xs md:max-w-md px-2">
             I build thoughtful digital products
             <br /> that turn{" "}
             <span className="font-bold underline text-coral underline-offset-4">
