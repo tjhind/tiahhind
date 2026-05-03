@@ -15,14 +15,14 @@ const stickers: Sticker[] = [
     src: "/assets/header/fan.webp",
     alt: "fan",
     className:
-      "rotate-[-30deg] top-[3%] left-[2%] w-[100px] md:w-[148px] lg:w-[180px]",
+      "rotate-[-30deg] top-[3%] left-[2%] w-[100px] md:w-[148px] lg:w-[180px] md:-left-[1%]",
     maxSize: 180,
   },
   // pastel de nata
   {
     src: "/assets/header/pastel-de-nata.webp",
     alt: "pastel de nata",
-    className: "rotate-[-10deg] hidden lg:block top-[6%] left-[22%] w-[130px]",
+    className: "rotate-[-10deg] hidden lg:block top-[6%] left-[18%] w-[130px]",
     maxSize: 130,
   },
   // sushi
@@ -30,7 +30,7 @@ const stickers: Sticker[] = [
     src: "/assets/header/sushi.webp",
     alt: "sushi",
     className:
-      "rotate-[-20deg] w-[60px] top-[20%] left-[6%] md:left-[14%] md:w-[100px] lg:w-[140px]",
+      "rotate-[-20deg] w-[50px] top-[20%] left-[6%] md:left-[8%] md:w-[100px] lg:w-[140px]",
     maxSize: 140,
   },
   // laptop
@@ -38,7 +38,7 @@ const stickers: Sticker[] = [
     src: "/assets/header/laptop.webp",
     alt: "laptop",
     className:
-      "rotate-[-15deg] top-[32%] md:top-[42%] left-[1%] w-[100px] lg:left-[3%] md:w-[140px] lg:w-[160px]",
+      "rotate-[-15deg] top-[32%] md:top-[42%] left-[1%] w-[90px] md:-left-[1%] md:w-[140px] lg:w-[160px]",
     maxSize: 160,
   },
   // plant
@@ -54,7 +54,7 @@ const stickers: Sticker[] = [
     src: "/assets/header/hello-kitty-bee.webp",
     alt: "hello kitty dressed as a bee",
     className:
-      "w-[150px] rotate-[5deg] top-[20%] right-[-10%] md:w-[100px] md:left-[50%] md:top-auto md:bottom-[5%] lg:left-[20%] lg:bottom-[5%] lg:w-[200px]",
+      "w-[150px] rotate-[5deg] top-[16%] right-[-10%] md:w-[100px] md:left-[50%] md:top-auto md:bottom-[5%] lg:left-[20%] lg:bottom-[5%] lg:w-[200px]",
     maxSize: 300,
   },
   // bow
@@ -69,7 +69,7 @@ const stickers: Sticker[] = [
   {
     src: "/assets/header/green-fabric-star.webp",
     alt: "green star",
-    className: "rotate-[0deg] top-[40%] right-[10%] w-[36px]",
+    className: "rotate-[0deg] top-[40%] right-[10%] w-[45px]",
     maxSize: 36,
   },
   // fish
@@ -77,7 +77,7 @@ const stickers: Sticker[] = [
     src: "/assets/header/fish.webp",
     alt: "fish",
     className:
-      "block rotate-[10deg] top-[3%] right-[2%] w-[100px] md:w-[116px] lg:w-[155px]",
+      "block rotate-[15deg] top-[6%] right-[2%] w-[100px] md:w-[116px] lg:w-[155px] md:-right-[0%]",
     maxSize: 155,
   },
   // roman-statue
@@ -109,7 +109,8 @@ const stickers: Sticker[] = [
   {
     src: "/assets/throughout/green-flower-button.webp",
     alt: "green button shaped as a flower",
-    className: "hidden lg:block rotate-[6deg] top-[50%] right-[20%] w-[40px]",
+    className:
+      "md:hidden lg:block rotate-[6deg] top-[46%] lg:right-[20%] lg:w-[40px] w-[20px] right-[5%] ",
     maxSize: 40,
   },
   // latte
@@ -141,7 +142,7 @@ const stickers: Sticker[] = [
     src: "/assets/header/goldfish-snack.webp",
     alt: "goldfish snack",
     className:
-      "hidden lg:block rotate-[-6deg] bottom-[8%] right-[33%] lg:w-[80px]",
+      "hidden xl:block rotate-[-6deg] bottom-[8%] right-[12%] lg:w-[80px]",
     maxSize: 90,
   },
 ];
@@ -150,7 +151,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-[600px] md:min-h-[700px] flex flex-col items-center justify-start sm:px-6 bg-background"
+      className="relative min-h-[600px] md:min-h-[700px] xl:min-h-[800px] flex flex-col items-center justify-start sm:px-6 bg-background"
     >
       <div className="absolute bottom-0 left-0 w-full">
         <svg
@@ -187,19 +188,28 @@ export default function Hero() {
         {/* Central content — stickers are rendered first in DOM so content paints on top without needing z-index */}
         <div className="relative flex flex-col items-center text-center max-w-xl mx-auto pt-12 md:pt-0">
           {/* Handwritten heading */}
-          <div className="relative w-[360px] md:w-[540px] lg:w-[520px] mb-6 md:mb-0">
+          <div className="relative w-[350px] md:w-[540px] lg:w-[600px] my-8">
             <Image
-              src="/assets/header/hi-im-tiah.png"
+              src="/assets/header/hi-im-tiah-no-line.png"
               alt="hi, i'm tiah"
-              width={520}
-              height={300}
+              width={400}
+              height={100}
               className="block w-full w-auto"
+              style={{ height: "auto" }}
+              priority
+            />
+            <Image
+              src="/assets/header/header-lines-animation.png"
+              alt="hi, i'm tiah"
+              width={400}
+              height={100}
+              className="block w-full w-auto absolute inset-0"
               style={{ height: "auto" }}
               priority
             />
           </div>
 
-          <p className="text-lg sm:text-xl  md:-mt-8 md:text-2xl font-medium leading-snug text-foreground max-w-xs md:max-w-md px-2">
+          <p className="text-lg sm:text-xl md:-mt-8 md:text-2xl font-medium leading-snug text-foreground max-w-xs md:max-w-md lg:max-w-none px-2">
             I build thoughtful digital products
             <br /> that turn{" "}
             <span className="font-bold underline text-coral underline-offset-4">
@@ -214,7 +224,7 @@ export default function Hero() {
             based in the UK, available worldwide
           </p>
 
-          <div className="flex items-center gap-3 flex-wrap justify-center my-6 md:my-0">
+          <div className="flex items-center gap-3 flex-wrap justify-center my-6 md:my-0 xl:mt-4">
             <Button href="#work">view my work ↗</Button>
             <Button href="#contact" variant="outline">
               work with me ↗

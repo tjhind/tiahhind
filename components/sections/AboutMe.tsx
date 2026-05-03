@@ -36,16 +36,16 @@ const hobbies = [
 const photos = [
   {
     src: "/assets/about-me/2.png",
-    alt: "Tiah Hind",
+    alt: "Tiah standing under a flower arch",
     rotate: "-7deg",
     style: { top: "25px", left: "10px" },
-    width: 155,
+    width: 170,
     height: 205,
     zIndex: 2,
   },
   {
     src: "/assets/about-me/1.png",
-    alt: "Tiah at the Great Wall of China",
+    alt: "Tiah in Japan",
     rotate: "9deg",
     style: { top: "10px", left: "195px" },
     width: 135,
@@ -54,7 +54,7 @@ const photos = [
   },
   {
     src: "/assets/about-me/4.png",
-    alt: "Tiah in Japan",
+    alt: "Tiah at the great wall of China",
     rotate: "-4deg",
     style: { top: "235px", left: "20px" },
     width: 140,
@@ -63,10 +63,10 @@ const photos = [
   },
   {
     src: "/assets/about-me/3.png",
-    alt: "Tiah travelling",
+    alt: "Tiah on a hike",
     rotate: "11deg",
     style: { top: "245px", left: "200px" },
-    width: 125,
+    width: 170,
     height: 160,
     zIndex: 5,
   },
@@ -75,7 +75,6 @@ const photos = [
 function PhotoCollage() {
   return (
     <div className="relative w-[360px] h-[460px] md:w-[400px] md:h-[480px] shrink-0">
-      {/* Raw photos — no border, no frame, no rounded corners */}
       {photos.map((photo, i) => (
         <div
           key={i}
@@ -105,7 +104,7 @@ function PhotoCollage() {
       >
         <Image
           src="/assets/header/blue-heart-button.webp"
-          alt=""
+          alt="blue button shaped as a heart"
           fill
           sizes="48px"
           className="object-contain"
@@ -115,12 +114,12 @@ function PhotoCollage() {
       {/* Toast */}
       <div
         className="absolute w-24 h-24 pointer-events-none"
-        style={{ top: "160px", right: "-10px", zIndex: 6 }}
+        style={{ top: "160px", right: "15px", zIndex: 6 }}
       >
         <div className="relative w-full h-full">
           <Image
             src="/assets/header/banana-peanut-butter-honey-toast.webp"
-            alt=""
+            alt="slice of toast with peanut butter, banana and honey"
             fill
             sizes="200px"
             className="object-contain"
@@ -135,7 +134,7 @@ function PhotoCollage() {
       >
         <Image
           src="/assets/header/green-fabric-star.webp"
-          alt=""
+          alt="green fabric star"
           fill
           sizes="64px"
           className="object-contain"
@@ -150,7 +149,7 @@ function PhotoCollage() {
         <div className="relative w-36 h-36">
           <Image
             src="/assets/about-me/notebook.png"
-            alt=""
+            alt="open notebook"
             fill
             sizes="96px"
             className="object-contain"
@@ -166,7 +165,7 @@ function PhotoCollage() {
         <div className="relative w-24 h-24">
           <Image
             src="/assets/about-me/pink-wax-seal-with-bow.webp"
-            alt=""
+            alt="pink wax seal with bow"
             fill
             sizes="100px"
             className="object-contain"
@@ -182,7 +181,7 @@ function PhotoCollage() {
         <div className="relative w-24 h-24">
           <Image
             src="/assets/about-me/masking-tape.png"
-            alt=""
+            alt="masking tape"
             fill
             sizes="100px"
             className="object-contain"
@@ -193,14 +192,29 @@ function PhotoCollage() {
       {/* Teabag */}
       <div
         className="absolute flex items-center justify-center pointer-events-none"
-        style={{ top: "36px", left: "-100px", zIndex: 6 }}
+        style={{ top: "-60px", left: "-70px", zIndex: 6, rotate: "30deg" }}
       >
-        <div className="relative w-36 h-36">
+        <div className="relative w-40 h-40">
           <Image
             src="/assets/header/teabag.webp"
-            alt=""
+            alt="teabag"
             fill
-            sizes="400px"
+            sizes="36px"
+            className="object-contain"
+          />
+        </div>
+      </div>
+      {/* Red Star */}
+      <div
+        className="absolute flex items-center justify-center pointer-events-none"
+        style={{ bottom: "25px", left: "-10px", zIndex: 6, rotate: "30deg" }}
+      >
+        <div className="relative w-10 h-10">
+          <Image
+            src="/assets/throughout/red-fabric-star.webp"
+            alt="red fabric star"
+            fill
+            sizes="20px"
             className="object-contain"
           />
         </div>
@@ -209,12 +223,12 @@ function PhotoCollage() {
       {/* Washi Tape */}
       <div
         className="absolute flex items-center justify-center pointer-events-none"
-        style={{ bottom: "210px", left: "120px", zIndex: 6 }}
+        style={{ bottom: "210px", left: "120px", zIndex: 6, rotate: "-15deg" }}
       >
-        <div className="relative w-24 h-24">
+        <div className="relative w-28 h-28">
           <Image
             src="/assets/about-me/pink-washi-tape.png"
-            alt=""
+            alt="pink washi tape"
             fill
             sizes="100px"
             className="object-contain"
@@ -285,7 +299,7 @@ export default function AboutMe() {
             </div>
 
             {/* Hobbies grid */}
-            <div className="w-full lg:max-w-lg xl:max-w-none xl:w-[420px] grid grid-cols-2 xl:grid-cols-2 gap-x-6 gap-y-3 xl:gap-y-3">
+            <div className="w-full lg:max-w-lg xl:max-w-none xl:w-[420px] grid grid-cols-2 xl:grid-cols-2 gap-x-6 gap-y-3 xl:gap-y-0">
               {hobbies.map((hobby) => (
                 <div
                   key={hobby.label}
