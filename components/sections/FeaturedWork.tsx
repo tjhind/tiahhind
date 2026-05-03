@@ -25,7 +25,7 @@ const projects: Project[] = [
     name: "denbee honey",
     description:
       "An e-commerce store for raw, natural honey built with a focus on storytelling and trust.",
-    tags: ["Next.js", "TypeScript", "Sanity", "Tailwind"],
+    tags: ["Shopify"],
     type: "laptop",
     icon: "/assets/header/yellow-plastic-star.webp",
   },
@@ -35,53 +35,66 @@ function PhoneMockup() {
   const phones = [
     {
       screenshot: "/assets/featured-work/mobile-screenshot-1.png",
-      transform: "translateX(24px) rotate(-6deg)",
+      mobileTransform: "translateX(24px) rotate(-6deg)",
+      desktopTransform: "translateX(0) rotate(0deg)",
       zIndex: 10,
-      scale: 0.88,
+      mobileScale: 0.88,
+      desktopScale: 1,
     },
     {
       screenshot: "/assets/featured-work/mobile-screenshot-2.png",
-      transform: "translateY(8px)",
+      mobileTransform: "translateY(8px)",
+      desktopTransform: "translateX(0) rotate(0deg)",
       zIndex: 20,
-      scale: 1,
+      mobileScale: 1,
+      desktopScale: 1,
     },
     {
       screenshot: "/assets/featured-work/mobile-screenshot-3.png",
-      transform: "translateX(-24px) rotate(6deg)",
+      mobileTransform: "translateX(-24px) rotate(6deg)",
+      desktopTransform: "translateX(0) rotate(0deg)",
       zIndex: 10,
-      scale: 0.88,
+      mobileScale: 0.88,
+      desktopScale: 1,
     },
   ];
 
   return (
-    <div className="flex items-center justify-center h-[380px] md:h-[460px]">
+    <div className="pointer-events-none flex items-center justify-center h-[380px] sm:h-[430px] md:h-[460px] sm:gap-8 md:gap-12 lg:gap-14">
       {phones.map((phone, i) => {
-        const w = Math.round(150 * phone.scale);
-        const h = Math.round(w * 2.167);
+        const mobileW = Math.round(150 * phone.mobileScale);
+        const mobileH = Math.round(mobileW * 2.167);
+
+        const desktopW = Math.round(150 * phone.desktopScale);
+        const desktopH = Math.round(desktopW * 2.167);
 
         return (
           <div
             key={i}
-            className="relative shrink-0"
-            style={{
-              transform: phone.transform,
-              zIndex: phone.zIndex,
-              width: `${w}px`,
-              height: `${h}px`,
-              marginInline: "-8px",
-            }}
+            className="relative shrink-0 -mx-2 sm:mx-0 [transform:var(--mobile-transform)] sm:[transform:var(--desktop-transform)] w-[var(--mobile-w)] h-[var(--mobile-h)] sm:w-[var(--desktop-w)] sm:h-[var(--desktop-h)] pointer-events-none"
+            style={
+              {
+                zIndex: phone.zIndex,
+                "--mobile-transform": phone.mobileTransform,
+                "--desktop-transform": phone.desktopTransform,
+                "--mobile-w": `${mobileW}px`,
+                "--mobile-h": `${mobileH}px`,
+                "--desktop-w": `${desktopW}px`,
+                "--desktop-h": `${desktopH}px`,
+              } as React.CSSProperties & Record<string, string | number>
+            }
           >
             {/* Screenshot clipped to the screen area of the phone */}
             <div
-              className="absolute overflow-hidden rounded-[10%]"
+              className="absolute overflow-hidden rounded-[10%] pointer-events-none"
               style={{ top: "10%", left: "6%", right: "6%", bottom: "10%" }}
             >
               <Image
                 src={phone.screenshot}
                 alt="App screenshot"
                 fill
-                sizes={`${w}px`}
-                className="object-cover"
+                sizes="(max-width: 640px) 150px, 170px"
+                className="object-cover pointer-events-none"
               />
             </div>
 
@@ -94,8 +107,8 @@ function PhoneMockup() {
                 src="/assets/featured-work/iphone-frame.png"
                 alt=""
                 fill
-                sizes={`${w}px`}
-                className="object-cover"
+                sizes="(max-width: 640px) 150px, 170px"
+                className="object-cover pointer-events-none"
                 style={{ mixBlendMode: "multiply" as const }}
               />
             </div>
@@ -108,18 +121,18 @@ function PhoneMockup() {
 
 function LaptopMockup() {
   return (
-    <div className="relative w-full max-w-[600px] mx-auto">
+    <div className="relative w-full max-w-[600px] mx-auto pointer-events-none">
       {/* Screenshot clipped to the screen area of the laptop */}
       <div
-        className="absolute overflow-hidden"
+        className="absolute overflow-hidden pointer-events-none"
         style={{ top: "7%", left: "12%", right: "12%", bottom: "23%" }}
       >
         <Image
           src="/assets/featured-work/computer-screenshot.png"
           alt="denbee honey website"
           fill
-          sizes="(max-width: 1024px) 65vw, 40vw"
-          className="object-cover object-top"
+          sizes="(max-width: 900px) 65vw, 40vw"
+          className="object-cover object-top pointer-events-none"
         />
       </div>
 
@@ -129,7 +142,7 @@ function LaptopMockup() {
         alt=""
         width={1536}
         height={1024}
-        className="relative w-full h-auto"
+        className="relative w-full h-auto pointer-events-none"
         style={{ mixBlendMode: "multiply" as const }}
       />
     </div>
@@ -138,19 +151,20 @@ function LaptopMockup() {
 
 export default function FeaturedWork() {
   return (
-    <section id="work" className="bg-[#EEEAE4]">
-      <div className="max-w-[1440px] mx-auto px-6 md:px-10 lg:px-16 pt-10 md:pt-12 pb-16 md:pb-20">
+    <section id="work" className="relative isolate z-0 bg-[#EEEAE4]">
+      <div className="relative z-10 max-w-[1440px] mx-auto px-6 md:px-10 lg:px-16 pt-10 md:pt-12 pb-16 md:pb-20">
         {/* Section label */}
         <div className="flex items-center">
           <span className="font-medium font-semibold tracking-wide text-xl lg:text-2xl">
             featured work
           </span>
+
           <Image
             src="/assets/throughout/3-line-sparkle-accent.png"
             alt=""
             width={96}
             height={96}
-            className="-ml-10"
+            className="-ml-10 h-auto"
           />
         </div>
 
@@ -164,12 +178,12 @@ export default function FeaturedWork() {
               } gap-10 lg:gap-16 items-center`}
             >
               {/* Mockup */}
-              <div className="w-full lg:w-1/2 flex items-center justify-center">
+              <div className="w-full lg:w-1/2 flex items-center justify-center pointer-events-none">
                 {project.type === "mobile" ? <PhoneMockup /> : <LaptopMockup />}
               </div>
 
               {/* Project details */}
-              <div className="w-full lg:w-1/2 max-w-md">
+              <div className="relative z-10 w-full lg:w-1/2 max-w-md pointer-events-auto">
                 <h3 className="text-2xl md:text-3xl font-semibold mb-4">
                   {project.name}
                 </h3>
@@ -178,7 +192,7 @@ export default function FeaturedWork() {
                   {project.description}
                 </p>
 
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2 -ml-1 sm:gap-4">
                   {project.tags.map((tag) => (
                     <Tag key={tag}>{tag}</Tag>
                   ))}

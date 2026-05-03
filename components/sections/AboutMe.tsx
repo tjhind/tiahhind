@@ -8,7 +8,7 @@ const hobbies = [
   },
   { icon: "/assets/about-me/trainer-shoe.webp", label: "going on hikes" },
   {
-    icon: "/assets/about-me/sudoku-and-glasses.webp",
+    icon: "/assets/about-me/pen.webp",
     label: "writing questionable poetry",
   },
   {
@@ -19,7 +19,6 @@ const hobbies = [
     icon: "/assets/about-me/globe.webp",
     label: "planning my next trip",
   },
-
   {
     icon: "/assets/about-me/vinyl-record.webp",
     label: "seeing live music",
@@ -101,7 +100,7 @@ function PhotoCollage() {
 
       {/* Blue heart sticker */}
       <div
-        className="absolute w-16 h-16"
+        className="absolute w-16 h-16 pointer-events-none"
         style={{ bottom: "24px", left: "4px", zIndex: 6 }}
       >
         <Image
@@ -115,10 +114,10 @@ function PhotoCollage() {
 
       {/* Toast */}
       <div
-        className="absolute w-24 h-24"
+        className="absolute w-24 h-24 pointer-events-none"
         style={{ top: "160px", right: "-10px", zIndex: 6 }}
       >
-        <div className="w-full h-full">
+        <div className="relative w-full h-full">
           <Image
             src="/assets/header/banana-peanut-butter-honey-toast.webp"
             alt=""
@@ -128,9 +127,10 @@ function PhotoCollage() {
           />
         </div>
       </div>
+
       {/* Green star sticker */}
       <div
-        className="absolute w-24 h-24"
+        className="absolute w-24 h-24 pointer-events-none"
         style={{ top: "8px", right: "8px", zIndex: 6 }}
       >
         <Image
@@ -141,12 +141,13 @@ function PhotoCollage() {
           className="object-contain"
         />
       </div>
+
       {/* Notebook */}
       <div
-        className="absolute flex items-center justify-center"
+        className="absolute flex items-center justify-center pointer-events-none"
         style={{ bottom: "12px", right: "-24px", zIndex: 6 }}
       >
-        <div className="w-36 h-36">
+        <div className="relative w-36 h-36">
           <Image
             src="/assets/about-me/notebook.png"
             alt=""
@@ -156,12 +157,13 @@ function PhotoCollage() {
           />
         </div>
       </div>
+
       {/* Pink seal */}
       <div
-        className="absolute flex items-center justify-center"
+        className="absolute flex items-center justify-center pointer-events-none"
         style={{ bottom: "190px", left: "170px", zIndex: 6 }}
       >
-        <div className="w-24 h-24">
+        <div className="relative w-24 h-24">
           <Image
             src="/assets/about-me/pink-wax-seal-with-bow.webp"
             alt=""
@@ -171,12 +173,13 @@ function PhotoCollage() {
           />
         </div>
       </div>
+
       {/* Masking Tape */}
       <div
-        className="absolute flex items-center justify-center"
+        className="absolute flex items-center justify-center pointer-events-none"
         style={{ top: "-36px", right: "120px", zIndex: 6 }}
       >
-        <div className="w-24 h-24">
+        <div className="relative w-24 h-24">
           <Image
             src="/assets/about-me/masking-tape.png"
             alt=""
@@ -186,12 +189,13 @@ function PhotoCollage() {
           />
         </div>
       </div>
+
       {/* Teabag */}
       <div
-        className="absolute flex items-center justify-center"
+        className="absolute flex items-center justify-center pointer-events-none"
         style={{ top: "36px", left: "-100px", zIndex: 6 }}
       >
-        <div className="w-36 h-36">
+        <div className="relative w-36 h-36">
           <Image
             src="/assets/header/teabag.webp"
             alt=""
@@ -201,12 +205,13 @@ function PhotoCollage() {
           />
         </div>
       </div>
+
       {/* Washi Tape */}
       <div
-        className="absolute flex items-center justify-center"
+        className="absolute flex items-center justify-center pointer-events-none"
         style={{ bottom: "210px", left: "120px", zIndex: 6 }}
       >
-        <div className="w-24 h-24">
+        <div className="relative w-24 h-24">
           <Image
             src="/assets/about-me/pink-washi-tape.png"
             alt=""
@@ -222,23 +227,24 @@ function PhotoCollage() {
 
 export default function AboutMe() {
   return (
-    <section id="about" className="relative bg-[#EEEAE4]">
-      <div className="max-w-[1440px] mx-auto px-6 md:px-10 lg:px-16 pt-14 md:pt-20 pb-36">
+    <section id="about" className="relative isolate bg-[#EEEAE4]">
+      <div className="relative z-10 max-w-[1440px] mx-auto px-6 md:px-10 lg:px-16 pt-14 md:pt-20 pb-36">
         {/* Section label */}
         <div className="flex items-center gap-2 mb-10 md:mb-14">
           <span className="font-medium font-semibold tracking-wide text-xl lg:text-2xl">
             about me
           </span>
+
           <Image
             src="/assets/throughout/3-line-sparkle-accent.png"
             alt=""
             width={96}
             height={96}
-            className="-ml-12"
-            style={{ height: "auto" }}
+            className="-ml-12 h-auto"
           />
         </div>
-        <div className="flex flex-col lg:flex-row gap-16 lg:gap-20 items-start">
+
+        <div className="flex flex-col lg:flex-row lg:items-center gap-16 lg:gap-14 xl:gap-20 items-start">
           {/* Photo collage */}
           <div className="flex justify-center w-full lg:w-auto">
             <PhotoCollage />
@@ -246,7 +252,7 @@ export default function AboutMe() {
 
           {/* Bio text */}
           <div className="w-full lg:flex-1 max-w-lg">
-            <div className="space-y-4 text-sm text-foreground/60 leading-relaxed mb-8">
+            <div className="space-y-4 text-sm text-foreground/60 leading-relaxed">
               <p>
                 I&apos;m a full-stack developer, problem solver, and creative at
                 heart - I enjoy building thoughtful and visually stunning
@@ -273,27 +279,27 @@ export default function AboutMe() {
                 that fuels that same curiosity...
               </p>
             </div>
+          </div>
 
-            {/* Hobbies grid */}
-            <div className="grid grid-cols-2 gap-x-6 gap-y-3">
-              {hobbies.map((hobby) => (
-                <div
-                  key={hobby.label}
-                  className="flex items-center gap-4 text-sm text-foreground/70"
-                >
-                  <div className="relative w-16 h-16 mt-0.5 shrink-0">
-                    <Image
-                      src={hobby.icon}
-                      alt=""
-                      fill
-                      sizes="64px"
-                      className="object-contain"
-                    />
-                  </div>
-                  <span>{hobby.label}</span>
+          {/* Hobbies grid */}
+          <div className="w-full lg:w-[360px] xl:w-[420px] grid grid-cols-2 gap-x-6 gap-y-3 lg:gap-y-10">
+            {hobbies.map((hobby) => (
+              <div
+                key={hobby.label}
+                className="flex items-center gap-4 text-sm text-foreground/70"
+              >
+                <div className="relative w-16 h-16 mt-0.5 shrink-0">
+                  <Image
+                    src={hobby.icon}
+                    alt=""
+                    fill
+                    sizes="64px"
+                    className="object-contain"
+                  />
                 </div>
-              ))}
-            </div>
+                <span>{hobby.label}</span>
+              </div>
+            ))}
           </div>
         </div>
 
@@ -303,7 +309,9 @@ export default function AboutMe() {
           className="mt-12 md:mt-16 pt-5 border-t border-foreground/10 flex items-center gap-3 flex-wrap"
         >
           <Button href="#contact">let&apos;s connect ↗</Button>
-          <div className="w-px h-5  mx-2 shrink-0" />
+
+          <div className="w-px h-5 mx-2 shrink-0" />
+
           <div className="ml-auto flex items-center gap-4">
             <a
               href="mailto:hello@tiahhind.com"
@@ -325,9 +333,8 @@ export default function AboutMe() {
         </div>
       </div>
 
-      {/* Wave — page background color (#FAF8F5) curves into the bottom of this
-          #EEEAE4 section, creating a smooth wavy boundary before the page bg below. */}
-      <div className="absolute bottom-0 left-0 w-full leading-[0]">
+      {/* Wave — decorative only, so it should never intercept taps/clicks */}
+      <div className="absolute bottom-0 left-0 w-full leading-[0] pointer-events-none z-0">
         <svg
           viewBox="0 0 1440 120"
           xmlns="http://www.w3.org/2000/svg"
