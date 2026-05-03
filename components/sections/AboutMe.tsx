@@ -240,7 +240,7 @@ export default function AboutMe() {
             alt=""
             width={96}
             height={96}
-            className="-ml-12 h-auto"
+            className="-ml-12 h-auto w-auto"
           />
         </div>
 
