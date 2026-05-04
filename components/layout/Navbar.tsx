@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import Button from "@/components/ui/Button";
+import Logo from "@/components/ui/Logo";
 
 const navLinks = [
   { label: "work", href: "#work" },
@@ -32,12 +33,8 @@ export default function Navbar() {
     <header className="sticky top-0 z-50 bg-background ">
       <nav className="max-w-[2000px] md:text-lg mx-auto px-6 md:px-10 lg:px-16 h-[60px] flex items-center justify-between ">
         {/* Logo */}
-        <Link
-          href="/"
-          className=" font-semibold tracking-tight flex items-center gap-1"
-        >
-          tiah hind
-          <span className="text-coral ml-0.5">✦</span>
+        <Link href="/">
+          <Logo />
         </Link>
 
         {/* Desktop nav links */}
