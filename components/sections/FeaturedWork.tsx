@@ -11,6 +11,7 @@ interface Project {
   tags: string[];
   type: "mobile" | "laptop";
   icon: string;
+  screenshots?: string[];
 }
 
 const projects: Project[] = [
@@ -22,6 +23,25 @@ const projects: Project[] = [
     tags: ["React Native", "TypeScript", "Supabase", "Tailwind"],
     type: "mobile",
     icon: "/assets/header/blue-heart-button.webp",
+    screenshots: [
+      "/assets/featured-work/pim-screenshot-1.png",
+      "/assets/featured-work/pim-screenshot-2.png",
+      "/assets/featured-work/pim-screenshot-3.png",
+    ],
+  },
+  {
+    id: "ticketdash",
+    name: "ticketdash",
+    description:
+      "A real-time auction app for cinema tickets, helping users bid on available seats and secure tickets instantly.",
+    tags: ["React Native", "JavaScript", "PostgreSQL"],
+    type: "mobile",
+    icon: "/assets/header/pink-sequin-star.webp",
+    screenshots: [
+      "/assets/featured-work/ticketdash-screenshot-2.png",
+      "/assets/featured-work/ticketdash-screenshot-3.png",
+      "/assets/featured-work/ticketdash-screenshot-4.png",
+    ],
   },
   {
     id: "denbee-honey",
@@ -34,10 +54,10 @@ const projects: Project[] = [
   },
 ];
 
-function PhoneMockup() {
+function PhoneMockup({ screenshots }: { screenshots: string[] }) {
   const phones = [
     {
-      screenshot: "/assets/featured-work/mobile-screenshot-1.png",
+      screenshot: screenshots[0],
       mobileTransform: "translateX(24px) rotate(-6deg)",
       desktopTransform: "translateX(0) rotate(0deg)",
       zIndex: 10,
@@ -45,7 +65,7 @@ function PhoneMockup() {
       desktopScale: 1,
     },
     {
-      screenshot: "/assets/featured-work/mobile-screenshot-2.png",
+      screenshot: screenshots[1],
       mobileTransform: "translateY(8px)",
       desktopTransform: "translateX(0) rotate(0deg)",
       zIndex: 20,
@@ -53,7 +73,7 @@ function PhoneMockup() {
       desktopScale: 1,
     },
     {
-      screenshot: "/assets/featured-work/mobile-screenshot-3.png",
+      screenshot: screenshots[2],
       mobileTransform: "translateX(-24px) rotate(6deg)",
       desktopTransform: "translateX(0) rotate(0deg)",
       zIndex: 10,
@@ -87,34 +107,34 @@ function PhoneMockup() {
               } as React.CSSProperties & Record<string, string | number>
             }
           >
-            {/* Screenshot clipped to the screen area of the phone */}
+            {/* Screenshot clipped to the actual screen area */}
             <div
-              className="absolute overflow-hidden rounded-[10%] pointer-events-none"
-              style={{ top: "10%", left: "6%", right: "6%", bottom: "10%" }}
+              className="absolute overflow-hidden rounded-[8%] pointer-events-none"
+              style={{
+                top: "7%",
+                left: "7%",
+                right: "7%",
+                bottom: "7%",
+              }}
             >
               <Image
                 src={phone.screenshot}
                 alt="App screenshot"
                 fill
                 sizes="(max-width: 640px) 150px, 170px"
-                className="object-cover pointer-events-none"
+                className="object-cover object-top pointer-events-none"
               />
             </div>
 
             {/* Frame on top */}
-            <div
-              className="absolute inset-0 pointer-events-none"
-              style={{ zIndex: 10 }}
-            >
-              <Image
-                src="/assets/featured-work/iphone-frame.png"
-                alt=""
-                fill
-                sizes="(max-width: 640px) 150px, 170px"
-                className="object-cover pointer-events-none"
-                style={{ mixBlendMode: "multiply" as const }}
-              />
-            </div>
+            <Image
+              src="/assets/featured-work/iphone-frame.png"
+              alt=""
+              fill
+              sizes="(max-width: 640px) 150px, 170px"
+              className="object-cover pointer-events-none"
+              style={{ mixBlendMode: "multiply" as const }}
+            />
           </div>
         );
       })}
@@ -125,17 +145,26 @@ function PhoneMockup() {
 function LaptopMockup() {
   return (
     <div className="relative w-full max-w-[600px] mx-auto pointer-events-none">
-      {/* Screenshot clipped to the screen area of the laptop */}
+      {/* Screenshot clipped to the laptop screen area */}
       <div
-        className="absolute overflow-hidden pointer-events-none"
-        style={{ top: "7%", left: "12%", right: "12%", bottom: "23%" }}
+        className="absolute overflow-hidden pointer-events-none rounded-[2px]"
+        style={{
+          top: "14.5%",
+          left: "14.8%",
+          right: "15.1%",
+          bottom: "28.2%",
+        }}
       >
         <Image
           src="/assets/featured-work/computer-screenshot.png"
           alt="denbee honey website"
           fill
           sizes="(max-width: 900px) 65vw, 40vw"
-          className="object-cover object-top pointer-events-none"
+          className="pointer-events-none"
+          style={{
+            objectFit: "cover",
+            objectPosition: "left top",
+          }}
         />
       </div>
 
@@ -162,7 +191,9 @@ export default function FeaturedWork() {
         {/* Section label */}
         <motion.div
           className="flex items-center"
-          initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          initial={
+            prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
+          }
           whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease: "easeOut" }}
@@ -189,14 +220,24 @@ export default function FeaturedWork() {
               className={`flex flex-col ${
                 i % 2 === 1 ? "lg:flex-row-reverse" : "lg:flex-row"
               } gap-10 lg:gap-16 items-center`}
-              initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
+              initial={
+                prefersReducedMotion
+                  ? { opacity: 1, y: 0 }
+                  : { opacity: 0, y: 20 }
+              }
+              whileInView={
+                prefersReducedMotion ? undefined : { opacity: 1, y: 0 }
+              }
               viewport={{ once: true }}
               transition={{ duration: 0.6, ease: "easeOut", delay: i * 0.1 }}
             >
               {/* Mockup */}
               <div className="w-full lg:w-1/2 flex items-center justify-center pointer-events-none">
-                {project.type === "mobile" ? <PhoneMockup /> : <LaptopMockup />}
+                {project.type === "mobile" ? (
+                  <PhoneMockup screenshots={project.screenshots ?? []} />
+                ) : (
+                  <LaptopMockup />
+                )}
               </div>
 
               {/* Project details */}
