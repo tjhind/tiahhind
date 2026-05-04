@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import Tag from "@/components/ui/Tag";
+import { motion, useReducedMotion } from "motion/react";
 
 interface Project {
   id: string;
@@ -150,11 +153,20 @@ function LaptopMockup() {
 }
 
 export default function FeaturedWork() {
+  const rawReduced = useReducedMotion();
+  const prefersReducedMotion = rawReduced ?? false;
+
   return (
     <section id="work" className="relative isolate z-0 bg-[#EEEAE4]">
       <div className="relative z-10 max-w-[1440px] mx-auto px-6 md:px-10 lg:px-16 pt-10 md:pt-12 pb-16 md:pb-20">
         {/* Section label */}
-        <div className="flex items-center">
+        <motion.div
+          className="flex items-center"
+          initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
           <span className="font-medium font-semibold tracking-wide text-xl lg:text-2xl">
             featured work
           </span>
@@ -167,16 +179,20 @@ export default function FeaturedWork() {
             className="-ml-10"
             style={{ height: "auto" }}
           />
-        </div>
+        </motion.div>
 
         {/* Project cards */}
         <div className="flex flex-col gap-16 md:gap-24">
           {projects.map((project, i) => (
-            <div
+            <motion.div
               key={project.id}
               className={`flex flex-col ${
                 i % 2 === 1 ? "lg:flex-row-reverse" : "lg:flex-row"
               } gap-10 lg:gap-16 items-center`}
+              initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, ease: "easeOut", delay: i * 0.1 }}
             >
               {/* Mockup */}
               <div className="w-full lg:w-1/2 flex items-center justify-center pointer-events-none">
@@ -199,7 +215,7 @@ export default function FeaturedWork() {
                   ))}
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { motion } from "motion/react";
 
 interface ButtonProps {
   href?: string;
@@ -7,6 +10,18 @@ interface ButtonProps {
   className?: string;
   onClick?: () => void;
 }
+
+const MotionLink = motion.create(Link);
+
+const hoverTap = (variant: "primary" | "outline") => ({
+  whileHover: {
+    y: -2,
+    scale: 1.02,
+    ...(variant === "primary" && { filter: "brightness(1.06)" }),
+  },
+  whileTap: { scale: 0.98 },
+  transition: { duration: 0.2, ease: "easeOut" as const },
+});
 
 export default function Button({
   href,
@@ -20,23 +35,26 @@ export default function Button({
 
   const variants = {
     primary: "bg-coral text-white",
-    outline:
-      "border border-foreground text-foreground bg-transparent",
+    outline: "border border-foreground text-foreground bg-transparent",
   };
 
   const classes = `${base} ${variants[variant]} ${className}`;
 
   if (href) {
     return (
-      <Link href={href} className={classes}>
+      <MotionLink href={href} className={classes} {...hoverTap(variant)}>
         {children}
-      </Link>
+      </MotionLink>
     );
   }
 
   return (
-    <button onClick={onClick} className={classes}>
+    <motion.button
+      onClick={onClick}
+      className={classes}
+      {...hoverTap(variant)}
+    >
       {children}
-    </button>
+    </motion.button>
   );
 }

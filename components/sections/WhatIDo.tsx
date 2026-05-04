@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { motion, useReducedMotion } from "motion/react";
 
 interface Service {
   title: string;
@@ -44,11 +45,25 @@ const services: Service[] = [
   },
 ];
 
-function AccordionItem({ service }: { service: Service }) {
+function AccordionItem({
+  service,
+  index,
+  prefersReducedMotion,
+}: {
+  service: Service;
+  index: number;
+  prefersReducedMotion: boolean;
+}) {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="relative border-t border-foreground/10">
+    <motion.div
+      className="relative border-t border-foreground/10"
+      initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+      whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.08 }}
+    >
       <button
         type="button"
         className="relative z-10 w-full flex items-center justify-between py-4 text-left cursor-pointer touch-manipulation"
@@ -77,11 +92,14 @@ function AccordionItem({ service }: { service: Service }) {
           </ul>
         </div>
       )}
-    </div>
+    </motion.div>
   );
 }
 
 export default function WhatIDo() {
+  const rawReduced = useReducedMotion();
+  const prefersReducedMotion = rawReduced ?? false;
+
   return (
     <section id="skills" className="relative isolate z-20 bg-[#EEEAE4]">
       {/* Decorative stickers */}
@@ -107,7 +125,13 @@ export default function WhatIDo() {
 
       <div className="relative z-10 max-w-[1440px] mx-auto px-6 md:px-10 lg:px-16 pb-14">
         {/* Section label */}
-        <div className="flex items-center gap-2 mb-10 md:mb-12">
+        <motion.div
+          className="flex items-center gap-2 mb-10 md:mb-12"
+          initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
           <span className="font-medium font-semibold tracking-wide text-xl lg:text-2xl">
             what i do
           </span>
@@ -120,14 +144,24 @@ export default function WhatIDo() {
             className="-ml-12"
             style={{ height: "auto" }}
           />
-        </div>
+        </motion.div>
 
         {/* Desktop: 4-column grid */}
         <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-y-10 gap-x-10">
           {services.map((service, index) => (
-            <div
+            <motion.div
               key={service.title}
               className="relative lg:px-8 first:lg:pl-0 last:lg:pr-0"
+              initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              whileInView={
+                prefersReducedMotion ? undefined : { opacity: 1, y: 0 }
+              }
+              viewport={{ once: true }}
+              transition={{
+                duration: 0.6,
+                ease: "easeOut",
+                delay: index * 0.1,
+              }}
             >
               {index > 0 && (
                 <span className="hidden lg:block absolute left-0 top-1/2 h-44 mt-6 -translate-y-1/2 border-l border-coral" />
@@ -149,14 +183,19 @@ export default function WhatIDo() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </motion.div>
           ))}
         </div>
 
         {/* Mobile: accordion */}
         <div className="relative z-30 md:hidden pointer-events-auto">
-          {services.map((service) => (
-            <AccordionItem key={service.title} service={service} />
+          {services.map((service, index) => (
+            <AccordionItem
+              key={service.title}
+              service={service}
+              index={index}
+              prefersReducedMotion={prefersReducedMotion}
+            />
           ))}
 
           <div className="border-t border-foreground/10" />

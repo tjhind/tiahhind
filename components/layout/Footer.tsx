@@ -27,7 +27,7 @@ export default function Footer() {
   }, []);
 
   useEffect(() => {
-    const bottom = document.getElementById("about-bottom");
+    const bottom = document.getElementById("contact");
     if (!bottom) return;
 
     const observer = new IntersectionObserver(

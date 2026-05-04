@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import Button from "@/components/ui/Button";
+import { motion, useReducedMotion } from "motion/react";
 
 const hobbies = [
   {
@@ -72,7 +75,7 @@ const photos = [
   },
 ];
 
-function PhotoCollage() {
+function PhotoCollage({ prefersReducedMotion }: { prefersReducedMotion: boolean }) {
   return (
     <div className="relative w-[360px] h-[460px] md:w-[400px] md:h-[480px] shrink-0">
       {photos.map((photo, i) => (
@@ -239,12 +242,28 @@ function PhotoCollage() {
   );
 }
 
+const bioParagraphs = [
+  "I'm a full-stack developer, problem solver, and creative at heart - I enjoy building thoughtful and visually stunning products from the ground up.",
+  "I've spent the last few years working with early-stage startups, helping turn half-formed, messy ideas into real, working apps. Honestly, that's my favourite part - I love a bit of chaos. The more undefined and scrappy something is, the more excited I get.",
+  "There's something really satisfying about taking something that feels all over the place and shaping it into something clear, simple, and genuinely enjoyable to use. That space between chaos and clarity is where I do my best work.",
+  "When I'm not coding, I'm usually off doing something that fuels that same curiosity...",
+];
+
 export default function AboutMe() {
+  const rawReduced = useReducedMotion();
+  const prefersReducedMotion = rawReduced ?? false;
+
   return (
     <section id="about" className="relative isolate bg-[#EEEAE4]">
       <div className="relative z-10 max-w-[1440px] mx-auto px-6 md:px-10 lg:px-16 pt-14 md:pt-20 pb-36">
         {/* Section label */}
-        <div className="flex items-center gap-2 mb-10 md:mb-14">
+        <motion.div
+          className="flex items-center gap-2 mb-10 md:mb-14"
+          initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
           <span className="font-medium font-semibold tracking-wide text-xl lg:text-2xl">
             about me
           </span>
@@ -257,53 +276,49 @@ export default function AboutMe() {
             className="-ml-12"
             style={{ height: "auto" }}
           />
-        </div>
+        </motion.div>
 
         <div className="flex flex-col lg:flex-row lg:items-center gap-16 lg:gap-14 xl:gap-20 items-start">
           {/* Photo collage */}
-          <div className="flex justify-center w-full lg:w-auto">
-            <PhotoCollage />
-          </div>
+          <motion.div
+            className="flex justify-center w-full lg:w-auto"
+            initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
+          >
+            <PhotoCollage prefersReducedMotion={prefersReducedMotion} />
+          </motion.div>
 
           {/* Bio + hobbies wrapper */}
           <div className="w-full flex flex-col xl:flex-row gap-12 lg:gap-14 xl:gap-20 lg:flex-1">
             {/* Bio text */}
             <div className="w-full max-w-lg xl:flex-1">
               <div className="space-y-4 text-sm text-foreground/60 leading-relaxed">
-                <p>
-                  I&apos;m a full-stack developer, problem solver, and creative
-                  at heart - I enjoy building thoughtful and visually stunning
-                  products from the ground up.
-                </p>
-
-                <p>
-                  I&apos;ve spent the last few years working with early-stage
-                  startups, helping turn half-formed, messy ideas into real,
-                  working apps. Honestly, that&apos;s my favourite part - I love
-                  a bit of chaos. The more undefined and scrappy something is,
-                  the more excited I get.
-                </p>
-
-                <p>
-                  There&apos;s something really satisfying about taking
-                  something that feels all over the place and shaping it into
-                  something clear, simple, and genuinely enjoyable to use. That
-                  space between chaos and clarity is where I do my best work.
-                </p>
-
-                <p>
-                  When I&apos;m not coding, I&apos;m usually off doing something
-                  that fuels that same curiosity...
-                </p>
+                {bioParagraphs.map((paragraph, i) => (
+                  <motion.p
+                    key={i}
+                    initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                    whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, ease: "easeOut", delay: i * 0.08 }}
+                  >
+                    {paragraph}
+                  </motion.p>
+                ))}
               </div>
             </div>
 
             {/* Hobbies grid */}
             <div className="w-full lg:max-w-lg xl:max-w-none xl:w-[420px] grid grid-cols-2 xl:grid-cols-2 gap-x-6 gap-y-3 xl:gap-y-0">
-              {hobbies.map((hobby) => (
-                <div
+              {hobbies.map((hobby, i) => (
+                <motion.div
                   key={hobby.label}
                   className="flex items-center gap-4 text-sm tracking-tight text-foreground/70"
+                  initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                  whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, ease: "easeOut", delay: i * 0.08 }}
                 >
                   <div className="relative w-16 h-16 mt-0.5 shrink-0">
                     <Image
@@ -315,16 +330,20 @@ export default function AboutMe() {
                     />
                   </div>
                   <span>{hobby.label}</span>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
         </div>
 
-        {/* Contact bar — mirrors the sticky footer; hides the sticky footer when visible */}
-        <div
-          id="about-bottom"
+        {/* Contact bar — id="contact" for nav smooth scroll; mirrors the sticky footer */}
+        <motion.div
+          id="contact"
           className="mt-12 md:mt-16 pt-5 border-t border-foreground/10 flex items-center gap-3 flex-wrap"
+          initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
         >
           <Button href="#contact">let&apos;s connect ↗</Button>
 
@@ -348,7 +367,7 @@ export default function AboutMe() {
               in
             </a>
           </div>
-        </div>
+        </motion.div>
       </div>
 
       <div className="absolute bottom-0 left-0 w-full leading-[0] pointer-events-none z-0">

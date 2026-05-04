@@ -5,10 +5,25 @@ import Link from "next/link";
 import Button from "@/components/ui/Button";
 
 const navLinks = [
-  { label: "work", href: "#what-i-do" },
+  { label: "work", href: "#work" },
   { label: "about", href: "#about" },
   { label: "contact", href: "#contact" },
 ];
+
+function smoothScrollTo(id: string) {
+  const element = document.getElementById(id);
+  if (!element) return;
+
+  const isMobile = window.innerWidth < 768;
+  const offset = isMobile ? 220 : 72;
+
+  const top = element.getBoundingClientRect().top + window.scrollY - offset;
+
+  window.scrollTo({
+    top,
+    behavior: "smooth",
+  });
+}
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -29,12 +44,16 @@ export default function Navbar() {
         <ul className="hidden md:flex items-center gap-6 lg:gap-8">
           {navLinks.map((link) => (
             <li key={link.label}>
-              <Link
+              <a
                 href={link.href}
-                className="text-sm text-foreground/70 hover:text-foreground"
+                className="text-sm text-foreground/70 hover:text-foreground cursor-pointer"
+                onClick={(e) => {
+                  e.preventDefault();
+                  smoothScrollTo(link.href.slice(1));
+                }}
               >
                 {link.label}
-              </Link>
+              </a>
             </li>
           ))}
         </ul>
@@ -75,17 +94,27 @@ export default function Navbar() {
           <ul className="flex flex-col gap-4 mb-6">
             {navLinks.map((link) => (
               <li key={link.label}>
-                <Link
+                <a
                   href={link.href}
-                  className="text-base text-foreground/70"
-                  onClick={() => setMenuOpen(false)}
+                  className="text-base text-foreground/70 cursor-pointer"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    smoothScrollTo(link.href.slice(1));
+                    setMenuOpen(false);
+                  }}
                 >
                   {link.label}
-                </Link>
+                </a>
               </li>
             ))}
           </ul>
-          <Button href="#contact" onClick={() => setMenuOpen(false)}>
+          <Button
+            href="#contact"
+            onClick={() => {
+              smoothScrollTo("contact");
+              setMenuOpen(false);
+            }}
+          >
             let&apos;s talk →
           </Button>
         </div>
