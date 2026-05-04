@@ -19,13 +19,13 @@ const projects: Project[] = [
     id: "pim",
     name: "pim",
     description:
-      "A travel app that helps you remember all of the amazing people you've met, and their words of wisdom.",
+      "A travel app that captures the unforgettable people you meet on the road, and the life advice they leave with you.",
     tags: ["React Native", "TypeScript", "Supabase", "Tailwind"],
     type: "mobile",
     icon: "/assets/header/blue-heart-button.webp",
     screenshots: [
-      "/assets/featured-work/pim-screenshot-1.png",
       "/assets/featured-work/pim-screenshot-2.png",
+      "/assets/featured-work/pim-screenshot-1.png",
       "/assets/featured-work/pim-screenshot-3.png",
     ],
   },
@@ -39,8 +39,8 @@ const projects: Project[] = [
     icon: "/assets/header/pink-sequin-star.webp",
     screenshots: [
       "/assets/featured-work/ticketdash-screenshot-2.png",
-      "/assets/featured-work/ticketdash-screenshot-3.png",
       "/assets/featured-work/ticketdash-screenshot-4.png",
+      "/assets/featured-work/ticketdash-screenshot-3.png",
     ],
   },
   {
@@ -145,21 +145,21 @@ function PhoneMockup({ screenshots }: { screenshots: string[] }) {
 function LaptopMockup() {
   return (
     <div className="relative w-full max-w-[600px] mx-auto pointer-events-none">
-      {/* Screenshot clipped to the laptop screen area */}
+      {/* Website screenshot inside laptop screen */}
       <div
         className="absolute overflow-hidden pointer-events-none rounded-[2px]"
         style={{
-          top: "14.5%",
-          left: "14.8%",
-          right: "15.1%",
-          bottom: "28.2%",
+          top: "20%",
+          left: "18.8%",
+          width: "62.8%",
+          bottom: "18.2%",
         }}
       >
         <Image
           src="/assets/featured-work/computer-screenshot.png"
           alt="denbee honey website"
           fill
-          sizes="(max-width: 900px) 65vw, 40vw"
+          sizes="(max-width: 800px) 65vw, 40vw"
           className="pointer-events-none"
           style={{
             objectFit: "cover",

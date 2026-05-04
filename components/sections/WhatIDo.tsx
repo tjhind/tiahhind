@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { motion, useReducedMotion } from "motion/react";
+import { motion, AnimatePresence, useReducedMotion } from "motion/react";
 
 interface Service {
   title: string;
@@ -59,7 +59,7 @@ function AccordionItem({
   return (
     <motion.div
       className="relative border-t border-foreground/10"
-      initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+      initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
       whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.08 }}
@@ -70,28 +70,54 @@ function AccordionItem({
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
       >
-        <span className="text-sm font-semibold">{service.title}</span>
-        <span className="text-lg leading-none text-foreground/50">
+        <span className="font-semibold">{service.title}</span>
+
+        <motion.span
+          className="text-lg leading-none text-coral"
+          animate={
+            prefersReducedMotion ? undefined : { rotate: open ? 180 : 0 }
+          }
+          transition={{ duration: 0.2, ease: "easeOut" }}
+        >
           {open ? "−" : "+"}
-        </span>
+        </motion.span>
       </button>
 
-      {open && (
-        <div className="pb-5">
-          <p className="text-sm text-foreground/60 mb-3 leading-relaxed">
-            {service.description}
-          </p>
+      <AnimatePresence initial={false}>
+        {open && (
+          <motion.div
+            key="accordion-content"
+            className="overflow-hidden pb-5"
+            initial={
+              prefersReducedMotion ? false : { opacity: 0, height: 0, y: -4 }
+            }
+            animate={
+              prefersReducedMotion
+                ? { opacity: 1, height: "auto", y: 0 }
+                : { opacity: 1, height: "auto", y: 0 }
+            }
+            exit={
+              prefersReducedMotion
+                ? { opacity: 0 }
+                : { opacity: 0, height: 0, y: -4 }
+            }
+            transition={{ duration: 0.25, ease: "easeOut" }}
+          >
+            <p className="text-sm text-foreground/60 mb-3 leading-relaxed">
+              {service.description}
+            </p>
 
-          <ul className="space-y-1.5">
-            {service.bullets.map((b) => (
-              <li key={b} className="text-sm text-foreground/70 flex gap-2">
-                <span className="text-coral mt-px">—</span>
-                {b}
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
+            <ul className="space-y-1.5">
+              {service.bullets.map((b) => (
+                <li key={b} className="text-sm text-foreground/70 flex gap-2">
+                  <span className="text-coral mt-px">—</span>
+                  {b}
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.div>
   );
 }
@@ -127,7 +153,7 @@ export default function WhatIDo() {
         {/* Section label */}
         <motion.div
           className="flex items-center gap-2 mb-10 md:mb-12"
-          initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
           whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease: "easeOut" }}
@@ -152,7 +178,7 @@ export default function WhatIDo() {
             <motion.div
               key={service.title}
               className="relative lg:px-8 first:lg:pl-0 last:lg:pr-0"
-              initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
               whileInView={
                 prefersReducedMotion ? undefined : { opacity: 1, y: 0 }
               }

@@ -2,13 +2,14 @@
 
 import Link from "next/link";
 import { motion } from "motion/react";
+import type { MouseEventHandler, ReactNode } from "react";
 
 interface ButtonProps {
   href?: string;
   variant?: "primary" | "outline";
-  children: React.ReactNode;
+  children: ReactNode;
   className?: string;
-  onClick?: () => void;
+  onClick?: MouseEventHandler<HTMLAnchorElement | HTMLButtonElement>;
 }
 
 const MotionLink = motion.create(Link);
@@ -42,7 +43,12 @@ export default function Button({
 
   if (href) {
     return (
-      <MotionLink href={href} className={classes} {...hoverTap(variant)}>
+      <MotionLink
+        href={href}
+        onClick={onClick}
+        className={classes}
+        {...hoverTap(variant)}
+      >
         {children}
       </MotionLink>
     );
@@ -50,6 +56,7 @@ export default function Button({
 
   return (
     <motion.button
+      type="button"
       onClick={onClick}
       className={classes}
       {...hoverTap(variant)}

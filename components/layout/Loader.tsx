@@ -9,30 +9,58 @@ export default function Loader() {
   const [isMounted, setIsMounted] = useState(true);
 
   useEffect(() => {
-    let windowLoaded = document.readyState === "complete";
     let timerFired = false;
+    let assetsFired = false;
 
     function tryComplete() {
-      if (windowLoaded && timerFired) setIsLoaded(true);
+      if (timerFired && assetsFired) setIsLoaded(true);
     }
 
     const timer = setTimeout(() => {
       timerFired = true;
       tryComplete();
-    }, 1200);
+    }, 2600);
 
-    function onLoad() {
-      windowLoaded = true;
+    // Hard fallback — dismiss after 8s regardless of asset state
+    const absoluteTimeout = setTimeout(() => {
+      assetsFired = true;
       tryComplete();
+    }, 8000);
+
+    function waitForImages(): Promise<void> {
+      const imgs = Array.from(
+        document.querySelectorAll<HTMLImageElement>("img"),
+      );
+
+      const promises = imgs.map((img) => {
+        if (img.complete) return Promise.resolve();
+
+        return new Promise<void>((resolve) => {
+          img.addEventListener("load", () => resolve(), { once: true });
+          img.addEventListener("error", () => resolve(), { once: true });
+        });
+      });
+
+      return Promise.all(promises).then(() => {});
     }
 
-    if (!windowLoaded) {
-      window.addEventListener("load", onLoad);
-    }
+    const windowReady = new Promise<void>((resolve) => {
+      if (document.readyState === "complete") {
+        resolve();
+      } else {
+        window.addEventListener("load", () => resolve(), { once: true });
+      }
+    });
+
+    windowReady.then(waitForImages).then(() => {
+      assetsFired = true;
+      clearTimeout(absoluteTimeout);
+      tryComplete();
+    });
 
     return () => {
       clearTimeout(timer);
-      window.removeEventListener("load", onLoad);
+      clearTimeout(absoluteTimeout);
     };
   }, []);
 
@@ -43,12 +71,42 @@ export default function Loader() {
       className="fixed inset-0 z-[9999] bg-background flex items-center justify-center"
       initial={{ y: 0 }}
       animate={isLoaded ? { y: "-100%" } : { y: 0 }}
-      transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
+      transition={{ duration: 0.9, ease: [0.76, 0, 0.24, 1] }}
       onAnimationComplete={() => {
-        if (isLoaded) setIsMounted(false);
+        if (isLoaded) {
+          window.dispatchEvent(new CustomEvent("loaderComplete"));
+          setIsMounted(false);
+        }
       }}
     >
-      <Logo />
+      <motion.div
+        className="relative overflow-hidden"
+        initial={{ opacity: 1 }}
+        animate={{ opacity: 1 }}
+      >
+        <motion.div
+          initial={{ x: "105%" }}
+          animate={{ x: "0%" }}
+          transition={{
+            duration: 2.3,
+            ease: [0.76, 0, 0.24, 1],
+            delay: 0.25,
+          }}
+        >
+          <Logo />
+        </motion.div>
+
+        <motion.span
+          className="absolute inset-0 bg-background"
+          initial={{ x: "0%" }}
+          animate={{ x: "-105%" }}
+          transition={{
+            duration: 2.3,
+            ease: [0.76, 0, 0.24, 1],
+            delay: 0.25,
+          }}
+        />
+      </motion.div>
     </motion.div>
   );
 }

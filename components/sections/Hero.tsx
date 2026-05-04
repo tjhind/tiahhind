@@ -10,7 +10,7 @@ import {
   useReducedMotion,
   type MotionValue,
 } from "motion/react";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 
 interface StickerData {
   src: string;
@@ -26,6 +26,18 @@ interface StickerData {
     scrollStart: number;
     scrollEnd: number;
   };
+}
+
+function smoothScrollTo(id: string) {
+  const element = document.getElementById(id);
+  if (!element) return;
+
+  const isMobile = window.innerWidth < 768;
+  const offset = isMobile ? 220 : 72;
+
+  const top = element.getBoundingClientRect().top + window.scrollY - offset;
+
+  window.scrollTo({ top, behavior: "smooth" });
 }
 
 const stickers: StickerData[] = [
@@ -105,7 +117,7 @@ const stickers: StickerData[] = [
     src: "/assets/header/bow.webp",
     alt: "yellow bow",
     className:
-      "block rotate-[9deg] top-[2%] left-[44%] w-[80px] md:w-[58px] lg:w-[70px] lg:top-[40%] lg:left-[20%]",
+      "hidden lg:block rotate-[9deg] top-[2%] left-[44%] w-[80px] md:w-[58px] lg:w-[70px] lg:top-[40%] lg:left-[20%]",
     maxSize: 80,
     floatDuration: 3.2,
     floatDelay: 0.6,
@@ -301,12 +313,49 @@ function StickerItem({
 
 export default function Hero() {
   const heroRef = useRef<HTMLElement>(null);
-  // useReducedMotion() returns null on the server and the real value on the client.
-  // Initialising state to false means server and client first-render always produce
-  // identical HTML (both "animated"), so hydration never mismatches.
-  // After hydration the effect syncs the real OS preference.
   const rawReducedMotion = useReducedMotion();
   const prefersReducedMotion = rawReducedMotion ?? false;
+
+  // Animated PNG state — hidden until loader exits, then remounted to replay from frame 1
+  const [apngKey, setApngKey] = useState(0);
+  const [apngVisible, setApngVisible] = useState(false);
+  const apngWrapperRef = useRef<HTMLDivElement>(null);
+  const hasScrolledAway = useRef(false);
+  const loaderDone = useRef(false);
+
+  // Show and replay the APNG once the loader has fully exited
+  useEffect(() => {
+    function onLoaderComplete() {
+      loaderDone.current = true;
+      setTimeout(() => {
+        setApngKey((k) => k + 1);
+        setApngVisible(true);
+      }, 150);
+    }
+    window.addEventListener("loaderComplete", onLoaderComplete);
+    return () => window.removeEventListener("loaderComplete", onLoaderComplete);
+  }, []);
+
+  // Replay the APNG when it scrolls back into view after the user has scrolled past it
+  useEffect(() => {
+    const wrapper = apngWrapperRef.current;
+    if (!wrapper) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        if (!loaderDone.current) return;
+        if (!entry.isIntersecting) {
+          hasScrolledAway.current = true;
+        } else if (hasScrolledAway.current) {
+          setApngKey((k) => k + 1);
+          hasScrolledAway.current = false;
+        }
+      },
+      { threshold: 0.5 },
+    );
+    observer.observe(wrapper);
+    return () => observer.disconnect();
+  }, []);
 
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -345,10 +394,10 @@ export default function Hero() {
         ))}
 
         {/* Central content — stickers are rendered first in DOM so content paints on top without needing z-index */}
-        <div className="relative flex flex-col items-center text-center max-w-xl mx-auto pt-12 md:pt-0">
+        <div className="relative flex flex-col items-center text-center max-w-xl mx-auto pt-12">
           {/* Handwritten heading */}
           <motion.div
-            className="relative w-[350px] md:w-[540px] lg:w-[600px] my-8"
+            className="relative w-[300px] md:w-[500px] lg:w-[550px] my-12 sm:my-8 sm:w-[350px]"
             initial={{ opacity: 0, scale: 0.97 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.9, ease: "easeOut" as const }}
@@ -362,15 +411,18 @@ export default function Hero() {
               style={{ height: "auto" }}
               priority
             />
-            <Image
-              src="/assets/header/header-lines-animation.png"
-              alt="hi, i'm tiah"
-              width={400}
-              height={100}
-              className="block w-full w-auto absolute inset-0"
-              style={{ height: "auto" }}
-              priority
-            />
+            <div ref={apngWrapperRef} className="absolute inset-0">
+              <Image
+                key={apngKey}
+                src="/assets/header/header-lines-animation.png"
+                alt=""
+                width={400}
+                height={100}
+                className="block w-full"
+                style={{ height: "auto", opacity: apngVisible ? 1 : 0 }}
+                priority
+              />
+            </div>
           </motion.div>
 
           <motion.p
@@ -404,8 +456,24 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" as const, delay: 0.5 }}
           >
-            <Button href="#work">view my work ↗</Button>
-            <Button href="#contact" variant="outline">
+            <Button
+              href="#work"
+              onClick={(e) => {
+                e.preventDefault();
+                smoothScrollTo("work");
+              }}
+            >
+              view my work ↗
+            </Button>
+
+            <Button
+              href="#contact"
+              variant="outline"
+              onClick={(e) => {
+                e.preventDefault();
+                smoothScrollTo("contact");
+              }}
+            >
               work with me ↗
             </Button>
           </motion.div>

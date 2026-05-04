@@ -9,12 +9,12 @@ export default function Home() {
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <Navbar />
-      <main className="flex-1 pb-20">
+      <main className="flex-1 pb-8">
         <Hero />
         <WhatIDo />
         <FeaturedWork />
         <AboutMe />
-        <div className="flex w-full justify-center text-xs text-foreground/60 px-6">
+        <div className="flex w-full justify-center text-xs text-foreground/60 px-6 pt-6">
           © {new Date().getFullYear()} tiah hind. all rights reserved.
         </div>
       </main>
