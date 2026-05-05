@@ -24,9 +24,9 @@ const projects: Project[] = [
     type: "mobile",
     icon: "/assets/header/blue-heart-button.webp",
     screenshots: [
-      "/assets/featured-work/pim-screenshot-2.png",
-      "/assets/featured-work/pim-screenshot-1.png",
-      "/assets/featured-work/pim-screenshot-3.png",
+      "/assets/featured-work/pim-screenshot-2.webp",
+      "/assets/featured-work/pim-screenshot-1.webp",
+      "/assets/featured-work/pim-screenshot-3.webp",
     ],
   },
   {
@@ -38,9 +38,9 @@ const projects: Project[] = [
     type: "mobile",
     icon: "/assets/header/pink-sequin-star.webp",
     screenshots: [
-      "/assets/featured-work/ticketdash-screenshot-2.png",
-      "/assets/featured-work/ticketdash-screenshot-4.png",
-      "/assets/featured-work/ticketdash-screenshot-3.png",
+      "/assets/featured-work/ticketdash-screenshot-2.webp",
+      "/assets/featured-work/ticketdash-screenshot-4.webp",
+      "/assets/featured-work/ticketdash-screenshot-3.webp",
     ],
   },
   {
@@ -128,7 +128,7 @@ function PhoneMockup({ screenshots }: { screenshots: string[] }) {
 
             {/* Frame on top */}
             <Image
-              src="/assets/featured-work/iphone-frame.png"
+              src="/assets/featured-work/iphone-frame.webp"
               alt=""
               fill
               sizes="(max-width: 640px) 150px, 170px"
@@ -156,7 +156,7 @@ function LaptopMockup() {
         }}
       >
         <Image
-          src="/assets/featured-work/computer-screenshot.png"
+          src="/assets/featured-work/computer-screenshot.webp"
           alt="denbee honey website"
           fill
           sizes="(max-width: 800px) 65vw, 40vw"
@@ -170,7 +170,7 @@ function LaptopMockup() {
 
       {/* Laptop frame on top */}
       <Image
-        src="/assets/featured-work/laptop-frame.png"
+        src="/assets/featured-work/laptop-frame.webp"
         alt=""
         width={1536}
         height={1024}
@@ -203,7 +203,7 @@ export default function FeaturedWork() {
           </span>
 
           <Image
-            src="/assets/throughout/3-line-sparkle-accent.png"
+            src="/assets/throughout/3-line-sparkle-accent.webp"
             alt=""
             width={96}
             height={96}

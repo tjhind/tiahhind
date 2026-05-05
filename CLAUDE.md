@@ -15,6 +15,7 @@ npm run lint     # ESLint (next core-web-vitals + typescript ruleset)
 There is no test runner configured.
 
 Type-check without emitting:
+
 ```bash
 npx tsc --noEmit
 ```
@@ -31,6 +32,7 @@ npx tsc --noEmit
 Single-page portfolio (`app/page.tsx`) composed of section components rendered top-to-bottom: `Navbar → Hero → WhatIDo → FeaturedWork → AboutMe → Footer`.
 
 **Component layout:**
+
 - `components/sections/` — full-width page sections (Hero, WhatIDo, FeaturedWork, AboutMe)
 - `components/layout/` — persistent chrome (Navbar, Footer)
 - `components/ui/` — primitives shared across sections (Button, Tag)
@@ -43,16 +45,17 @@ Tailwind v4 is imported as a single CSS layer (`@import "tailwindcss"` in `globa
 
 ## Design
 
-The design source is `designs/final-design.png`, with three target breakpoints:
+The design source is `designs/final-design.webp`, with three target breakpoints:
 
 - **Desktop:** 1440px
 - **Tablet:** 1024px
 - **Mobile:** 375px
 
-`designs/laptop-view.png` shows the above-the-fold view at 11-inch laptop size — use it to verify the hero section, navbar, and floating sticker elements are all fully visible without scrolling at that viewport.
+`designs/laptop-view.webp` shows the above-the-fold view at 11-inch laptop size — use it to verify the hero section, navbar, and floating sticker elements are all fully visible without scrolling at that viewport.
 
 **No animations.** Do not add any motion effects, transitions, or animation — this is a future iteration. Layout, typography, spacing, colours, and responsiveness only.
 
 Notable responsive behaviours from the design:
+
 - The "what i do" section collapses to an accordion on mobile
 - The navbar becomes a hamburger menu on mobile

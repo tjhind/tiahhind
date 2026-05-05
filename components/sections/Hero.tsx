@@ -403,7 +403,7 @@ export default function Hero() {
             transition={{ duration: 0.9, ease: "easeOut" as const }}
           >
             <Image
-              src="/assets/header/hi-im-tiah-no-line.png"
+              src="/assets/header/hi-im-tiah-no-line.webp"
               alt="hi, i'm tiah"
               width={400}
               height={100}

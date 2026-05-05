@@ -163,7 +163,7 @@ export default function WhatIDo() {
           </span>
 
           <Image
-            src="/assets/throughout/3-line-sparkle-accent.png"
+            src="/assets/throughout/3-line-sparkle-accent.webp"
             alt=""
             width={96}
             height={96}

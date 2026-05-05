@@ -94,7 +94,16 @@ export default function Navbar() {
 
       <nav className="max-w-[2000px] md:text-lg mx-auto px-6 md:px-10 lg:px-16 h-[60px] flex md:grid md:grid-cols-[1fr_auto_1fr] items-center justify-between md:justify-normal">
         {/* Logo */}
-        <Link href="/" className="md:justify-self-start">
+        <Link
+          href="/"
+          className="md:justify-self-start"
+          aria-label="Scroll to top"
+          onClick={(e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: "smooth" });
+            closeMenu();
+          }}
+        >
           <Logo />
         </Link>
 
@@ -249,8 +258,6 @@ export default function Navbar() {
               </li>
             ))}
           </ul>
-
-          {/* Mobile CTA — tap to split into email + LinkedIn */}
         </div>
       )}
     </header>

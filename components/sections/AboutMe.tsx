@@ -38,7 +38,7 @@ const hobbies = [
 
 const photos = [
   {
-    src: "/assets/about-me/2.png",
+    src: "/assets/about-me/2.webp",
     alt: "Tiah standing under a flower arch",
     rotate: "-7deg",
     style: { top: "25px", left: "10px" },
@@ -47,7 +47,7 @@ const photos = [
     zIndex: 2,
   },
   {
-    src: "/assets/about-me/1.png",
+    src: "/assets/about-me/1.webp",
     alt: "Tiah in Japan",
     rotate: "9deg",
     style: { top: "10px", left: "195px" },
@@ -56,7 +56,7 @@ const photos = [
     zIndex: 3,
   },
   {
-    src: "/assets/about-me/4.png",
+    src: "/assets/about-me/4.webp",
     alt: "Tiah at the great wall of China",
     rotate: "-4deg",
     style: { top: "235px", left: "20px" },
@@ -65,7 +65,7 @@ const photos = [
     zIndex: 4,
   },
   {
-    src: "/assets/about-me/3.png",
+    src: "/assets/about-me/3.webp",
     alt: "Tiah on a hike",
     rotate: "11deg",
     style: { top: "245px", left: "200px" },
@@ -155,7 +155,7 @@ function PhotoCollage({
       >
         <div className="relative w-36 h-36">
           <Image
-            src="/assets/about-me/notebook.png"
+            src="/assets/about-me/notebook.webp"
             alt="open notebook"
             fill
             sizes="96px"
@@ -187,7 +187,7 @@ function PhotoCollage({
       >
         <div className="relative w-24 h-24">
           <Image
-            src="/assets/about-me/masking-tape.png"
+            src="/assets/about-me/masking-tape.webp"
             alt="masking tape"
             fill
             sizes="100px"
@@ -235,7 +235,7 @@ function PhotoCollage({
       >
         <div className="relative w-28 h-28">
           <Image
-            src="/assets/about-me/pink-washi-tape.png"
+            src="/assets/about-me/pink-washi-tape.webp"
             alt="pink washi tape"
             fill
             sizes="100px"
@@ -260,7 +260,7 @@ export default function AboutMe() {
 
   return (
     <section id="about" className="relative isolate bg-[#EEEAE4]">
-      <div className="relative z-10 max-w-[1440px] mx-auto px-6 md:px-10 lg:px-16 pt-14 md:pt-20 pb-18 lg:pb-36">
+      <div className="relative z-10 max-w-[1440px] mx-auto px-6 md:px-4 lg:px-16 pt-14 md:pt-20 pb-18 lg:pb-36">
         {/* Section label */}
         <motion.div
           className="flex items-center gap-2 mb-10 md:mb-14"
@@ -276,7 +276,7 @@ export default function AboutMe() {
           </span>
 
           <Image
-            src="/assets/throughout/3-line-sparkle-accent.png"
+            src="/assets/throughout/3-line-sparkle-accent.webp"
             alt=""
             width={96}
             height={96}
