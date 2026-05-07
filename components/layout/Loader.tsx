@@ -9,39 +9,35 @@ export default function Loader() {
   const [isMounted, setIsMounted] = useState(true);
 
   useEffect(() => {
-    let timerFired = false;
-    let assetsFired = false;
-
-    function tryComplete() {
-      if (timerFired && assetsFired) setIsLoaded(true);
-    }
-
-    const timer = setTimeout(() => {
-      timerFired = true;
-      tryComplete();
-    }, 2600);
-
-    // Hard fallback — dismiss after 3s regardless of asset state
-    const absoluteTimeout = setTimeout(() => {
-      assetsFired = true;
-      tryComplete();
-    }, 3000);
-
     function waitForImages(): Promise<void> {
-      const imgs = Array.from(
-        document.querySelectorAll<HTMLImageElement>("img"),
-      );
+      return new Promise<void>((resolve) => {
+        requestAnimationFrame(() => {
+          const imgs = Array.from(
+            document.querySelectorAll<HTMLImageElement>("img"),
+          );
 
-      const promises = imgs.map((img) => {
-        if (img.complete) return Promise.resolve();
+          if (imgs.length === 0) {
+            resolve();
+            return;
+          }
 
-        return new Promise<void>((resolve) => {
-          img.addEventListener("load", () => resolve(), { once: true });
-          img.addEventListener("error", () => resolve(), { once: true });
+          let remaining = imgs.length;
+
+          function onSettle() {
+            remaining--;
+            if (remaining === 0) resolve();
+          }
+
+          imgs.forEach((img) => {
+            if (img.complete) {
+              onSettle();
+            } else {
+              img.addEventListener("load", onSettle, { once: true });
+              img.addEventListener("error", onSettle, { once: true });
+            }
+          });
         });
       });
-
-      return Promise.all(promises).then(() => {});
     }
 
     const windowReady = new Promise<void>((resolve) => {
@@ -52,14 +48,25 @@ export default function Loader() {
       }
     });
 
-    windowReady.then(waitForImages).then(() => {
-      assetsFired = true;
-      clearTimeout(absoluteTimeout);
-      tryComplete();
-    });
+    const minimumTimer = new Promise<void>((resolve) =>
+      setTimeout(resolve, 2600),
+    );
+
+    const assetsReady = windowReady.then(waitForImages);
+
+    const absoluteTimeout = setTimeout(() => setIsLoaded(true), 5000);
+
+    Promise.all([minimumTimer, assetsReady])
+      .then(() => {
+        clearTimeout(absoluteTimeout);
+        setIsLoaded(true);
+      })
+      .catch(() => {
+        clearTimeout(absoluteTimeout);
+        setIsLoaded(true);
+      });
 
     return () => {
-      clearTimeout(timer);
       clearTimeout(absoluteTimeout);
     };
   }, []);

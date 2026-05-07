@@ -124,7 +124,7 @@ const stickers: StickerData[] = [
     floatDuration: 3.2,
     floatDelay: 0.6,
     floatAmplitude: 10,
-    converge: { x: 80, y: 550, scrollStart: 0.05, scrollEnd: 0.65 },
+    converge: { x: 200, y: -80, scrollStart: 0.1, scrollEnd: 0.7 },
   },
   // green star — right-middle
   {
@@ -417,7 +417,11 @@ export default function Hero() {
               priority={true}
               sizes="(max-width: 640px) 300px, (max-width: 1024px) 500px, 550px"
             />
-            <div ref={apngWrapperRef} className="absolute inset-0" style={{ background: 'transparent' }}>
+            <div
+              ref={apngWrapperRef}
+              className="absolute inset-0"
+              style={{ background: "transparent" }}
+            >
               <Image
                 key={apngKey}
                 src="/assets/header/header-lines-animation.png"
