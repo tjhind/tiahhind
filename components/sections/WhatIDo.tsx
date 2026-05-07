@@ -136,6 +136,7 @@ export default function WhatIDo() {
           fill
           sizes="96px"
           className="object-contain"
+          priority={true}
         />
       </div>
 
@@ -146,6 +147,7 @@ export default function WhatIDo() {
           fill
           sizes="24px"
           className="object-contain"
+          priority={true}
         />
       </div>
 
@@ -165,10 +167,11 @@ export default function WhatIDo() {
           <Image
             src="/assets/throughout/3-line-sparkle-accent.webp"
             alt=""
-            width={96}
-            height={96}
-            className="-ml-12"
+            width={180}
+            height={150}
+            className="-ml-18"
             style={{ height: "auto" }}
+            priority={true}
           />
         </motion.div>
 

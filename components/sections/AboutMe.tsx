@@ -44,6 +44,7 @@ const photos = [
     style: { top: "25px", left: "10px" },
     width: 170,
     height: 205,
+    sizes: "(max-width: 768px) 340px, 340px",
     zIndex: 2,
   },
   {
@@ -53,6 +54,7 @@ const photos = [
     style: { top: "10px", left: "195px" },
     width: 135,
     height: 175,
+    sizes: "(max-width: 768px) 270px, 270px",
     zIndex: 3,
   },
   {
@@ -62,6 +64,7 @@ const photos = [
     style: { top: "235px", left: "20px" },
     width: 140,
     height: 185,
+    sizes: "(max-width: 768px) 322px, 322px",
     zIndex: 4,
   },
   {
@@ -71,6 +74,7 @@ const photos = [
     style: { top: "245px", left: "200px" },
     width: 170,
     height: 160,
+    sizes: "(max-width: 768px) 340px, 340px",
     zIndex: 5,
   },
 ];
@@ -98,8 +102,9 @@ function PhotoCollage({
             src={photo.src}
             alt={photo.alt}
             fill
-            sizes="(max-width: 1024px) 50vw, 25vw"
+            sizes={photo.sizes}
             className="object-cover"
+            priority={true}
           />
         </div>
       ))}
@@ -113,8 +118,9 @@ function PhotoCollage({
           src="/assets/header/blue-heart-button.webp"
           alt="blue button shaped as a heart"
           fill
-          sizes="48px"
+          sizes="128px"
           className="object-contain"
+          priority={true}
         />
       </div>
 
@@ -128,8 +134,9 @@ function PhotoCollage({
             src="/assets/header/banana-peanut-butter-honey-toast.webp"
             alt="slice of toast with peanut butter, banana and honey"
             fill
-            sizes="200px"
+            sizes="144px"
             className="object-contain"
+            priority={true}
           />
         </div>
       </div>
@@ -143,8 +150,9 @@ function PhotoCollage({
           src="/assets/header/green-fabric-star.webp"
           alt="green fabric star"
           fill
-          sizes="64px"
+          sizes="192px"
           className="object-contain"
+          priority={true}
         />
       </div>
 
@@ -158,8 +166,9 @@ function PhotoCollage({
             src="/assets/about-me/notebook.webp"
             alt="open notebook"
             fill
-            sizes="96px"
+            sizes="288px"
             className="object-contain"
+            priority={true}
           />
         </div>
       </div>
@@ -174,8 +183,9 @@ function PhotoCollage({
             src="/assets/about-me/pink-wax-seal-with-bow.webp"
             alt="pink wax seal with bow"
             fill
-            sizes="100px"
+            sizes="192px"
             className="object-contain"
+            priority={true}
           />
         </div>
       </div>
@@ -190,8 +200,9 @@ function PhotoCollage({
             src="/assets/about-me/masking-tape.webp"
             alt="masking tape"
             fill
-            sizes="100px"
+            sizes="192px"
             className="object-contain"
+            priority={true}
           />
         </div>
       </div>
@@ -206,8 +217,9 @@ function PhotoCollage({
             src="/assets/header/teabag.webp"
             alt="teabag"
             fill
-            sizes="36px"
+            sizes="320px"
             className="object-contain"
+            priority={true}
           />
         </div>
       </div>
@@ -222,8 +234,9 @@ function PhotoCollage({
             src="/assets/throughout/red-fabric-star.webp"
             alt="red fabric star"
             fill
-            sizes="20px"
+            sizes="60px"
             className="object-contain"
+            priority={true}
           />
         </div>
       </div>
@@ -238,8 +251,9 @@ function PhotoCollage({
             src="/assets/about-me/pink-washi-tape.webp"
             alt="pink washi tape"
             fill
-            sizes="100px"
+            sizes="224px"
             className="object-contain"
+            priority={true}
           />
         </div>
       </div>
@@ -278,10 +292,11 @@ export default function AboutMe() {
           <Image
             src="/assets/throughout/3-line-sparkle-accent.webp"
             alt=""
-            width={96}
-            height={96}
+            width={220}
+            height={147}
             className="-ml-12"
             style={{ height: "auto" }}
+            priority={true}
           />
         </motion.div>
 
@@ -358,8 +373,9 @@ export default function AboutMe() {
                       src={hobby.icon}
                       alt=""
                       fill
-                      sizes="64px"
+                      sizes="128px"
                       className="object-contain"
+                      priority={true}
                     />
                   </div>
                   <span>{hobby.label}</span>

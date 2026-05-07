@@ -121,8 +121,9 @@ function PhoneMockup({ screenshots }: { screenshots: string[] }) {
                 src={phone.screenshot}
                 alt="App screenshot"
                 fill
-                sizes="(max-width: 640px) 150px, 170px"
+                sizes="(max-width: 640px) 266px, 266px"
                 className="object-cover object-top pointer-events-none"
+                priority={true}
               />
             </div>
 
@@ -131,9 +132,10 @@ function PhoneMockup({ screenshots }: { screenshots: string[] }) {
               src="/assets/featured-work/iphone-frame.webp"
               alt=""
               fill
-              sizes="(max-width: 640px) 150px, 170px"
+              sizes="(max-width: 768px) 100vw, 50vw"
               className="object-cover pointer-events-none"
               style={{ mixBlendMode: "multiply" as const }}
+              priority={true}
             />
           </div>
         );
@@ -159,12 +161,13 @@ function LaptopMockup() {
           src="/assets/featured-work/computer-screenshot.webp"
           alt="denbee honey website"
           fill
-          sizes="(max-width: 800px) 65vw, 40vw"
+          sizes="(max-width: 768px) 100vw, 461px"
           className="pointer-events-none"
           style={{
             objectFit: "cover",
             objectPosition: "left top",
           }}
+          priority={true}
         />
       </div>
 
@@ -172,10 +175,12 @@ function LaptopMockup() {
       <Image
         src="/assets/featured-work/laptop-frame.webp"
         alt=""
-        width={1536}
-        height={1024}
+        width={728}
+        height={485}
+        sizes="(max-width: 768px) 100vw, 728px"
         className="relative w-full h-auto pointer-events-none"
         style={{ mixBlendMode: "multiply" as const }}
+        priority={true}
       />
     </div>
   );
@@ -205,10 +210,11 @@ export default function FeaturedWork() {
           <Image
             src="/assets/throughout/3-line-sparkle-accent.webp"
             alt=""
-            width={96}
-            height={96}
+            width={220}
+            height={147}
             className="-ml-10"
             style={{ height: "auto" }}
+            priority={true}
           />
         </motion.div>
 

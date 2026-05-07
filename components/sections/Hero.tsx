@@ -17,6 +17,7 @@ interface StickerData {
   alt: string;
   className: string;
   maxSize: number;
+  maxHeight?: number;
   floatDuration: number;
   floatDelay: number;
   floatAmplitude: number;
@@ -47,7 +48,7 @@ const stickers: StickerData[] = [
     alt: "fan",
     className:
       "rotate-[-30deg] top-[3%] left-[2%] w-[100px] md:w-[148px] lg:w-[180px] md:-left-[1%]",
-    maxSize: 180,
+    maxSize: 200,
     floatDuration: 4.2,
     floatDelay: 0,
     floatAmplitude: 8,
@@ -70,7 +71,7 @@ const stickers: StickerData[] = [
     alt: "sushi",
     className:
       "rotate-[-20deg] w-[50px] top-[20%] left-[6%] md:left-[8%] md:w-[100px] lg:w-[140px]",
-    maxSize: 140,
+    maxSize: 100,
     floatDuration: 5.1,
     floatDelay: 0.8,
     floatAmplitude: 9,
@@ -82,7 +83,8 @@ const stickers: StickerData[] = [
     alt: "laptop",
     className:
       "rotate-[-15deg] top-[32%] md:top-[42%] left-[1%] w-[90px] md:-left-[1%] md:w-[140px] lg:w-[160px]",
-    maxSize: 160,
+    maxSize: 180,
+    maxHeight: 153,
     floatDuration: 3.5,
     floatDelay: 1.2,
     floatAmplitude: 6,
@@ -94,7 +96,7 @@ const stickers: StickerData[] = [
     alt: "houseplant",
     className:
       "rotate-[-10deg] top-[63%] left-[1%] w-[78px] lg:left-[6%] md:w-[120px]",
-    maxSize: 120,
+    maxSize: 156,
     floatDuration: 4.7,
     floatDelay: 0.3,
     floatAmplitude: 7,
@@ -129,7 +131,7 @@ const stickers: StickerData[] = [
     src: "/assets/header/green-fabric-star.webp",
     alt: "green star",
     className: "rotate-[0deg] top-[40%] right-[10%] w-[45px]",
-    maxSize: 36,
+    maxSize: 192,
     floatDuration: 4.4,
     floatDelay: 1.0,
     floatAmplitude: 6,
@@ -141,7 +143,8 @@ const stickers: StickerData[] = [
     alt: "fish",
     className:
       "block rotate-[15deg] top-[6%] right-[2%] w-[100px] md:w-[116px] lg:w-[155px] md:-right-[0%]",
-    maxSize: 155,
+    maxSize: 200,
+    maxHeight: 187,
     floatDuration: 5.8,
     floatDelay: 1.4,
     floatAmplitude: 9,
@@ -153,7 +156,7 @@ const stickers: StickerData[] = [
     alt: "roman statue",
     className:
       "hidden md:block rotate-[-4deg] top-[26%] right-[1%] md:w-[86px] lg:right-[4%] lg:w-[130px] lg:top-[20%]",
-    maxSize: 130,
+    maxSize: 128,
     floatDuration: 4.0,
     floatDelay: 0.9,
     floatAmplitude: 7,
@@ -190,6 +193,7 @@ const stickers: StickerData[] = [
     className:
       "md:hidden lg:block rotate-[6deg] top-[46%] lg:right-[20%] lg:w-[40px] w-[20px] right-[5%] ",
     maxSize: 40,
+    maxHeight: 39,
     floatDuration: 3.9,
     floatDelay: 0.7,
     floatAmplitude: 6,
@@ -201,7 +205,7 @@ const stickers: StickerData[] = [
     alt: "coffee cup",
     className:
       "rotate-[10deg] top-[70%] right-[1%] w-[60px] lg:right-[4%] lg:w-[80px]",
-    maxSize: 80,
+    maxSize: 120,
     floatDuration: 4.5,
     floatDelay: 1.1,
     floatAmplitude: 8,
@@ -302,9 +306,11 @@ function StickerItem({
           src={sticker.src}
           alt={sticker.alt}
           width={sticker.maxSize}
-          height={sticker.maxSize}
+          height={sticker.maxHeight ?? sticker.maxSize}
           className="block w-full object-contain drop-shadow-sm"
           style={{ height: "auto" }}
+          priority={true}
+          sizes="(max-width: 768px) 60px, (max-width: 1024px) 80px, 120px"
         />
       </motion.div>
     </motion.div>
@@ -316,14 +322,13 @@ export default function Hero() {
   const rawReducedMotion = useReducedMotion();
   const prefersReducedMotion = rawReducedMotion ?? false;
 
-  // Animated PNG state — hidden until loader exits, then remounted to replay from frame 1
   const [apngKey, setApngKey] = useState(0);
   const [apngVisible, setApngVisible] = useState(false);
   const apngWrapperRef = useRef<HTMLDivElement>(null);
   const hasScrolledAway = useRef(false);
   const loaderDone = useRef(false);
 
-  // Show and replay the APNG once the loader has fully exited
+  // Reveal and replay the animation once the loader has fully exited
   useEffect(() => {
     function onLoaderComplete() {
       loaderDone.current = true;
@@ -336,7 +341,7 @@ export default function Hero() {
     return () => window.removeEventListener("loaderComplete", onLoaderComplete);
   }, []);
 
-  // Replay the APNG when it scrolls back into view after the user has scrolled past it
+  // Replay when it scrolls back into view after the user has scrolled past it
   useEffect(() => {
     const wrapper = apngWrapperRef.current;
     if (!wrapper) return;
@@ -405,22 +410,23 @@ export default function Hero() {
             <Image
               src="/assets/header/hi-im-tiah-no-line.webp"
               alt="hi, i'm tiah"
-              width={400}
-              height={100}
-              className="block w-full w-auto"
+              width={600}
+              height={346}
+              className="block w-full"
               style={{ height: "auto" }}
-              priority
+              priority={true}
+              sizes="(max-width: 640px) 300px, (max-width: 1024px) 500px, 550px"
             />
-            <div ref={apngWrapperRef} className="absolute inset-0">
+            <div ref={apngWrapperRef} className="absolute inset-0" style={{ background: 'transparent' }}>
               <Image
                 key={apngKey}
                 src="/assets/header/header-lines-animation.png"
                 alt=""
-                width={400}
-                height={100}
+                width={343}
+                height={198}
                 className="block w-full"
                 style={{ height: "auto", opacity: apngVisible ? 1 : 0 }}
-                priority
+                priority={true}
               />
             </div>
           </motion.div>
