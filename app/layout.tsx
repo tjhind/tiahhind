@@ -30,50 +30,117 @@ export default function RootLayout({
           href="/assets/header/hi-im-tiah-no-line.webp"
           fetchPriority="high"
         />
-        <link
-          rel="preload"
-          as="video"
-          href="/assets/header/header-lines-animation.webm"
-          type="video/webm"
-          // @ts-expect-error fetchpriority is valid on link elements but not yet in TS types
-          fetchpriority="high"
-        />
-
         {/* Hero stickers */}
         <link rel="preload" as="image" href="/assets/header/fan.webp" />
-        <link rel="preload" as="image" href="/assets/header/pastel-de-nata.webp" />
+        <link
+          rel="preload"
+          as="image"
+          href="/assets/header/pastel-de-nata.webp"
+        />
         <link rel="preload" as="image" href="/assets/header/sushi.webp" />
         <link rel="preload" as="image" href="/assets/header/laptop.webp" />
         <link rel="preload" as="image" href="/assets/header/plant.webp" />
-        <link rel="preload" as="image" href="/assets/header/hello-kitty-bee.webp" />
+        <link
+          rel="preload"
+          as="image"
+          href="/assets/header/hello-kitty-bee.webp"
+        />
         <link rel="preload" as="image" href="/assets/header/bow.webp" />
-        <link rel="preload" as="image" href="/assets/header/green-fabric-star.webp" />
+        <link
+          rel="preload"
+          as="image"
+          href="/assets/header/green-fabric-star.webp"
+        />
         <link rel="preload" as="image" href="/assets/header/fish.webp" />
-        <link rel="preload" as="image" href="/assets/header/roman-statue.webp" />
+        <link
+          rel="preload"
+          as="image"
+          href="/assets/header/roman-statue.webp"
+        />
         <link rel="preload" as="image" href="/assets/about-me/flowers.webp" />
         <link rel="preload" as="image" href="/assets/header/hotpot.webp" />
-        <link rel="preload" as="image" href="/assets/throughout/green-flower-button.webp" />
+        <link
+          rel="preload"
+          as="image"
+          href="/assets/throughout/green-flower-button.webp"
+        />
         <link rel="preload" as="image" href="/assets/header/latte.webp" />
         <link rel="preload" as="image" href="/assets/header/croissant.webp" />
         <link rel="preload" as="image" href="/assets/header/dumplings.webp" />
-        <link rel="preload" as="image" href="/assets/header/goldfish-snack.webp" />
+        <link
+          rel="preload"
+          as="image"
+          href="/assets/header/goldfish-snack.webp"
+        />
 
         {/* Featured work */}
-        <link rel="preload" as="image" href="/assets/featured-work/iphone-frame.webp" />
-        <link rel="preload" as="image" href="/assets/featured-work/pim-screenshot-1.webp" />
-        <link rel="preload" as="image" href="/assets/featured-work/pim-screenshot-2.webp" />
-        <link rel="preload" as="image" href="/assets/featured-work/pim-screenshot-3.webp" />
-        <link rel="preload" as="image" href="/assets/featured-work/ticketdash-screenshot-2.webp" />
-        <link rel="preload" as="image" href="/assets/featured-work/ticketdash-screenshot-3.webp" />
-        <link rel="preload" as="image" href="/assets/featured-work/ticketdash-screenshot-4.webp" />
-        <link rel="preload" as="image" href="/assets/featured-work/computer-screenshot.webp" />
-        <link rel="preload" as="image" href="/assets/featured-work/laptop-frame.webp" />
+        <link
+          rel="preload"
+          as="image"
+          href="/assets/featured-work/iphone-frame.webp"
+        />
+        <link
+          rel="preload"
+          as="image"
+          href="/assets/featured-work/pim-screenshot-1.webp"
+        />
+        <link
+          rel="preload"
+          as="image"
+          href="/assets/featured-work/pim-screenshot-2.webp"
+        />
+        <link
+          rel="preload"
+          as="image"
+          href="/assets/featured-work/pim-screenshot-3.webp"
+        />
+        <link
+          rel="preload"
+          as="image"
+          href="/assets/featured-work/ticketdash-screenshot-2.webp"
+        />
+        <link
+          rel="preload"
+          as="image"
+          href="/assets/featured-work/ticketdash-screenshot-3.webp"
+        />
+        <link
+          rel="preload"
+          as="image"
+          href="/assets/featured-work/ticketdash-screenshot-4.webp"
+        />
+        <link
+          rel="preload"
+          as="image"
+          href="/assets/featured-work/computer-screenshot.webp"
+        />
+        <link
+          rel="preload"
+          as="image"
+          href="/assets/featured-work/laptop-frame.webp"
+        />
 
         {/* Throughout / decorative */}
-        <link rel="preload" as="image" href="/assets/throughout/3-line-sparkle-accent.webp" />
-        <link rel="preload" as="image" href="/assets/throughout/pink-sequin-star.webp" />
-        <link rel="preload" as="image" href="/assets/throughout/yellow-gingham-star.webp" />
-        <link rel="preload" as="image" href="/assets/throughout/red-fabric-star.webp" />
+        <link
+          rel="preload"
+          as="image"
+          href="/assets/throughout/3-line-sparkle-accent.webp"
+        />
+        <link
+          rel="preload"
+          as="image"
+          href="/assets/throughout/pink-sequin-star.webp"
+        />
+        <link
+          rel="preload"
+          as="image"
+          href="/assets/throughout/yellow-gingham-star.webp"
+        />
+        <link
+          rel="preload"
+          as="image"
+          href="/assets/throughout/red-fabric-star.webp"
+        />
 
         {/* About-me photos */}
         <link rel="preload" as="image" href="/assets/about-me/1.webp" />
@@ -82,20 +149,52 @@ export default function RootLayout({
         <link rel="preload" as="image" href="/assets/about-me/4.webp" />
 
         {/* About-me collage stickers */}
-        <link rel="preload" as="image" href="/assets/header/blue-heart-button.webp" />
-        <link rel="preload" as="image" href="/assets/header/banana-peanut-butter-honey-toast.webp" />
+        <link
+          rel="preload"
+          as="image"
+          href="/assets/header/blue-heart-button.webp"
+        />
+        <link
+          rel="preload"
+          as="image"
+          href="/assets/header/banana-peanut-butter-honey-toast.webp"
+        />
         <link rel="preload" as="image" href="/assets/about-me/notebook.webp" />
-        <link rel="preload" as="image" href="/assets/about-me/pink-wax-seal-with-bow.webp" />
-        <link rel="preload" as="image" href="/assets/about-me/masking-tape.webp" />
+        <link
+          rel="preload"
+          as="image"
+          href="/assets/about-me/pink-wax-seal-with-bow.webp"
+        />
+        <link
+          rel="preload"
+          as="image"
+          href="/assets/about-me/masking-tape.webp"
+        />
         <link rel="preload" as="image" href="/assets/header/teabag.webp" />
-        <link rel="preload" as="image" href="/assets/about-me/pink-washi-tape.webp" />
+        <link
+          rel="preload"
+          as="image"
+          href="/assets/about-me/pink-washi-tape.webp"
+        />
 
         {/* About-me hobby icons */}
-        <link rel="preload" as="image" href="/assets/about-me/trainer-shoe.webp" />
+        <link
+          rel="preload"
+          as="image"
+          href="/assets/about-me/trainer-shoe.webp"
+        />
         <link rel="preload" as="image" href="/assets/about-me/pen.webp" />
-        <link rel="preload" as="image" href="/assets/about-me/headphones.webp" />
+        <link
+          rel="preload"
+          as="image"
+          href="/assets/about-me/headphones.webp"
+        />
         <link rel="preload" as="image" href="/assets/about-me/globe.webp" />
-        <link rel="preload" as="image" href="/assets/about-me/vinyl-record.webp" />
+        <link
+          rel="preload"
+          as="image"
+          href="/assets/about-me/vinyl-record.webp"
+        />
         <link rel="preload" as="image" href="/assets/about-me/tea.webp" />
       </head>
       <body className="antialiased">

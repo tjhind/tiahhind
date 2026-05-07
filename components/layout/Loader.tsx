@@ -21,11 +21,11 @@ export default function Loader() {
       tryComplete();
     }, 2600);
 
-    // Hard fallback — dismiss after 8s regardless of asset state
+    // Hard fallback — dismiss after 3s regardless of asset state
     const absoluteTimeout = setTimeout(() => {
       assetsFired = true;
       tryComplete();
-    }, 8000);
+    }, 3000);
 
     function waitForImages(): Promise<void> {
       const imgs = Array.from(
@@ -71,7 +71,7 @@ export default function Loader() {
       className="fixed inset-0 z-[9999] bg-background flex items-center justify-center"
       initial={{ y: 0 }}
       animate={isLoaded ? { y: "-100%" } : { y: 0 }}
-      transition={{ duration: 0.9, ease: [0.76, 0, 0.24, 1] }}
+      transition={{ duration: 0.7, ease: [0.76, 0, 0.24, 1] }}
       onAnimationComplete={() => {
         if (isLoaded) {
           window.dispatchEvent(new CustomEvent("loaderComplete"));
@@ -88,9 +88,9 @@ export default function Loader() {
           initial={{ x: "105%" }}
           animate={{ x: "0%" }}
           transition={{
-            duration: 2.3,
+            duration: 1.5,
             ease: [0.76, 0, 0.24, 1],
-            delay: 0.25,
+            delay: 0,
           }}
         >
           <Logo />
@@ -101,9 +101,9 @@ export default function Loader() {
           initial={{ x: "0%" }}
           animate={{ x: "-105%" }}
           transition={{
-            duration: 2.3,
+            duration: 1.5,
             ease: [0.76, 0, 0.24, 1],
-            delay: 0.25,
+            delay: 0,
           }}
         />
       </motion.div>

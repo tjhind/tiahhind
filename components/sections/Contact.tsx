@@ -86,10 +86,9 @@ export default function Contact() {
         <Image
           src="/assets/throughout/3-line-sparkle-accent.webp"
           alt=""
-          width={96}
-          height={96}
+          width={100}
+          height={100}
           className="-ml-12"
-          style={{ height: "auto" }}
         />
       </div>
 

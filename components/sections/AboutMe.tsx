@@ -79,11 +79,7 @@ const photos = [
   },
 ];
 
-function PhotoCollage({
-  prefersReducedMotion,
-}: {
-  prefersReducedMotion: boolean;
-}) {
+function PhotoCollage() {
   return (
     <div className="relative w-[360px] h-[460px] md:w-[400px] md:h-[480px] shrink-0">
       {photos.map((photo, i) => (
@@ -292,10 +288,9 @@ export default function AboutMe() {
           <Image
             src="/assets/throughout/3-line-sparkle-accent.webp"
             alt=""
-            width={220}
-            height={147}
+            width={100}
+            height={100}
             className="-ml-12"
-            style={{ height: "auto" }}
             priority={true}
           />
         </motion.div>
@@ -315,7 +310,7 @@ export default function AboutMe() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
           >
-            <PhotoCollage prefersReducedMotion={prefersReducedMotion} />
+            <PhotoCollage />
           </motion.div>
 
           {/* Bio + hobbies wrapper */}

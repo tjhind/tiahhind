@@ -167,9 +167,9 @@ export default function WhatIDo() {
           <Image
             src="/assets/throughout/3-line-sparkle-accent.webp"
             alt=""
-            width={180}
-            height={150}
-            className="-ml-18"
+            width={100}
+            height={100}
+            className="-ml-12"
             style={{ height: "auto" }}
             priority={true}
           />

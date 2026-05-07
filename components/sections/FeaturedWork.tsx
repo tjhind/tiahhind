@@ -210,10 +210,9 @@ export default function FeaturedWork() {
           <Image
             src="/assets/throughout/3-line-sparkle-accent.webp"
             alt=""
-            width={220}
-            height={147}
+            width={100}
+            height={100}
             className="-ml-10"
-            style={{ height: "auto" }}
             priority={true}
           />
         </motion.div>
