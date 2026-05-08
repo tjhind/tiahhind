@@ -85,7 +85,7 @@ export default function Contact() {
 
         <Image
           src="/assets/throughout/3-line-sparkle-accent.webp"
-          alt=""
+          alt="decorative sparkle"
           width={100}
           height={100}
           className="-ml-12"

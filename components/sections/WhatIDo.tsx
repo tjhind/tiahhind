@@ -163,10 +163,9 @@ export default function WhatIDo() {
           <span className="font-medium font-semibold tracking-wide text-xl lg:text-2xl">
             what i do
           </span>
-
           <Image
             src="/assets/throughout/3-line-sparkle-accent.webp"
-            alt=""
+            alt="decorative sparkle"
             width={100}
             height={100}
             className="-ml-12"

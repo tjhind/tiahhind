@@ -121,7 +121,7 @@ function PhoneMockup({ screenshots }: { screenshots: string[] }) {
                 src={phone.screenshot}
                 alt="App screenshot"
                 fill
-                sizes="(max-width: 640px) 266px, 266px"
+                sizes="(max-width: 640px) 113px, 129px"
                 className="object-cover object-top pointer-events-none"
                 priority={true}
               />
@@ -132,7 +132,7 @@ function PhoneMockup({ screenshots }: { screenshots: string[] }) {
               src="/assets/featured-work/iphone-frame.webp"
               alt=""
               fill
-              sizes="(max-width: 768px) 100vw, 50vw"
+              sizes="(max-width: 640px) 150px, 150px"
               className="object-cover pointer-events-none"
               style={{ mixBlendMode: "multiply" as const }}
               priority={true}
@@ -161,7 +161,7 @@ function LaptopMockup() {
           src="/assets/featured-work/computer-screenshot.webp"
           alt="denbee honey website"
           fill
-          sizes="(max-width: 768px) 100vw, 461px"
+          sizes="(max-width: 768px) 240px, 376px"
           className="pointer-events-none"
           style={{
             objectFit: "cover",
@@ -209,7 +209,7 @@ export default function FeaturedWork() {
 
           <Image
             src="/assets/throughout/3-line-sparkle-accent.webp"
-            alt=""
+            alt="decorative sparkle"
             width={100}
             height={100}
             className="-ml-10"

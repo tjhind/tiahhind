@@ -71,7 +71,7 @@ const stickers: StickerData[] = [
     alt: "sushi",
     className:
       "rotate-[-20deg] w-[50px] top-[20%] left-[6%] md:left-[8%] md:w-[100px] lg:w-[140px]",
-    maxSize: 100,
+    maxSize: 140,
     floatDuration: 5.1,
     floatDelay: 0.8,
     floatAmplitude: 9,
@@ -83,8 +83,7 @@ const stickers: StickerData[] = [
     alt: "laptop",
     className:
       "rotate-[-15deg] top-[32%] md:top-[42%] left-[1%] w-[90px] md:-left-[1%] md:w-[140px] lg:w-[160px]",
-    maxSize: 180,
-    maxHeight: 153,
+    maxSize: 160,
     floatDuration: 3.5,
     floatDelay: 1.2,
     floatAmplitude: 6,
@@ -96,7 +95,7 @@ const stickers: StickerData[] = [
     alt: "houseplant",
     className:
       "rotate-[-10deg] top-[63%] left-[1%] w-[78px] lg:left-[6%] md:w-[120px]",
-    maxSize: 156,
+    maxSize: 120,
     floatDuration: 4.7,
     floatDelay: 0.3,
     floatAmplitude: 7,
@@ -108,7 +107,7 @@ const stickers: StickerData[] = [
     alt: "hello kitty dressed as a bee",
     className:
       "w-[150px] rotate-[5deg] top-[16%] right-[-10%] md:w-[100px] md:left-[50%] md:top-auto md:bottom-[5%] lg:left-[20%] lg:bottom-[5%] lg:w-[200px]",
-    maxSize: 300,
+    maxSize: 200,
     floatDuration: 5.5,
     floatDelay: 1.8,
     floatAmplitude: 8,
@@ -131,7 +130,7 @@ const stickers: StickerData[] = [
     src: "/assets/header/green-fabric-star.webp",
     alt: "green star",
     className: "rotate-[0deg] top-[40%] right-[10%] w-[45px]",
-    maxSize: 192,
+    maxSize: 45,
     floatDuration: 4.4,
     floatDelay: 1.0,
     floatAmplitude: 6,

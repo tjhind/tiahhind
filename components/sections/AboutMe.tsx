@@ -44,7 +44,7 @@ const photos = [
     style: { top: "25px", left: "10px" },
     width: 170,
     height: 205,
-    sizes: "(max-width: 768px) 340px, 340px",
+    sizes: "170px",
     zIndex: 2,
   },
   {
@@ -54,7 +54,7 @@ const photos = [
     style: { top: "10px", left: "195px" },
     width: 135,
     height: 175,
-    sizes: "(max-width: 768px) 270px, 270px",
+    sizes: "135px",
     zIndex: 3,
   },
   {
@@ -64,7 +64,7 @@ const photos = [
     style: { top: "235px", left: "20px" },
     width: 140,
     height: 185,
-    sizes: "(max-width: 768px) 322px, 322px",
+    sizes: "140px",
     zIndex: 4,
   },
   {
@@ -74,14 +74,14 @@ const photos = [
     style: { top: "245px", left: "200px" },
     width: 170,
     height: 160,
-    sizes: "(max-width: 768px) 340px, 340px",
+    sizes: "170px",
     zIndex: 5,
   },
 ];
 
 function PhotoCollage() {
   return (
-    <div className="relative w-[360px] h-[460px] md:w-[400px] md:h-[480px] shrink-0">
+    <div className="relative w-[360px] h-[460px] md:w-[400px] md:h-[480px] shrink-0 overflow-clip">
       {photos.map((photo, i) => (
         <div
           key={i}
@@ -114,7 +114,7 @@ function PhotoCollage() {
           src="/assets/header/blue-heart-button.webp"
           alt="blue button shaped as a heart"
           fill
-          sizes="128px"
+          sizes="64px"
           className="object-contain"
           priority={true}
         />
@@ -130,7 +130,7 @@ function PhotoCollage() {
             src="/assets/header/banana-peanut-butter-honey-toast.webp"
             alt="slice of toast with peanut butter, banana and honey"
             fill
-            sizes="144px"
+            sizes="96px"
             className="object-contain"
             priority={true}
           />
@@ -146,7 +146,7 @@ function PhotoCollage() {
           src="/assets/header/green-fabric-star.webp"
           alt="green fabric star"
           fill
-          sizes="192px"
+          sizes="96px"
           className="object-contain"
           priority={true}
         />
@@ -162,7 +162,7 @@ function PhotoCollage() {
             src="/assets/about-me/notebook.webp"
             alt="open notebook"
             fill
-            sizes="288px"
+            sizes="144px"
             className="object-contain"
             priority={true}
           />
@@ -179,7 +179,7 @@ function PhotoCollage() {
             src="/assets/about-me/pink-wax-seal-with-bow.webp"
             alt="pink wax seal with bow"
             fill
-            sizes="192px"
+            sizes="96px"
             className="object-contain"
             priority={true}
           />
@@ -196,7 +196,7 @@ function PhotoCollage() {
             src="/assets/about-me/masking-tape.webp"
             alt="masking tape"
             fill
-            sizes="192px"
+            sizes="96px"
             className="object-contain"
             priority={true}
           />
@@ -213,7 +213,7 @@ function PhotoCollage() {
             src="/assets/header/teabag.webp"
             alt="teabag"
             fill
-            sizes="320px"
+            sizes="160px"
             className="object-contain"
             priority={true}
           />
@@ -230,7 +230,7 @@ function PhotoCollage() {
             src="/assets/throughout/red-fabric-star.webp"
             alt="red fabric star"
             fill
-            sizes="60px"
+            sizes="40px"
             className="object-contain"
             priority={true}
           />
@@ -247,7 +247,7 @@ function PhotoCollage() {
             src="/assets/about-me/pink-washi-tape.webp"
             alt="pink washi tape"
             fill
-            sizes="224px"
+            sizes="112px"
             className="object-contain"
             priority={true}
           />
@@ -287,7 +287,7 @@ export default function AboutMe() {
 
           <Image
             src="/assets/throughout/3-line-sparkle-accent.webp"
-            alt=""
+            alt="decorative sparkle"
             width={100}
             height={100}
             className="-ml-12"
@@ -368,7 +368,7 @@ export default function AboutMe() {
                       src={hobby.icon}
                       alt=""
                       fill
-                      sizes="128px"
+                      sizes="64px"
                       className="object-contain"
                       priority={true}
                     />
