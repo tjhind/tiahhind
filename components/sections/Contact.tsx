@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence, useReducedMotion } from "motion/react";
+import { motion, AnimatePresence } from "motion/react";
 import Image from "next/image";
 
 const EMAIL = "hello@tiahhind.com";
@@ -26,9 +26,6 @@ function CheckIcon() {
 }
 
 export default function Contact() {
-  const rawReduced = useReducedMotion();
-  const prefersReducedMotion = rawReduced ?? false;
-
   const [copied, setCopied] = useState(false);
   const [emailHovered, setEmailHovered] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -70,10 +67,8 @@ export default function Contact() {
     <motion.section
       id="contact"
       className="mt-16 md:mt-24 pt-12 pb-6 md:py-16 border-t border-foreground/10"
-      initial={
-        prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
-      }
-      whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6, ease: "easeOut" }}
     >

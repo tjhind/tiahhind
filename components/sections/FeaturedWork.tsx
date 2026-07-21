@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Tag from "@/components/ui/Tag";
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
 
 interface Project {
   id: string;
@@ -187,19 +187,14 @@ function LaptopMockup() {
 }
 
 export default function FeaturedWork() {
-  const rawReduced = useReducedMotion();
-  const prefersReducedMotion = rawReduced ?? false;
-
   return (
     <section id="work" className="relative isolate z-0 bg-[#EEEAE4]">
       <div className="relative z-10 max-w-[1440px] mx-auto px-6 md:px-10 lg:px-16 pt-10 md:pt-12 pb-16 md:pb-20">
         {/* Section label */}
         <motion.div
           className="flex items-center"
-          initial={
-            prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
-          }
-          whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
@@ -225,14 +220,8 @@ export default function FeaturedWork() {
               className={`flex flex-col ${
                 i % 2 === 1 ? "lg:flex-row-reverse" : "lg:flex-row"
               } gap-10 lg:gap-16 items-center`}
-              initial={
-                prefersReducedMotion
-                  ? { opacity: 1, y: 0 }
-                  : { opacity: 0, y: 20 }
-              }
-              whileInView={
-                prefersReducedMotion ? undefined : { opacity: 1, y: 0 }
-              }
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, ease: "easeOut", delay: i * 0.1 }}
             >
@@ -250,11 +239,22 @@ export default function FeaturedWork() {
                 <h3 className="text-2xl md:text-3xl font-semibold mb-4">
                   {project.name}
                 </h3>
-
-                <p className="text-sm md:text-base text-foreground/60 leading-relaxed mb-6">
+                <p className="text-sm md:text-base text-foreground/60 leading-relaxed">
                   {project.description}
                 </p>
-
+                {project.id === "pim" && (
+                  <p className="mt-4 mb-6 text-sm text-coral">
+                    coming to the app store soon
+                    <a
+                      href="https://tally.so/r/7RDWa0"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-bold ml-2"
+                    >
+                      sign up for updates
+                    </a>
+                  </p>
+                )}
                 <div className="flex flex-wrap gap-2 -ml-1 sm:gap-4">
                   {project.tags.map((tag) => (
                     <Tag key={tag}>{tag}</Tag>

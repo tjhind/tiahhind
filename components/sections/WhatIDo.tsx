@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence, useReducedMotion } from "motion/react";
+import { motion, AnimatePresence } from "motion/react";
 
 interface Service {
   title: string;
@@ -48,19 +48,17 @@ const services: Service[] = [
 function AccordionItem({
   service,
   index,
-  prefersReducedMotion,
 }: {
   service: Service;
   index: number;
-  prefersReducedMotion: boolean;
 }) {
   const [open, setOpen] = useState(false);
 
   return (
     <motion.div
       className="relative border-t border-foreground/10"
-      initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
-      whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.08 }}
     >
@@ -74,9 +72,7 @@ function AccordionItem({
 
         <motion.span
           className="text-lg leading-none text-coral"
-          animate={
-            prefersReducedMotion ? undefined : { rotate: open ? 180 : 0 }
-          }
+          animate={{ rotate: open ? 180 : 0 }}
           transition={{ duration: 0.2, ease: "easeOut" }}
         >
           {open ? "−" : "+"}
@@ -88,19 +84,9 @@ function AccordionItem({
           <motion.div
             key="accordion-content"
             className="overflow-hidden pb-5"
-            initial={
-              prefersReducedMotion ? false : { opacity: 0, height: 0, y: -4 }
-            }
-            animate={
-              prefersReducedMotion
-                ? { opacity: 1, height: "auto", y: 0 }
-                : { opacity: 1, height: "auto", y: 0 }
-            }
-            exit={
-              prefersReducedMotion
-                ? { opacity: 0 }
-                : { opacity: 0, height: 0, y: -4 }
-            }
+            initial={{ opacity: 0, height: 0, y: -4 }}
+            animate={{ opacity: 1, height: "auto", y: 0 }}
+            exit={{ opacity: 0, height: 0, y: -4 }}
             transition={{ duration: 0.25, ease: "easeOut" }}
           >
             <p className="text-sm text-foreground/60 mb-3 leading-relaxed">
@@ -123,9 +109,6 @@ function AccordionItem({
 }
 
 export default function WhatIDo() {
-  const rawReduced = useReducedMotion();
-  const prefersReducedMotion = rawReduced ?? false;
-
   return (
     <section id="skills" className="relative isolate z-20 bg-[#EEEAE4]">
       {/* Decorative stickers */}
@@ -155,8 +138,8 @@ export default function WhatIDo() {
         {/* Section label */}
         <motion.div
           className="flex items-center gap-2 mb-10 md:mb-12"
-          initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
-          whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
@@ -179,10 +162,8 @@ export default function WhatIDo() {
             <motion.div
               key={service.title}
               className="relative lg:px-8 first:lg:pl-0 last:lg:pr-0"
-              initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
-              whileInView={
-                prefersReducedMotion ? undefined : { opacity: 1, y: 0 }
-              }
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{
                 duration: 0.6,
@@ -221,7 +202,6 @@ export default function WhatIDo() {
               key={service.title}
               service={service}
               index={index}
-              prefersReducedMotion={prefersReducedMotion}
             />
           ))}
 
