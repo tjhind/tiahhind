@@ -266,7 +266,7 @@ function PhotoCollage() {
 
 const bioParagraphs = [
   "I'm a full-stack developer, problem solver, and creative at heart. I enjoy building thoughtful and visually stunning products from the ground up.",
-  "I've spent the last few years working with early-stage startups, helping turn half-formed, messy ideas into real, working apps. Honestly, that's my favourite part - I love a bit of chaos. The more undefined and scrappy something is, the more excited I get.",
+  "I've spent the last few years working with early-stage startups, helping turn half-formed, messy ideas into real, working apps. Honestly, that's my favourite part.",
   "That space between chaos and clarity is where I do my best work.",
   "When I'm not coding, I'm usually off doing something that fuels that same curiosity...",
 ];
