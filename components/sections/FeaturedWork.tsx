@@ -239,7 +239,7 @@ export default function FeaturedWork() {
                 <h3 className="text-2xl md:text-3xl font-semibold mb-4">
                   {project.name}
                 </h3>
-                <p className="text-sm md:text-base text-foreground/60 leading-relaxed">
+                <p className="text-sm md:text-base text-foreground/60 leading-relaxed mb-4">
                   {project.description}
                 </p>
                 {project.id === "pim" && (
