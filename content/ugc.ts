@@ -141,12 +141,7 @@ export const ugc: UgcConfig = {
     poster: "", // TODO(owner): showreel poster, e.g. /assets/ugc/showreel-poster.webp
   },
 
-  quickFacts: [
-    "Tech & SaaS niche",
-    "5–7 day turnaround",
-    "Raw + edited files",
-    "UK-based",
-  ],
+  quickFacts: ["5–7 day turnaround", "Raw + edited files", "UK-based"],
 
   // TODO(owner): replace these seed entries with real samples.
   videos: [
@@ -280,10 +275,7 @@ export const ugc: UgcConfig = {
       "I'm a full-stack developer who's spent the last few years helping early-stage startups turn messy ideas into real, working apps.",
       "UGC is the same job from the other side: taking a product and making people get it in seconds. I love apps, gadgets, a good desk setup and far too much tea.",
     ],
-    links: [
-      { label: "dev portfolio →", href: "/" },
-      { label: "github →", href: "https://github.com/tjhind" },
-    ],
+    links: [{ label: "dev portfolio →", href: "/" }],
   },
 
   faq: [
@@ -291,10 +283,7 @@ export const ugc: UgcConfig = {
       q: "Do you need me to send the product?",
       a: "For physical products, yes. Ship it to me in the UK. For software, a free account or licence is all I need.",
     },
-    {
-      q: "What are usage rights and how long do they last?",
-      a: "Usage rights cover where and how long you can run the content. Organic use is included by default; paid usage is licensed for an agreed period, which you can extend.",
-    },
+
     {
       q: "Can you post it on your own account?",
       a: "Yes, as an optional paid add-on.",
