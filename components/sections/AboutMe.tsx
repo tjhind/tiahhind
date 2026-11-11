@@ -79,7 +79,7 @@ const photos = [
   },
 ];
 
-function PhotoCollage() {
+function PhotoCollage({ eager }: { eager: boolean }) {
   return (
     <div className="relative w-[306px] h-[391px] md:w-[400px] md:h-[480px] shrink-0">
       <div className="absolute top-0 left-0 w-[360px] h-[460px] md:w-[400px] md:h-[480px] origin-top-left scale-[0.85] md:scale-100">
@@ -101,7 +101,7 @@ function PhotoCollage() {
               fill
               sizes={photo.sizes}
               className="object-cover"
-              priority={true}
+              priority={eager}
             />
           </div>
         ))}
@@ -117,7 +117,7 @@ function PhotoCollage() {
             fill
             sizes="64px"
             className="object-contain"
-            priority={true}
+            priority={eager}
           />
         </div>
 
@@ -133,7 +133,7 @@ function PhotoCollage() {
               fill
               sizes="96px"
               className="object-contain"
-              priority={true}
+              priority={eager}
             />
           </div>
         </div>
@@ -149,7 +149,7 @@ function PhotoCollage() {
             fill
             sizes="96px"
             className="object-contain"
-            priority={true}
+            priority={eager}
           />
         </div>
 
@@ -165,7 +165,7 @@ function PhotoCollage() {
               fill
               sizes="144px"
               className="object-contain"
-              priority={true}
+              priority={eager}
             />
           </div>
         </div>
@@ -182,7 +182,7 @@ function PhotoCollage() {
               fill
               sizes="96px"
               className="object-contain"
-              priority={true}
+              priority={eager}
             />
           </div>
         </div>
@@ -199,7 +199,7 @@ function PhotoCollage() {
               fill
               sizes="96px"
               className="object-contain"
-              priority={true}
+              priority={eager}
             />
           </div>
         </div>
@@ -216,7 +216,7 @@ function PhotoCollage() {
               fill
               sizes="160px"
               className="object-contain"
-              priority={true}
+              priority={eager}
             />
           </div>
         </div>
@@ -233,7 +233,7 @@ function PhotoCollage() {
               fill
               sizes="40px"
               className="object-contain"
-              priority={true}
+              priority={eager}
             />
           </div>
         </div>
@@ -255,7 +255,7 @@ function PhotoCollage() {
               fill
               sizes="112px"
               className="object-contain"
-              priority={true}
+              priority={eager}
             />
           </div>
         </div>
@@ -264,17 +264,48 @@ function PhotoCollage() {
   );
 }
 
-const bioParagraphs = [
+const defaultBio = [
   "I'm a full-stack developer, problem solver, and creative at heart. I enjoy building thoughtful and visually stunning products from the ground up.",
   "I've spent the last few years working with early-stage startups, helping turn half-formed, messy ideas into real, working apps. Honestly, that's my favourite part.",
   "That space between chaos and clarity is where I do my best work.",
   "When I'm not coding, I'm usually off doing something that fuels that same curiosity...",
 ];
 
-export default function AboutMe() {
+interface AboutMeProps {
+  id?: string;
+  /** Bio copy. Defaults to the homepage bio. */
+  bio?: string[];
+  /** Show the hobbies grid (homepage) or hide it (compact variant). */
+  showHobbies?: boolean;
+  /** Render the homepage Contact block inside the section. */
+  showContact?: boolean;
+  /** Optional links under the bio, e.g. back to the dev portfolio. */
+  links?: { label: string; href: string }[];
+  /** Load images with priority (homepage) or lazily (below-the-fold usage). */
+  eager?: boolean;
+  /** Tighter vertical padding for pages with a scroll budget. */
+  compact?: boolean;
+}
+
+export default function AboutMe({
+  id = "about",
+  bio = defaultBio,
+  showHobbies = true,
+  showContact = true,
+  links,
+  eager = true,
+  compact = false,
+}: AboutMeProps = {}) {
+  const bioParagraphs = bio;
   return (
-    <section id="about" className="relative isolate bg-[#EEEAE4]">
-      <div className="relative z-10 max-w-[1440px] mx-auto px-6 md:px-4 lg:px-16 pt-14 md:pt-20 pb-18 lg:pb-36">
+    <section id={id} className="relative isolate bg-[#EEEAE4]">
+      <div
+        className={`relative z-10 max-w-[1440px] mx-auto px-6 md:px-4 lg:px-16 ${
+          compact
+            ? "pt-12 md:pt-16 pb-20 lg:pb-28"
+            : "pt-14 md:pt-20 pb-18 lg:pb-36"
+        }`}
+      >
         <motion.div
           className="flex items-center gap-2 mb-10 md:mb-14"
           initial={{ opacity: 0, y: 20 }}
@@ -292,7 +323,7 @@ export default function AboutMe() {
             width={100}
             height={100}
             className="-ml-12"
-            priority={true}
+            priority={eager}
           />
         </motion.div>
 
@@ -304,14 +335,20 @@ export default function AboutMe() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
           >
-            <PhotoCollage />
+            <PhotoCollage eager={eager} />
           </motion.div>
 
           {/* Bio + hobbies wrapper */}
           <div className="w-full flex flex-col xl:flex-row gap-12 lg:gap-14 xl:gap-20 lg:flex-1">
             {/* Bio text */}
             <div className="w-full max-w-lg xl:flex-1">
-              <div className="space-y-4 text-sm text-foreground/60 leading-relaxed">
+              <div
+                className={`space-y-4 leading-relaxed ${
+                  compact
+                    ? "text-base text-foreground/75"
+                    : "text-sm text-foreground/60"
+                }`}
+              >
                 {bioParagraphs.map((paragraph, i) => (
                   <motion.p
                     key={i}
@@ -328,40 +365,58 @@ export default function AboutMe() {
                   </motion.p>
                 ))}
               </div>
+              {links && links.length > 0 && (
+                <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2 font-mono text-sm">
+                  {links.map((link) => (
+                    <a
+                      key={link.href}
+                      href={link.href}
+                      {...(link.href.startsWith("http")
+                        ? { target: "_blank", rel: "noopener noreferrer" }
+                        : {})}
+                      className="inline-flex min-h-11 items-center text-foreground underline decoration-foreground/30 underline-offset-4 hover:decoration-coral"
+                    >
+                      {link.label}
+                    </a>
+                  ))}
+                </div>
+              )}
             </div>
 
-            <div className="w-full lg:max-w-lg xl:max-w-none xl:w-[420px] grid grid-cols-2 xl:grid-cols-2 gap-x-6 gap-y-3 xl:gap-y-0">
-              {hobbies.map((hobby, i) => (
-                <motion.div
-                  key={hobby.label}
-                  className="flex items-center gap-4 text-sm tracking-tight text-foreground/70"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{
-                    duration: 0.6,
-                    ease: "easeOut",
-                    delay: i * 0.08,
-                  }}
-                >
-                  <div className="relative w-16 h-16 mt-0.5 shrink-0">
-                    <Image
-                      src={hobby.icon}
-                      alt=""
-                      fill
-                      sizes="64px"
-                      className="object-contain"
-                      priority={true}
-                    />
-                  </div>
-                  <span>{hobby.label}</span>
-                </motion.div>
-              ))}
-            </div>
+            {showHobbies && (
+              <div className="w-full lg:max-w-lg xl:max-w-none xl:w-[420px] grid grid-cols-2 xl:grid-cols-2 gap-x-6 gap-y-3 xl:gap-y-0">
+                {hobbies.map((hobby, i) => (
+                  <motion.div
+                    key={hobby.label}
+                    className="flex items-center gap-4 text-sm tracking-tight text-foreground/70"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{
+                      duration: 0.6,
+                      ease: "easeOut",
+                      delay: i * 0.08,
+                    }}
+                  >
+                    <div className="relative w-16 h-16 mt-0.5 shrink-0">
+                      <Image
+                        src={hobby.icon}
+                        alt=""
+                        fill
+                        sizes="64px"
+                        className="object-contain"
+                        priority={eager}
+                      />
+                    </div>
+                    <span>{hobby.label}</span>
+                  </motion.div>
+                ))}
+              </div>
+            )}
           </div>
         </div>
 
-        <Contact />
+        {showContact && <Contact />}
       </div>
 
       <div className="absolute bottom-0 left-0 w-full leading-[0] pointer-events-none z-0">

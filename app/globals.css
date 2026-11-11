@@ -7,6 +7,8 @@
 
 @theme {
   --color-coral: #e8563a;
+  /* Deeper coral for small text / white-on-coral buttons (WCAG AA: 5.2:1 on white) */
+  --color-coral-deep: #c2402a;
   --color-darkGrey: #d5d2cb;
 }
 
@@ -24,4 +26,12 @@ body {
   background: var(--background);
   color: var(--foreground);
   overflow-x: hidden;
+}
+
+/* Scroll reveals (components/ugc/Reveal.tsx): no motion, always visible. */
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }
