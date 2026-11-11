@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import AboutMe from "@/components/sections/AboutMe";
+import Loader from "@/components/layout/Loader";
 import WhatIDo from "@/components/sections/WhatIDo";
 import Logo from "@/components/ui/Logo";
 import UgcHero from "@/components/ugc/UgcHero";
@@ -10,7 +11,6 @@ import WorkSection, {
 import {
   Faq,
   Organic,
-  ProcessAndSpec,
   Services,
   Testimonials,
 } from "@/components/ugc/UgcSections";
@@ -148,6 +148,7 @@ export default async function UgcPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData()) }}
       />
+      <Loader />
       <SoundCoordinator />
 
       <header className="mx-auto flex h-14 max-w-[1280px] items-center justify-between px-4 sm:px-6 lg:px-16">
@@ -176,7 +177,6 @@ export default async function UgcPage({
           innerClassName="pt-14 md:pt-16"
         />
         <Services services={ugc.services} addOns={ugc.addOns} />
-        <ProcessAndSpec process={ugc.process} specSheet={ugc.specSheet} />
         <Organic posts={organic} />
         {/* overflow-x-clip: the collage's stickers poke past 320px viewports */}
         <div className="overflow-x-clip">

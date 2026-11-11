@@ -5,8 +5,6 @@ import { useReducedMotion } from "motion/react";
 import Poster from "./Poster";
 import { track } from "@/lib/analytics";
 
-export const PLAY_REEL_EVENT = "ugc:play-reel";
-
 /**
  * Vertical showreel in a phone frame. Autoplays muted + looped while in view
  * (unless reduced motion is set), pauses off-screen, and has a visible unmute
@@ -44,23 +42,6 @@ export default function Showreel({
     );
     io.observe(wrap);
     return () => io.disconnect();
-  }, [src, reduce]);
-
-  // "Watch the reel" CTA: scroll here, unmute and play.
-  useEffect(() => {
-    function onPlayReel() {
-      const video = videoRef.current;
-      wrapRef.current?.scrollIntoView({
-        behavior: reduce ? "auto" : "smooth",
-        block: "center",
-      });
-      if (!video || !src) return;
-      video.muted = false;
-      setMuted(false);
-      video.play().catch(() => {});
-    }
-    window.addEventListener(PLAY_REEL_EVENT, onPlayReel);
-    return () => window.removeEventListener(PLAY_REEL_EVENT, onPlayReel);
   }, [src, reduce]);
 
   function toggleMute() {

@@ -76,8 +76,6 @@ export interface UgcConfig {
   whyDeveloper: { title: string; description: string; bullets?: string[] }[];
   services: UgcService[];
   addOns: string[];
-  process: { title: string; description: string }[];
-  specSheet: Record<string, string>;
   testimonials: UgcTestimonial[];
   about: { paragraphs: string[]; links: { label: string; href: string }[] };
   faq: { q: string; a: string }[];
@@ -103,12 +101,10 @@ export const ugc: UgcConfig = {
   headline: {
     // Matches the wording of the hand-lettered artwork (used as the accessible name).
     text: "Ideas into (UGC) reality.",
-    // TODO(owner): re-export at ~1100px wide (like the homepage heading) so it
-    // stays crisp on retina screens; current source is 374×266.
     image: {
       src: "/assets/ugc/ideas-into-ugc-reality.webp",
-      width: 374,
-      height: 261,
+      width: 746,
+      height: 520,
     },
   },
 
@@ -272,40 +268,6 @@ export const ugc: UgcConfig = {
     "Whitelisting / Spark Ads",
     "Rush delivery",
   ],
-
-  process: [
-    {
-      title: "Brief",
-      description: "You share the product, goals and must-says.",
-    },
-    {
-      title: "Script & hooks",
-      description: "I send a script with hook options for approval.",
-    },
-    {
-      title: "Film & edit",
-      description: "Shot vertically, captioned, on-brand.",
-    },
-    {
-      title: "Deliver",
-      // TODO(owner): confirm delivery method (Drive / Frame.io / other).
-      description: `Edited + raw files via [Drive/Frame.io] within ${TURNAROUND}.`,
-    },
-    {
-      title: "Revise",
-      description: `${REVISIONS} of revisions included.`,
-    },
-  ],
-
-  specSheet: {
-    format: "9:16 vertical, 1080×1920",
-    length: "15s / 30s / 60s",
-    files: "edited (captions) + clean (no captions/music) + raw clips",
-    turnaround: TURNAROUND,
-    revisions: REVISIONS,
-    // TODO(owner): set the default paid-usage licence period.
-    "usage rights": "organic by default; paid usage licensed per [period]",
-  },
 
   // Section is hidden while this is empty. Never add invented quotes or logos.
   testimonials: [],

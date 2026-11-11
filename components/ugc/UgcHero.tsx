@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { UgcConfig } from "@/content/ugc";
+import Tag from "@/components/ui/Tag";
 import HeadlineUnderline from "./HeadlineUnderline";
 import HeroCtas from "./HeroCtas";
 import Showreel from "./Showreel";
@@ -68,11 +69,8 @@ export default function UgcHero({ config }: { config: UgcConfig }) {
             className="mt-1 flex flex-wrap justify-center gap-x-2 gap-y-2 text-xs lg:justify-start"
           >
             {config.quickFacts.map((fact) => (
-              <li
-                key={fact}
-                className="rounded-md border border-foreground/15 bg-white/60 px-2.5 py-1.5 text-foreground/80"
-              >
-                {fact}
+              <li key={fact}>
+                <Tag>{fact}</Tag>
               </li>
             ))}
           </ul>
