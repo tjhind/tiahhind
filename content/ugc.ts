@@ -68,7 +68,7 @@ export interface UgcConfig {
     image?: { src: string; width: number; height: number };
   };
   subheadline: string;
-  /** Phrases in the subheadline to highlight (homepage "ideas" style). */
+  /** Phrases in the subheadline shown in a slightly darker grey. */
   subheadlineHighlights: string[];
   niches: UgcNiche[]; // order of niche filter chips
   formatLabels: Record<UgcFormat, string>; // order = order of ad-style chips

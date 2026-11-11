@@ -6,17 +6,14 @@ import HeadlineUnderline from "./HeadlineUnderline";
 import HeroCtas from "./HeroCtas";
 import Showreel from "./Showreel";
 
-/** Wraps each phrase in the homepage's highlight style ("ideas" in the hero). */
+/** Wraps each phrase in a slightly darker grey than the surrounding text. */
 function highlight(text: string, phrases: string[]): ReactNode[] {
   if (phrases.length === 0) return [text];
   const escaped = phrases.map((p) => p.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
   const parts = text.split(new RegExp(`(${escaped.join("|")})`, "g"));
   return parts.map((part, i) =>
     phrases.includes(part) ? (
-      <span
-        key={i}
-        className="font-bold underline text-coral underline-offset-4"
-      >
+      <span key={i} className="text-foreground">
         {part}
       </span>
     ) : (
