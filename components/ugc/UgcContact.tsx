@@ -29,24 +29,11 @@ function InstagramIcon() {
   );
 }
 
-function TikTokIcon() {
-  return (
-    <svg
-      width="22"
-      height="22"
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      aria-hidden="true"
-    >
-      <path d="M16.6 3c.3 2.2 1.6 3.6 3.9 3.8v2.6c-1.4.1-2.6-.3-3.9-1.1v5.9c0 3.5-2.6 6-5.9 6-3.4 0-5.9-2.6-5.7-6 .2-3.2 2.9-5.5 6.2-5.2v2.7c-1.7-.3-3.3.8-3.4 2.5-.1 1.7 1.2 3 2.9 3 1.7 0 2.8-1.2 2.8-3.1V3h3.1z" />
-    </svg>
-  );
-}
-
 /**
  * UGC contact: the homepage "get in touch" section with UGC copy, the
- * "let's chat" button (prefilled enquiry email on mobile) and Instagram/TikTok
- * in place of LinkedIn. DM links are hidden until their URLs are set.
+ * "let's chat" button (prefilled enquiry email on mobile) and Instagram
+ * in place of LinkedIn (hidden until its URL is set). TikTok is intentionally
+ * not linked here.
  */
 export default function UgcContact({
   contact,
@@ -59,12 +46,6 @@ export default function UgcContact({
       href: contact.instagramUrl,
       icon: <InstagramIcon />,
       onClick: () => track("ugc_contact_click", { method: "instagram" }),
-    },
-    {
-      label: "DM me on TikTok",
-      href: contact.tiktokUrl,
-      icon: <TikTokIcon />,
-      onClick: () => track("ugc_contact_click", { method: "tiktok" }),
     },
   ].filter((s) => s.href);
 
