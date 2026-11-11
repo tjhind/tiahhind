@@ -181,7 +181,7 @@ export default async function UgcPage({
           innerClassName="pt-14 md:pt-16"
         />
         <Services services={ugc.services} addOns={ugc.addOns} />
-        <Organic posts={organic} />
+        <Organic posts={organic} tiktokUrl={ugc.contact.tiktokUrl} />
         <Faq items={ugc.faq} />
         <Testimonials items={ugc.testimonials} />
         {/* overflow-x-clip: the collage's stickers poke past 320px viewports */}

@@ -95,6 +95,7 @@ export default function UgcHero({ config }: { config: UgcConfig }) {
 
         <Showreel
           src={config.showreel.src}
+          objectPosition={config.showreel.objectPosition}
           poster={config.showreel.poster}
           captionsSrc={config.showreel.captionsSrc}
         />

@@ -5,9 +5,12 @@ import type { ReactNode } from "react";
 export default function SectionHeading({
   id,
   children,
+  aside,
 }: {
   id: string;
   children: ReactNode;
+  /** Optional element shown after the sparkle (e.g. a handle). */
+  aside?: ReactNode;
 }) {
   return (
     <div className="mb-6 flex items-center gap-2 md:mb-8">
@@ -24,6 +27,7 @@ export default function SectionHeading({
         height={100}
         className="-ml-12"
       />
+      {aside && <div className="-ml-7">{aside}</div>}
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { UgcConfig, UgcVideo } from "@/content/ugc";
+import OrganicVideo from "./OrganicVideo";
 import Poster from "./Poster";
 import Reveal from "./Reveal";
 import SectionHeading from "./SectionHeading";
@@ -71,7 +72,9 @@ function OrganicCard({ post }: { post: UgcVideo }) {
   const body = (
     <>
       <div className="relative aspect-[9/16] w-full overflow-hidden rounded-xl bg-darkGrey/40">
-        {post.poster || post.isPlaceholder ? (
+        {post.src ? (
+          <OrganicVideo post={post} />
+        ) : post.poster || post.isPlaceholder ? (
           <Poster
             src={post.poster}
             alt=""
@@ -108,6 +111,7 @@ function OrganicCard({ post }: { post: UgcVideo }) {
     </>
   );
 
+  if (post.src) return body;
   if (!post.externalUrl) return <div className="opacity-80">{body}</div>;
 
   return (
@@ -123,7 +127,13 @@ function OrganicCard({ post }: { post: UgcVideo }) {
   );
 }
 
-export function Organic({ posts }: { posts: UgcVideo[] }) {
+export function Organic({
+  posts,
+  tiktokUrl,
+}: {
+  posts: UgcVideo[];
+  tiktokUrl?: string;
+}) {
   if (posts.length === 0) return null;
   return (
     <section
@@ -131,7 +141,25 @@ export function Organic({ posts }: { posts: UgcVideo[] }) {
       className={`${wrap} py-12 sm:py-16`}
     >
       <Reveal>
-        <SectionHeading id="organic-heading">
+        <SectionHeading
+          id="organic-heading"
+          aside={
+            tiktokUrl ? (
+              <TrackedLink
+                href={tiktokUrl}
+                external
+                event={{
+                  name: "ugc_outbound_click",
+                  props: { destination: "tiktok" },
+                }}
+                className="font-semibold tracking-wide text-xl lg:text-2xl text-coral-deep underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-coral"
+                aria-label="@toktish on TikTok (opens in a new tab)"
+              >
+                @toktish
+              </TrackedLink>
+            ) : null
+          }
+        >
           i also build in public on tiktok
         </SectionHeading>
       </Reveal>

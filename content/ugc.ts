@@ -77,7 +77,12 @@ export interface UgcConfig {
   subheadlineHighlights: string[];
   niches: UgcNiche[]; // order of niche filter chips
   formatLabels: Record<UgcFormat, string>; // order = order of ad-style chips
-  showreel: { src: string; poster: string; captionsSrc?: string };
+  showreel: {
+    src: string;
+    poster: string;
+    captionsSrc?: string;
+    objectPosition?: string;
+  };
   quickFacts: string[];
   videos: UgcVideo[];
   whyDeveloper: { title: string; description: string; bullets?: string[] }[];
@@ -153,6 +158,8 @@ export const ugc: UgcConfig = {
   showreel: {
     src: "/assets/ugc/videos/showreel.mp4",
     poster: "/assets/ugc/showreel-poster.jpg",
+    // Framing inside the phone (CSS object-position). Lower x = shifts the picture right.
+    objectPosition: "35% 50%",
   },
 
   quickFacts: ["5–7 day turnaround", "Raw + edited files", "UK-based"],
@@ -170,7 +177,6 @@ export const ugc: UgcConfig = {
       src: "/assets/ugc/videos/loop-engineering-claude.mp4",
       poster: "/assets/ugc/loop-engineering-claude-poster.jpg",
       previewSrc: "/assets/ugc/videos/loop-engineering-claude-preview.mp4",
-      hook: "What if I told you…",
       featured: true,
     },
     {
@@ -185,7 +191,6 @@ export const ugc: UgcConfig = {
       src: "/assets/ugc/videos/game-jam-godot.mp4",
       poster: "/assets/ugc/game-jam-godot-poster.jpg",
       previewSrc: "/assets/ugc/videos/game-jam-godot-preview.mp4",
-      hook: "Welcome back to day 2 of building a video game",
       featured: true,
     },
     {
@@ -324,43 +329,28 @@ export const ugc: UgcConfig = {
     },
   ],
 
-  // TikTok posts (link out). Placeholders are hidden in production.
-  // Add a poster screenshot to show the video's cover instead of the TikTok tile.
+  // Example TikTok posts. With `src` they play in place; with only
+  // `externalUrl` they link out to TikTok. Covers are each video's first frame.
   organic: [
     {
-      slug: "tiktok-7695073718363639062",
-      title: "Building in public", // TODO(owner): match the post's caption
+      slug: "building-in-public-1",
+      title: "Getting back to my side project",
       format: "organic",
       niche: "App",
       isSpec: false,
-      durationSec: 0,
-      src: "",
-      poster: "",
-      externalUrl: "https://www.tiktok.com/@toktish/video/7695073718363639062",
+      durationSec: 44,
+      src: "/assets/ugc/videos/building-in-public-1.mp4",
+      poster: "/assets/ugc/building-in-public-1-poster.jpg",
     },
     {
-      slug: "todo-organic-2",
-      title: "TODO: A day shipping a side project",
+      slug: "building-in-public-2",
+      title: "Shipping updates to my side project",
       format: "organic",
       niche: "App",
       isSpec: false,
-      durationSec: 0,
-      src: "",
-      poster: "",
-      externalUrl: "",
-      isPlaceholder: true,
-    },
-    {
-      slug: "todo-organic-3",
-      title: "TODO: Dev desk setup tour",
-      format: "organic",
-      niche: "Desk setup",
-      isSpec: false,
-      durationSec: 0,
-      src: "",
-      poster: "",
-      externalUrl: "",
-      isPlaceholder: true,
+      durationSec: 69,
+      src: "/assets/ugc/videos/building-in-public-2.mp4",
+      poster: "/assets/ugc/building-in-public-2-poster.jpg",
     },
   ],
 

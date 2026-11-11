@@ -14,10 +14,13 @@ export default function Showreel({
   src,
   poster,
   captionsSrc,
+  objectPosition,
 }: {
   src: string;
   poster: string;
   captionsSrc?: string;
+  /** CSS object-position for framing the video/poster inside the phone. */
+  objectPosition?: string;
 }) {
   const wrapRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -68,6 +71,7 @@ export default function Showreel({
             ref={videoRef}
             className="absolute inset-0 h-full w-full object-cover"
             src={src}
+            style={objectPosition ? { objectPosition } : undefined}
             poster={poster || undefined}
             muted
             loop
