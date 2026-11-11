@@ -124,7 +124,7 @@ export default function VideoModal({
 
           <div className="flex max-h-[45dvh] flex-col gap-4 overflow-y-auto p-4 md:max-h-none md:flex-1 md:p-8">
             <div className="flex items-center justify-between gap-2">
-              <span className=" text-xs text-white/70">
+              <span className="text-xs text-white/70">
                 {String(position.index + 1).padStart(2, "0")} /{" "}
                 {String(position.total).padStart(2, "0")}
               </span>

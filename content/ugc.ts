@@ -73,7 +73,7 @@ export interface UgcConfig {
   showreel: { src: string; poster: string; captionsSrc?: string };
   quickFacts: string[];
   videos: UgcVideo[];
-  whyDeveloper: { title: string; body: string; icon: string }[];
+  whyDeveloper: { title: string; description: string; bullets?: string[] }[];
   services: UgcService[];
   addOns: string[];
   process: { title: string; description: string }[];
@@ -108,7 +108,7 @@ export const ugc: UgcConfig = {
     image: {
       src: "/assets/ugc/ideas-into-ugc-reality.webp",
       width: 374,
-      height: 266,
+      height: 261,
     },
   },
 
@@ -205,26 +205,40 @@ export const ugc: UgcConfig = {
     },
   ],
 
+  // Rendered with the homepage "what i do" component (accordion on mobile).
   whyDeveloper: [
     {
-      icon: "{ }",
-      title: "I understand the product.",
-      body: "I can explain APIs, AI tools and dev workflows without the script reading like a manual.",
+      title: "i understand the product",
+      description:
+        "I can explain APIs, AI tools and dev workflows without the script reading like a manual.",
+      bullets: ["APIs & dev tools", "AI products", "SaaS workflows"],
     },
     {
-      icon: "✓",
-      title: "I ship on time.",
-      body: "I treat briefs like tickets: scoped, estimated, delivered.",
+      title: "i ship on time",
+      description: "I treat briefs like tickets: scoped, estimated, delivered.",
+      bullets: [
+        "5–7 business day turnaround",
+        `${REVISIONS} of revisions`,
+        "No-drama communication",
+      ],
     },
     {
-      icon: "↻",
-      title: "I think in iterations.",
-      body: "Multiple hooks per video, so you can A/B test.",
+      title: "i think in iterations",
+      description: "Multiple hooks per video, so you can A/B test.",
+      bullets: [
+        "Hook variations",
+        "Built for A/B testing",
+        "Raw + clean files",
+      ],
     },
     {
-      icon: ">_",
-      title: "I speak to technical audiences.",
-      body: "Developers can tell when a creator is faking it.",
+      title: "i speak to technical audiences",
+      description: "Developers can tell when a creator is faking it.",
+      bullets: [
+        "Real developer background",
+        "Accurate, jargon-aware scripts",
+        "Credible on camera",
+      ],
     },
   ],
 

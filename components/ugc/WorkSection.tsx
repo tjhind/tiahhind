@@ -4,6 +4,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { UgcConfig, UgcFormat } from "@/content/ugc";
 import { slugifyNiche } from "@/content/ugc";
 import { track } from "@/lib/analytics";
+import SectionHeading from "./SectionHeading";
 import VideoCard from "./VideoCard";
 import VideoModal from "./VideoModal";
 
@@ -190,14 +191,9 @@ export default function WorkSection({
       aria-labelledby="work-heading"
       className="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-16 pb-16"
     >
-      <div className="mb-5 flex items-baseline justify-between gap-4">
-        <h2
-          id="work-heading"
-          className="text-2xl sm:text-3xl font-extrabold tracking-tight"
-        >
-          the work
-        </h2>
-        <span className=" text-xs text-foreground/70">
+      <div className="flex items-center justify-between gap-4">
+        <SectionHeading id="work-heading">the work</SectionHeading>
+        <span className="mb-6 text-xs text-foreground/70 md:mb-8">
           tap to play with sound
         </span>
       </div>

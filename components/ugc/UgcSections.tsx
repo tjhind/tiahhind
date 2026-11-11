@@ -1,8 +1,8 @@
 import Image from "next/image";
-import type { ReactNode } from "react";
 import type { UgcConfig, UgcVideo } from "@/content/ugc";
 import Poster from "./Poster";
 import Reveal from "./Reveal";
+import SectionHeading from "./SectionHeading";
 import TrackedLink from "./TrackedLink";
 import UgcChatButton from "./UgcChatButton";
 
@@ -12,62 +12,6 @@ import UgcChatButton from "./UgcChatButton";
  */
 
 const wrap = "mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-16";
-
-function SectionHeading({
-  id,
-  kicker,
-  children,
-}: {
-  id: string;
-  kicker: string;
-  children: ReactNode;
-}) {
-  return (
-    <div className="mb-6 sm:mb-8">
-      <p className="mb-1 text-xs text-coral-deep">{kicker}</p>
-      <h2
-        id={id}
-        className="text-2xl sm:text-3xl font-extrabold tracking-tight"
-      >
-        {children}
-      </h2>
-    </div>
-  );
-}
-
-// ── Why a developer ─────────────────────────────────────────────────────────
-
-export function WhyDeveloper({ items }: { items: UgcConfig["whyDeveloper"] }) {
-  return (
-    <section aria-labelledby="why-heading" className={`${wrap} py-12 sm:py-16`}>
-      <Reveal>
-        <SectionHeading id="why-heading" kicker="the differentiator">
-          why a developer?
-        </SectionHeading>
-      </Reveal>
-      <ul className="grid gap-x-8 gap-y-5 sm:grid-cols-2 lg:grid-cols-4">
-        {items.map((item, i) => (
-          <li key={item.title}>
-            <Reveal delay={i * 0.05} className="flex gap-3 lg:flex-col">
-              <span
-                aria-hidden="true"
-                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-foreground text-sm text-white"
-              >
-                {item.icon}
-              </span>
-              <div>
-                <h3 className="font-semibold">{item.title}</h3>
-                <p className="text-[15px] leading-snug text-foreground/75">
-                  {item.body}
-                </p>
-              </div>
-            </Reveal>
-          </li>
-        ))}
-      </ul>
-    </section>
-  );
-}
 
 // ── Services ────────────────────────────────────────────────────────────────
 
@@ -84,9 +28,7 @@ export function Services({
       className={`${wrap} py-12 sm:py-16`}
     >
       <Reveal>
-        <SectionHeading id="services-heading" kicker="what you can book">
-          services
-        </SectionHeading>
+        <SectionHeading id="services-heading">services</SectionHeading>
       </Reveal>
       <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         {services.map((s, i) => (
@@ -139,9 +81,7 @@ export function ProcessAndSpec({
       className={`${wrap} py-12 sm:py-16`}
     >
       <Reveal>
-        <SectionHeading id="process-heading" kicker="how it works">
-          process
-        </SectionHeading>
+        <SectionHeading id="process-heading">process</SectionHeading>
       </Reveal>
 
       {/* Vertical stepper on mobile, horizontal on desktop */}
@@ -152,7 +92,7 @@ export function ProcessAndSpec({
               aria-hidden="true"
               className="absolute -left-[25px] top-1.5 h-2 w-2 rounded-full bg-coral md:-top-[25px] md:left-0"
             />
-            <p className=" text-xs text-coral-deep">
+            <p className="text-xs text-coral-deep">
               {String(i + 1).padStart(2, "0")} / {step.title}
             </p>
             <p className="mt-1 text-[15px] leading-snug text-foreground/75">
@@ -238,8 +178,8 @@ export function Organic({ posts }: { posts: UgcVideo[] }) {
       className={`${wrap} py-12 sm:py-16`}
     >
       <Reveal>
-        <SectionHeading id="organic-heading" kicker="organic">
-          I also build in public on TikTok.
+        <SectionHeading id="organic-heading">
+          i also build in public on tiktok
         </SectionHeading>
       </Reveal>
       <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 lg:gap-5">
@@ -264,7 +204,7 @@ export function Testimonials({ items }: { items: UgcConfig["testimonials"] }) {
       className={`${wrap} py-12 sm:py-16`}
     >
       <Reveal>
-        <SectionHeading id="testimonials-heading" kicker="kind words">
+        <SectionHeading id="testimonials-heading">
           what brands say
         </SectionHeading>
       </Reveal>
@@ -306,9 +246,7 @@ export function Faq({ items }: { items: UgcConfig["faq"] }) {
   return (
     <section aria-labelledby="faq-heading" className={`${wrap} py-12 sm:py-16`}>
       <Reveal>
-        <SectionHeading id="faq-heading" kicker="faq">
-          questions
-        </SectionHeading>
+        <SectionHeading id="faq-heading">questions</SectionHeading>
       </Reveal>
       {/* Native <details> accordion: keyboard + screen-reader friendly, no JS. */}
       <div className="max-w-3xl divide-y divide-foreground/10 border-y border-foreground/10">
@@ -318,7 +256,7 @@ export function Faq({ items }: { items: UgcConfig["faq"] }) {
               {item.q}
               <span
                 aria-hidden="true"
-                className=" text-coral-deep transition-transform group-open:rotate-45 motion-reduce:transition-none"
+                className="text-coral-deep transition-transform group-open:rotate-45 motion-reduce:transition-none"
               >
                 +
               </span>

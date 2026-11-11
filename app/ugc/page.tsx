@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import AboutMe from "@/components/sections/AboutMe";
+import WhatIDo from "@/components/sections/WhatIDo";
 import Logo from "@/components/ui/Logo";
 import UgcHero from "@/components/ugc/UgcHero";
 import WorkSection, {
@@ -12,7 +13,6 @@ import {
   ProcessAndSpec,
   Services,
   Testimonials,
-  WhyDeveloper,
 } from "@/components/ugc/UgcSections";
 import StickyCta from "@/components/ugc/StickyCta";
 import SoundCoordinator from "@/components/ugc/SoundCoordinator";
@@ -168,7 +168,13 @@ export default async function UgcPage({
         <WorkSection config={ugc} initial={initial} />
 
         {/* ── Below the fold: supporting content, kept short ── */}
-        <WhyDeveloper items={ugc.whyDeveloper} />
+        <WhatIDo
+          id="why-developer"
+          label="why a developer?"
+          items={ugc.whyDeveloper}
+          eager={false}
+          innerClassName="pt-14 md:pt-16"
+        />
         <Services services={ugc.services} addOns={ugc.addOns} />
         <ProcessAndSpec process={ugc.process} specSheet={ugc.specSheet} />
         <Organic posts={organic} />

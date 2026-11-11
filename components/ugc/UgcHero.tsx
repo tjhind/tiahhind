@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { UgcConfig } from "@/content/ugc";
+import HeadlineUnderline from "./HeadlineUnderline";
 import HeroCtas from "./HeroCtas";
 import Showreel from "./Showreel";
 
@@ -18,15 +19,19 @@ export default function UgcHero({ config }: { config: UgcConfig }) {
             {headline.image ? (
               <>
                 <span className="sr-only">{headline.text}</span>
-                <Image
-                  src={headline.image.src}
-                  alt=""
-                  width={headline.image.width}
-                  height={headline.image.height}
-                  priority
-                  className="mx-auto block h-auto w-[260px] sm:w-[340px] lg:mx-0 lg:w-[374px]"
-                  sizes="(max-width: 640px) 260px, (max-width: 1024px) 340px, 374px"
-                />
+                <span className="relative mx-auto block w-[260px] sm:w-[340px] lg:mx-0 lg:w-[374px]">
+                  <Image
+                    src={headline.image.src}
+                    alt=""
+                    width={headline.image.width}
+                    height={headline.image.height}
+                    priority
+                    className="block h-auto w-full"
+                    sizes="(max-width: 640px) 260px, (max-width: 1024px) 340px, 374px"
+                  />
+                  {/* Homepage underline animation, tucked under "reality" */}
+                  <HeadlineUnderline className="-mt-[4%] ml-[14%] w-[74%]" />
+                </span>
               </>
             ) : (
               <span className="block text-[2.5rem] leading-[0.95] sm:text-6xl lg:text-7xl font-extrabold tracking-[-0.04em] text-coral">
