@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { preload } from "react-dom";
 import AboutMe from "@/components/sections/AboutMe";
 import Loader from "@/components/layout/Loader";
 import WhatIDo from "@/components/sections/WhatIDo";
@@ -139,6 +140,9 @@ export default async function UgcPage({
 }: {
   searchParams: SearchParams;
 }) {
+  // The headline underline animation (1.16 MB) is fetched while the loader
+  // shows, so it's ready to play the moment the loader exits.
+  preload("/assets/header/header-lines-animation.png", { as: "image" });
   const initial = parseInitial(await searchParams);
   const organic = visibleOrganic();
 
@@ -178,6 +182,8 @@ export default async function UgcPage({
         />
         <Services services={ugc.services} addOns={ugc.addOns} />
         <Organic posts={organic} />
+        <Faq items={ugc.faq} />
+        <Testimonials items={ugc.testimonials} />
         {/* overflow-x-clip: the collage's stickers poke past 320px viewports */}
         <div className="overflow-x-clip">
           <AboutMe
@@ -190,8 +196,6 @@ export default async function UgcPage({
             compact
           />
         </div>
-        <Testimonials items={ugc.testimonials} />
-        <Faq items={ugc.faq} />
         <UgcContact contact={ugc.contact} />
       </main>
 

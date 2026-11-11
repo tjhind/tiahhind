@@ -10,7 +10,9 @@ import { useEffect, useRef, useState } from "react";
  * underline by clipping to its region of the canvas.
  */
 const CANVAS = { w: 1300, h: 750 };
-const CLIP = { x: 225, y: 340, w: 435, h: 85 }; // underline only
+// Underline only (measured from the rendered APNG: strokes span roughly
+// x 365–946, y 527–620; the tick marks sit above y 505 and right of x 995).
+const CLIP = { x: 345, y: 505, w: 620, h: 130 };
 
 /** Matches the Loader's own worst case (5s timeout + 0.7s exit). */
 const LOADER_FALLBACK_MS = 6000;
@@ -82,6 +84,7 @@ export default function HeadlineUnderline({
           width={CANVAS.w}
           height={CANVAS.h}
           unoptimized
+          loading="eager"
           className="absolute max-w-none"
           style={{
             width: `${(CANVAS.w / CLIP.w) * 100}%`,

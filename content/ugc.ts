@@ -68,6 +68,8 @@ export interface UgcConfig {
     image?: { src: string; width: number; height: number };
   };
   subheadline: string;
+  /** Phrases in the subheadline to highlight (homepage "ideas" style). */
+  subheadlineHighlights: string[];
   niches: UgcNiche[]; // order of niche filter chips
   formatLabels: Record<UgcFormat, string>; // order = order of ad-style chips
   showreel: { src: string; poster: string; captionsSrc?: string };
@@ -110,6 +112,7 @@ export const ugc: UgcConfig = {
 
   subheadline:
     "I'm Tiah, a software developer making ad-ready UGC for tech, SaaS and AI brands.",
+  subheadlineHighlights: ["software developer", "tech, SaaS", "AI"],
 
   niches: [
     "App",
@@ -210,6 +213,15 @@ export const ugc: UgcConfig = {
       bullets: ["APIs & dev tools", "AI products", "SaaS workflows"],
     },
     {
+      title: "i speak to technical audiences",
+      description: "Developers can tell when a creator is faking it.",
+      bullets: [
+        "Real developer background",
+        "Accurate, jargon-aware scripts",
+        "Credible on camera",
+      ],
+    },
+    {
       title: "i ship on time",
       description: "I treat briefs like tickets: scoped, estimated, delivered.",
       bullets: [
@@ -225,15 +237,6 @@ export const ugc: UgcConfig = {
         "Hook variations",
         "Built for A/B testing",
         "Raw + clean files",
-      ],
-    },
-    {
-      title: "i speak to technical audiences",
-      description: "Developers can tell when a creator is faking it.",
-      bullets: [
-        "Real developer background",
-        "Accurate, jargon-aware scripts",
-        "Credible on camera",
       ],
     },
   ],
@@ -368,7 +371,7 @@ export const ugc: UgcConfig = {
       "Thanks!",
     ].join("\n"),
     instagramUrl: "", // TODO(owner): https://instagram.com/<handle>
-    tiktokUrl: "", // TODO(owner): https://www.tiktok.com/@<handle>
+    tiktokUrl: "https://www.tiktok.com/@toktish",
     replyTime: "24–48 hours", // TODO(owner): confirm reply time
   },
 };

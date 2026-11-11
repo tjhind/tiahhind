@@ -1,9 +1,29 @@
 import Image from "next/image";
+import type { ReactNode } from "react";
 import type { UgcConfig } from "@/content/ugc";
 import Tag from "@/components/ui/Tag";
 import HeadlineUnderline from "./HeadlineUnderline";
 import HeroCtas from "./HeroCtas";
 import Showreel from "./Showreel";
+
+/** Wraps each phrase in the homepage's highlight style ("ideas" in the hero). */
+function highlight(text: string, phrases: string[]): ReactNode[] {
+  if (phrases.length === 0) return [text];
+  const escaped = phrases.map((p) => p.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
+  const parts = text.split(new RegExp(`(${escaped.join("|")})`, "g"));
+  return parts.map((part, i) =>
+    phrases.includes(part) ? (
+      <span
+        key={i}
+        className="font-bold underline text-coral underline-offset-4"
+      >
+        {part}
+      </span>
+    ) : (
+      part
+    ),
+  );
+}
 
 export default function UgcHero({ config }: { config: UgcConfig }) {
   const { headline } = config;
@@ -31,7 +51,7 @@ export default function UgcHero({ config }: { config: UgcConfig }) {
                     sizes="(max-width: 640px) 260px, (max-width: 1024px) 340px, 374px"
                   />
                   {/* Homepage underline animation, tucked under "reality" */}
-                  <HeadlineUnderline className="-mt-[4%] ml-[14%] w-[74%]" />
+                  <HeadlineUnderline className="-mt-[4%] ml-[18%] w-[72%]" />
                 </span>
               </>
             ) : (
@@ -42,7 +62,7 @@ export default function UgcHero({ config }: { config: UgcConfig }) {
           </h1>
 
           <p className="max-w-xl text-base sm:text-lg leading-snug text-foreground/80">
-            {config.subheadline}
+            {highlight(config.subheadline, config.subheadlineHighlights)}
           </p>
 
           {/* Name + email: real, selectable text, always above the fold */}
