@@ -45,8 +45,8 @@ export default function UgcHero({ config }: { config: UgcConfig }) {
                   width={headline.image.width}
                   height={headline.image.height}
                   priority
-                  className="block h-auto w-[280px] sm:w-[360px] lg:w-[460px]"
-                  sizes="(max-width: 640px) 280px, (max-width: 1024px) 360px, 460px"
+                  className="block h-auto w-[260px] sm:w-[340px] lg:w-[374px]"
+                  sizes="(max-width: 640px) 260px, (max-width: 1024px) 340px, 374px"
                 />
               </>
             ) : (

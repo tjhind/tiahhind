@@ -102,9 +102,15 @@ export const ugc: UgcConfig = {
   name: "Tiah Hind",
 
   headline: {
-    text: "Ideas into UGC reality.",
-    // TODO(owner): add the hand-lettered headline artwork, e.g.
-    // image: { src: "/assets/ugc/ideas-into-ugc-reality.webp", width: 600, height: 346 },
+    // Matches the wording of the hand-lettered artwork (used as the accessible name).
+    text: "Ideas into (UGC) reality.",
+    // TODO(owner): re-export at ~1100px wide (like the homepage heading) so it
+    // stays crisp on retina screens; current source is 374×266.
+    image: {
+      src: "/assets/ugc/ideas-into-ugc-reality.webp",
+      width: 374,
+      height: 266,
+    },
   },
 
   subheadline:
