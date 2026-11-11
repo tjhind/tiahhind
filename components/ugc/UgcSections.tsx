@@ -71,12 +71,30 @@ function OrganicCard({ post }: { post: UgcVideo }) {
   const body = (
     <>
       <div className="relative aspect-[9/16] w-full overflow-hidden rounded-xl bg-darkGrey/40">
-        <Poster
-          src={post.poster}
-          alt=""
-          sizes="(max-width: 768px) 50vw, 240px"
-          label="tiktok poster"
-        />
+        {post.poster || post.isPlaceholder ? (
+          <Poster
+            src={post.poster}
+            alt=""
+            sizes="(max-width: 768px) 50vw, 240px"
+            label="tiktok poster"
+          />
+        ) : (
+          // Real post without a cover image: a branded "watch on TikTok" tile.
+          <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-foreground text-white">
+            <span className="flex h-12 w-12 items-center justify-center rounded-full bg-white/15">
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 16 16"
+                className="ml-0.5 h-5 w-5"
+                fill="currentColor"
+              >
+                <path d="M4 2.5v11l9-5.5z" />
+              </svg>
+            </span>
+            <span className="text-sm font-medium">watch on tiktok</span>
+            <span className="text-xs text-white/60">@toktish</span>
+          </div>
+        )}
         {typeof post.views === "number" && (
           <span className="absolute bottom-2 left-2 rounded bg-foreground/80 px-1.5 py-0.5 text-[11px] text-white">
             {Intl.NumberFormat("en-GB", { notation: "compact" }).format(

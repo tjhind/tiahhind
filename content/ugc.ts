@@ -19,6 +19,9 @@ export type UgcFormat =
   | "unboxing-setup"
   | "testimonial"
   | "listicle"
+  | "dev-diary"
+  | "tutorial"
+  | "honest-take"
   | "organic";
 
 /** Niche / product type. Free-form so new niches need no code changes. */
@@ -31,6 +34,8 @@ export interface UgcVideo {
   niche: UgcNiche;
   productName?: string;
   isSpec: boolean; // true => "Spec ad" label
+  /** My own content (not for a brand): labelled "Original content", not "Paid / commissioned". */
+  isOriginal?: boolean;
   durationSec: number;
   src: string; // MP4 URL ("" = not uploaded yet)
   poster: string; // 9:16 image ("" = placeholder styling)
@@ -114,11 +119,15 @@ export const ugc: UgcConfig = {
     "I'm Tiah, a software developer making ad-ready UGC for tech, SaaS and AI brands.",
   subheadlineHighlights: ["software developer", "tech, SaaS", "AI"],
 
+  // Chip order. Only niches with at least one video get a chip.
   niches: [
+    "AI tool",
+    "Game dev",
+    "Web dev",
     "App",
     "SaaS / dev tool",
-    "AI tool",
     "Tech gadget",
+    "Accessories",
     "Desk setup",
     "Unboxing",
     "Pet",
@@ -127,75 +136,84 @@ export const ugc: UgcConfig = {
     "Food & drink",
   ],
 
+  // Chip order. Only styles with at least one video get a chip.
   formatLabels: {
+    tutorial: "Tutorial / how-to",
+    "dev-diary": "Dev diary",
+    "honest-take": "Honest take",
+    "product-demo": "Product demo",
     testimonial: "Testimonial",
     "problem-solution": "Problem → Solution",
-    "product-demo": "Product demo",
     listicle: "Listicle / “3 reasons”",
     "unboxing-setup": "Unboxing / setup",
     organic: "Organic storytelling",
   },
 
+  // Compressed copies; raw exports live in /.originals (git-ignored).
   showreel: {
-    src: "", // TODO(owner): showreel MP4 URL
-    poster: "", // TODO(owner): showreel poster, e.g. /assets/ugc/showreel-poster.webp
+    src: "/assets/ugc/videos/showreel.mp4",
+    poster: "/assets/ugc/showreel-poster.jpg",
   },
 
   quickFacts: ["5–7 day turnaround", "Raw + edited files", "UK-based"],
 
-  // TODO(owner): replace these seed entries with real samples.
   videos: [
     {
-      slug: "todo-app-testimonial",
-      title: "TODO: Why I switched to [Product]",
-      format: "testimonial",
-      niche: "App",
-      isSpec: true,
-      durationSec: 28,
-      src: "",
-      poster: "",
-      hook: "TODO: first spoken line",
-      breakdown: {
-        goal: "TODO",
-        hook: "TODO",
-        angle: "TODO",
-        cta: "TODO",
-      },
-      featured: true,
-      isPlaceholder: true,
-    },
-    {
-      slug: "todo-saas-problem-solution",
-      title: "TODO: The bug that cost me a weekend",
-      format: "problem-solution",
-      niche: "SaaS / dev tool",
-      isSpec: true,
-      durationSec: 34,
-      src: "",
-      poster: "",
-      isPlaceholder: true,
-    },
-    {
-      slug: "todo-ai-demo",
-      title: "TODO: [AI tool] in 30 seconds",
-      format: "product-demo",
+      slug: "loop-engineering-claude",
+      title: "Loop engineering a product with Claude",
+      format: "tutorial",
       niche: "AI tool",
-      isSpec: true,
-      durationSec: 31,
-      src: "",
-      poster: "",
-      isPlaceholder: true,
+      productName: "Claude",
+      isSpec: false,
+      isOriginal: true,
+      durationSec: 191,
+      src: "/assets/ugc/videos/loop-engineering-claude.mp4",
+      poster: "/assets/ugc/loop-engineering-claude-poster.jpg",
+      previewSrc: "/assets/ugc/videos/loop-engineering-claude-preview.mp4",
+      hook: "What if I told you…",
+      featured: true,
     },
     {
-      slug: "todo-gadget-unboxing",
-      title: "TODO: Unboxing my new desk gadget",
-      format: "unboxing-setup",
-      niche: "Tech gadget",
-      isSpec: true,
-      durationSec: 22,
-      src: "",
-      poster: "",
-      isPlaceholder: true,
+      slug: "game-jam-godot",
+      title: "Building a game for a game jam (and why I picked Godot)",
+      format: "dev-diary",
+      niche: "Game dev",
+      productName: "Godot",
+      isSpec: false,
+      isOriginal: true,
+      durationSec: 111,
+      src: "/assets/ugc/videos/game-jam-godot.mp4",
+      poster: "/assets/ugc/game-jam-godot-poster.jpg",
+      previewSrc: "/assets/ugc/videos/game-jam-godot-preview.mp4",
+      hook: "Welcome back to day 2 of building a video game",
+      featured: true,
+    },
+    {
+      slug: "vibe-coding-portfolio",
+      title: "How I vibe coded my portfolio, and what I thought",
+      format: "honest-take",
+      niche: "Web dev",
+      productName: "Claude",
+      isSpec: false,
+      isOriginal: true,
+      durationSec: 85,
+      src: "/assets/ugc/videos/vibe-coding-portfolio.mp4",
+      poster: "/assets/ugc/vibe-coding-portfolio-poster.jpg",
+      previewSrc: "/assets/ugc/videos/vibe-coding-portfolio-preview.mp4",
+      featured: true,
+    },
+    {
+      slug: "food-charm-keychains",
+      title: "Mini food charm keychains",
+      format: "product-demo",
+      niche: "Accessories",
+      isSpec: false,
+      isOriginal: true,
+      durationSec: 7,
+      src: "/assets/ugc/videos/food-charm-keychains.mp4",
+      poster: "/assets/ugc/food-charm-keychains-poster.jpg",
+      previewSrc: "/assets/ugc/videos/food-charm-keychains-preview.mp4",
+      featured: true,
     },
   ],
 
@@ -306,19 +324,19 @@ export const ugc: UgcConfig = {
     },
   ],
 
-  // TODO(owner): replace with real TikTok posts. Placeholders are hidden in production.
+  // TikTok posts (link out). Placeholders are hidden in production.
+  // Add a poster screenshot to show the video's cover instead of the TikTok tile.
   organic: [
     {
-      slug: "todo-organic-1",
-      title: "TODO: Building in public, ep. 1",
+      slug: "tiktok-7695073718363639062",
+      title: "Building in public", // TODO(owner): match the post's caption
       format: "organic",
       niche: "App",
       isSpec: false,
       durationSec: 0,
       src: "",
       poster: "",
-      externalUrl: "",
-      isPlaceholder: true,
+      externalUrl: "https://www.tiktok.com/@toktish/video/7695073718363639062",
     },
     {
       slug: "todo-organic-2",

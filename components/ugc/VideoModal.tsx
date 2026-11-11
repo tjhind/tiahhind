@@ -179,7 +179,11 @@ export default function VideoModal({
                 </span>
               )}
               <span className="rounded bg-white/10 px-1.5 py-0.5">
-                {video.isSpec ? "Spec ad" : "Paid / commissioned"}
+                {video.isSpec
+                  ? "Spec ad"
+                  : video.isOriginal
+                    ? "Original content"
+                    : "Paid / commissioned"}
               </span>
             </div>
             {video.isSpec && (
