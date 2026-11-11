@@ -1,24 +1,18 @@
 "use client";
 
-import TrackedLink from "./TrackedLink";
+import UgcChatButton from "./UgcChatButton";
 import { PLAY_REEL_EVENT } from "./Showreel";
 
 export default function HeroCtas() {
   return (
-    <div className="flex flex-wrap items-center gap-3">
-      <TrackedLink
-        href="#contact"
-        event={{ name: "ugc_cta_click", props: { location: "hero" } }}
-        className="inline-flex min-h-11 items-center rounded-full bg-coral-deep px-6 text-sm font-semibold text-white hover:brightness-110 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-coral"
-      >
-        Work with me
-      </TrackedLink>
+    <div className="flex flex-wrap items-center justify-center gap-3 lg:justify-start">
+      <UgcChatButton location="hero" />
       <button
         type="button"
         onClick={() => window.dispatchEvent(new CustomEvent(PLAY_REEL_EVENT))}
-        className="inline-flex min-h-11 items-center gap-2 rounded-full border border-foreground px-5 text-sm font-medium hover:bg-foreground hover:text-background focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-coral"
+        className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full text-sm font-medium leading-none border border-foreground text-foreground bg-transparent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-coral"
       >
-        <span aria-hidden="true">▶</span> Watch the reel
+        watch the reel ▶
       </button>
     </div>
   );

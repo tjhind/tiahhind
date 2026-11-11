@@ -68,7 +68,6 @@ export interface UgcConfig {
     image?: { src: string; width: number; height: number };
   };
   subheadline: string;
-  terminalLine: string;
   niches: UgcNiche[]; // order of niche filter chips
   formatLabels: Record<UgcFormat, string>; // order = order of ad-style chips
   showreel: { src: string; poster: string; captionsSrc?: string };
@@ -115,8 +114,6 @@ export const ugc: UgcConfig = {
 
   subheadline:
     "I'm Tiah, a software developer making ad-ready UGC for tech, SaaS and AI brands.",
-
-  terminalLine: "$ ship --format=ugc --ratio=9:16",
 
   niches: [
     "App",

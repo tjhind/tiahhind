@@ -1,72 +1,58 @@
-import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
-import Image from "next/image";
+"use client";
 
-const EMAIL = "hello@tiahhind.com";
+import type { ReactNode } from "react";
+import { motion } from "motion/react";
+import Image from "next/image";
+import LetsChatButton, { DEFAULT_EMAIL } from "@/components/ui/LetsChatButton";
+
 const LINKEDIN_URL = "https://www.linkedin.com/in/tiahhind";
 
-function CheckIcon() {
-  return (
-    <svg
-      width="13"
-      height="13"
-      viewBox="0 0 13 13"
-      fill="none"
-      aria-hidden="true"
-    >
-      <path
-        d="M2 6.5l3.25 3.25 5.75-6"
-        stroke="currentColor"
-        strokeWidth="1.4"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
+export interface ContactSocial {
+  label: string; // accessible name, e.g. "LinkedIn"
+  href: string;
+  icon: ReactNode;
+  onClick?: () => void;
 }
 
-export default function Contact() {
-  const [copied, setCopied] = useState(false);
-  const [emailHovered, setEmailHovered] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
+const defaultSocials: ContactSocial[] = [
+  { label: "LinkedIn", href: LINKEDIN_URL, icon: "in" },
+];
 
-  useEffect(() => {
-    const mediaQuery = window.matchMedia("(max-width: 767px)");
+const defaultParagraphs = [
+  "Have an idea you’re trying to bring to life, or just fancy saying hello?",
+  "I’m always happy to chat about digital products and interesting collabs.",
+];
 
-    const updateIsMobile = () => {
-      setIsMobile(mediaQuery.matches);
-    };
+interface ContactProps {
+  id?: string;
+  label?: string;
+  paragraphs?: ReactNode[];
+  email?: string;
+  /** mailto: used by the button on mobile (e.g. with a prefilled subject). */
+  mailtoHref?: string;
+  socials?: ContactSocial[];
+  /** Fired when the "let's chat" button copies or opens email. */
+  onChatAction?: (action: "copy" | "email") => void;
+  /** Fired when the plain email link is clicked. */
+  onEmailClick?: () => void;
+  className?: string;
+}
 
-    updateIsMobile();
-
-    mediaQuery.addEventListener("change", updateIsMobile);
-
-    return () => {
-      mediaQuery.removeEventListener("change", updateIsMobile);
-    };
-  }, []);
-
-  async function copyEmail() {
-    if (isMobile) {
-      window.location.href = `mailto:${EMAIL}`;
-      return;
-    }
-
-    if (navigator.clipboard) {
-      await navigator.clipboard.writeText(EMAIL);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 1500);
-    } else {
-      window.location.href = `mailto:${EMAIL}`;
-    }
-  }
-
-  const showEmail = !isMobile && emailHovered;
-
+export default function Contact({
+  id = "contact",
+  label = "get in touch",
+  paragraphs = defaultParagraphs,
+  email = DEFAULT_EMAIL,
+  mailtoHref,
+  socials = defaultSocials,
+  onChatAction,
+  onEmailClick,
+  className = "mt-16 md:mt-24 pt-12 pb-6 md:py-16 border-t border-foreground/10",
+}: ContactProps = {}) {
   return (
     <motion.section
-      id="contact"
-      className="mt-16 md:mt-24 pt-12 pb-6 md:py-16 border-t border-foreground/10"
+      id={id}
+      className={className}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
@@ -75,7 +61,7 @@ export default function Contact() {
       {/* Section label */}
       <div className="flex items-center gap-2 mb-6">
         <span className="font-medium font-semibold tracking-wide text-xl lg:text-2xl">
-          get in touch
+          {label}
         </span>
 
         <Image
@@ -89,87 +75,42 @@ export default function Contact() {
 
       <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
         <div className="max-w-xl space-y-4 text-sm text-foreground/60 leading-relaxed">
-          <p>
-            Have an idea you’re trying to bring to life, or just fancy saying
-            hello?
-          </p>
-
-          <p>
-            I’m always happy to chat about digital products and interesting
-            collabs.
-          </p>
+          {paragraphs.map((p, i) => (
+            <p key={i}>{p}</p>
+          ))}
         </div>
 
         <div className="flex items-center gap-3 flex-wrap lg:justify-end">
-          <div aria-live="polite" aria-atomic="true" className="sr-only">
-            {copied ? "Email copied" : ""}
-          </div>
-
-          <button
-            type="button"
-            onClick={copyEmail}
-            onMouseEnter={() => setEmailHovered(true)}
-            onMouseLeave={() => setEmailHovered(false)}
-            aria-label={isMobile ? "Email me" : "Copy email address"}
-            className="bg-coral text-white inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full text-sm font-medium leading-none whitespace-nowrap overflow-hidden cursor-pointer"
-          >
-            <AnimatePresence mode="wait" initial={false}>
-              {copied ? (
-                <motion.span
-                  key="copied"
-                  className="flex items-center gap-1"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.15 }}
-                >
-                  <CheckIcon /> copied!
-                </motion.span>
-              ) : showEmail ? (
-                <motion.span
-                  key="email"
-                  className="flex items-center gap-1"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.15 }}
-                >
-                  {EMAIL}
-                </motion.span>
-              ) : (
-                <motion.span
-                  key="default"
-                  className="flex items-center gap-1 cursor-pointer"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.15 }}
-                >
-                  let&apos;s chat →
-                </motion.span>
-              )}
-            </AnimatePresence>
-          </button>
+          <LetsChatButton
+            email={email}
+            mailtoHref={mailtoHref}
+            onAction={onChatAction}
+          />
 
           <div className="w-px h-5 mx-2 shrink-0" />
 
           <div className="flex items-center gap-4">
             <a
-              href={`mailto:${EMAIL}`}
+              href={`mailto:${email}`}
+              onClick={onEmailClick}
               className="text-sm text-foreground/60 hover:text-foreground transition-colors"
             >
-              {EMAIL}
+              {email}
             </a>
 
-            <a
-              href={LINKEDIN_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn"
-              className="text-2xl font-bold text-foreground/70 hover:text-foreground transition-colors"
-            >
-              in
-            </a>
+            {socials.map((social) => (
+              <a
+                key={social.href}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={social.label}
+                onClick={social.onClick}
+                className="text-2xl font-bold text-foreground/70 hover:text-foreground transition-colors"
+              >
+                {social.icon}
+              </a>
+            ))}
           </div>
         </div>
       </div>

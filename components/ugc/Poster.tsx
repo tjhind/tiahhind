@@ -24,9 +24,8 @@ export default function Poster({
         role="img"
         aria-label={`${alt} (placeholder)`}
       >
-        <span className="font-mono text-[11px] text-foreground/70">
-          {"// TODO: "}
-          {label}
+        <span className="text-[11px] text-foreground/70">
+          {`TODO: ${label}`}
         </span>
       </div>
     );

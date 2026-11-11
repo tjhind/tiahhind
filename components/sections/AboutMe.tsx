@@ -366,7 +366,7 @@ export default function AboutMe({
                 ))}
               </div>
               {links && links.length > 0 && (
-                <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2 font-mono text-sm">
+                <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-sm">
                   {links.map((link) => (
                     <a
                       key={link.href}

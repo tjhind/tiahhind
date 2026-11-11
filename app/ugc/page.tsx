@@ -7,7 +7,6 @@ import WorkSection, {
   type WorkInitialState,
 } from "@/components/ugc/WorkSection";
 import {
-  ContactSection,
   Faq,
   Organic,
   ProcessAndSpec,
@@ -17,7 +16,8 @@ import {
 } from "@/components/ugc/UgcSections";
 import StickyCta from "@/components/ugc/StickyCta";
 import SoundCoordinator from "@/components/ugc/SoundCoordinator";
-import TrackedLink from "@/components/ugc/TrackedLink";
+import UgcChatButton from "@/components/ugc/UgcChatButton";
+import UgcContact from "@/components/ugc/UgcContact";
 import {
   UGC_PATH,
   slugifyNiche,
@@ -158,13 +158,9 @@ export default async function UgcPage({
         >
           <Logo />
         </Link>
-        <TrackedLink
-          href="#contact"
-          event={{ name: "ugc_cta_click", props: { location: "hero" } }}
-          className="hidden sm:inline-flex min-h-11 items-center font-mono text-sm underline decoration-coral underline-offset-4"
-        >
-          work with me →
-        </TrackedLink>
+        <div className="hidden sm:block">
+          <UgcChatButton location="hero" />
+        </div>
       </header>
 
       <main>
@@ -190,7 +186,7 @@ export default async function UgcPage({
         </div>
         <Testimonials items={ugc.testimonials} />
         <Faq items={ugc.faq} />
-        <ContactSection contact={ugc.contact} />
+        <UgcContact contact={ugc.contact} />
       </main>
 
       <StickyCta />

@@ -124,7 +124,7 @@ export default function VideoModal({
 
           <div className="flex max-h-[45dvh] flex-col gap-4 overflow-y-auto p-4 md:max-h-none md:flex-1 md:p-8">
             <div className="flex items-center justify-between gap-2">
-              <span className="font-mono text-xs text-white/70">
+              <span className=" text-xs text-white/70">
                 {String(position.index + 1).padStart(2, "0")} /{" "}
                 {String(position.total).padStart(2, "0")}
               </span>
@@ -166,7 +166,7 @@ export default function VideoModal({
               {video.title}
             </h2>
 
-            <div className="flex flex-wrap gap-1.5 font-mono text-xs">
+            <div className="flex flex-wrap gap-1.5 text-xs">
               <span className="rounded bg-white/10 px-1.5 py-0.5">
                 {video.niche}
               </span>
@@ -195,7 +195,7 @@ export default function VideoModal({
             )}
 
             {video.breakdown && (
-              <dl className="grid grid-cols-[auto_1fr] gap-x-4 gap-y-2 font-mono text-sm">
+              <dl className="grid grid-cols-[auto_1fr] gap-x-4 gap-y-2 text-sm">
                 {(["goal", "hook", "angle", "cta"] as const).map((k) => (
                   <div key={k} className="contents">
                     <dt className="text-white/60">{k}</dt>

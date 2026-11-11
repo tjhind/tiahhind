@@ -39,7 +39,7 @@ function ChipRow({
 }) {
   return (
     <div role="group" aria-label={label} className="flex items-center gap-3">
-      <span className="hidden sm:block w-16 shrink-0 font-mono text-xs text-foreground/70">
+      <span className="hidden sm:block w-16 shrink-0 text-xs text-foreground/70">
         {label.toLowerCase()}
       </span>
       {/* Only the chip row scrolls sideways on mobile, never the videos. */}
@@ -52,7 +52,7 @@ function ChipRow({
               type="button"
               aria-pressed={active}
               onClick={() => onSelect(chip.value)}
-              className={`inline-flex min-h-11 shrink-0 items-center gap-1 whitespace-nowrap rounded-lg border px-3 font-mono text-[13px] transition-colors motion-reduce:transition-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-coral ${
+              className={`inline-flex min-h-11 shrink-0 items-center gap-1 whitespace-nowrap rounded-lg border px-3 text-[13px] transition-colors motion-reduce:transition-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-coral ${
                 active
                   ? "border-coral-deep bg-coral-deep text-white"
                   : "border-foreground/15 bg-white/60 text-foreground/80 hover:border-foreground/40"
@@ -197,8 +197,8 @@ export default function WorkSection({
         >
           the work
         </h2>
-        <span className="font-mono text-xs text-foreground/70">
-          {"// tap to play with sound"}
+        <span className=" text-xs text-foreground/70">
+          tap to play with sound
         </span>
       </div>
 

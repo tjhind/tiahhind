@@ -78,7 +78,7 @@ const VideoCard = forwardRef<HTMLButtonElement, VideoCardProps>(
               </svg>
             </span>
             {video.durationSec > 0 && (
-              <span className="absolute bottom-2 right-2 rounded bg-foreground/80 px-1.5 py-0.5 font-mono text-[11px] text-white">
+              <span className="absolute bottom-2 right-2 rounded bg-foreground/80 px-1.5 py-0.5 text-[11px] text-white">
                 {formatDuration(video.durationSec)}
               </span>
             )}
@@ -95,7 +95,7 @@ const VideoCard = forwardRef<HTMLButtonElement, VideoCardProps>(
         </button>
 
         {/* Tags: always visible */}
-        <div className="flex flex-wrap gap-1.5 font-mono text-[11px]">
+        <div className="flex flex-wrap gap-1.5 text-[11px]">
           <span className="rounded bg-foreground/[0.06] px-1.5 py-0.5 text-foreground/80">
             {video.niche}
           </span>

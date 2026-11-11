@@ -21,16 +21,6 @@ export default function Image() {
         fontFamily: "sans-serif",
       }}
     >
-      <div
-        style={{
-          display: "flex",
-          fontSize: 28,
-          fontFamily: "monospace",
-          color: "#c2402a",
-        }}
-      >
-        $ ship --format=ugc --ratio=9:16
-      </div>
       <div style={{ display: "flex", flexDirection: "column" }}>
         <div
           style={{

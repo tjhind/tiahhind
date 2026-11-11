@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import TrackedLink from "./TrackedLink";
+import UgcChatButton from "./UgcChatButton";
 
 /**
- * Mobile-only "Work with me" bar. Appears once the hero has scrolled out of
+ * Mobile-only "let's chat" bar. Appears once the hero has scrolled out of
  * view and hides again while the contact section is on screen, so it never
  * covers the contact buttons. The page reserves bottom padding for it.
  */
@@ -43,13 +43,9 @@ export default function StickyCta() {
       aria-hidden={!visible}
       inert={!visible}
     >
-      <TrackedLink
-        href="#contact"
-        event={{ name: "ugc_cta_click", props: { location: "sticky" } }}
-        className="flex min-h-12 w-full items-center justify-center rounded-full bg-coral-deep text-[15px] font-semibold text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-coral"
-      >
-        Work with me
-      </TrackedLink>
+      <div className="flex justify-center">
+        <UgcChatButton location="sticky" />
+      </div>
     </div>
   );
 }

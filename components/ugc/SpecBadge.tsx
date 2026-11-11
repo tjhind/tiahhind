@@ -34,7 +34,7 @@ export default function SpecBadge() {
         // Visual pill is small; padding gives a 44px tap target.
         className="pointer-events-auto -m-3.5 p-3.5 focus-visible:outline-none"
       >
-        <span className="inline-flex items-center gap-1 rounded bg-white/90 px-1.5 py-0.5 font-mono text-[10px] font-medium uppercase tracking-wide text-foreground/80 ring-1 ring-foreground/10 group-focus-within:ring-2 group-focus-within:ring-coral">
+        <span className="inline-flex items-center gap-1 rounded bg-white/90 px-1.5 py-0.5 text-[10px] font-medium uppercase tracking-wide text-foreground/80 ring-1 ring-foreground/10 group-focus-within:ring-2 group-focus-within:ring-coral">
           Spec ad <span aria-hidden="true">ⓘ</span>
         </span>
       </button>

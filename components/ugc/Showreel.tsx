@@ -128,7 +128,7 @@ export default function Showreel({
           <button
             type="button"
             onClick={toggleMute}
-            className="absolute bottom-3 right-3 z-20 inline-flex h-11 items-center gap-1.5 rounded-full bg-foreground/80 px-3.5 text-xs font-mono text-white backdrop-blur focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+            className="absolute bottom-3 right-3 z-20 inline-flex h-11 items-center gap-1.5 rounded-full bg-foreground/80 px-3.5 text-xs text-white backdrop-blur focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
             aria-pressed={!muted}
             aria-label={muted ? "Unmute showreel" : "Mute showreel"}
           >

@@ -1,14 +1,8 @@
 import Image from "next/image";
 import type { UgcConfig } from "@/content/ugc";
-import CopyEmail from "./CopyEmail";
 import HeroCtas from "./HeroCtas";
 import Showreel from "./Showreel";
 
-/**
- * Above the fold: headline, name + selectable email, CTAs, quick facts,
- * with the showreel peeking in (mobile) or sitting alongside (desktop).
- * No entrance animations here: everything must be visible on first paint.
- */
 export default function UgcHero({ config }: { config: UgcConfig }) {
   const { headline } = config;
 
@@ -19,22 +13,7 @@ export default function UgcHero({ config }: { config: UgcConfig }) {
       className="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-16 pt-4 pb-10 lg:pt-8 lg:pb-16"
     >
       <div className="grid items-center gap-8 lg:grid-cols-[1fr_auto] lg:gap-16">
-        <div className="flex flex-col gap-4 sm:gap-5">
-          <p
-            className="font-mono text-xs text-foreground/70"
-            aria-hidden="true"
-          >
-            {config.terminalLine}
-            <span className="ml-0.5 inline-block w-[0.6ch] animate-pulse motion-reduce:animate-none text-coral">
-              ▍
-            </span>
-          </p>
-
-          {/*
-            Headline. Uses the same hand-lettered artwork treatment as the homepage
-            "hi, i'm tiah" heading (an image, not a web font). Until the owner adds the
-            artwork, a coral display-text fallback stands in.
-          */}
+        <div className="flex flex-col items-center gap-4 text-center sm:gap-5 lg:items-start lg:text-left">
           <h1 id="ugc-headline">
             {headline.image ? (
               <>
@@ -45,7 +24,7 @@ export default function UgcHero({ config }: { config: UgcConfig }) {
                   width={headline.image.width}
                   height={headline.image.height}
                   priority
-                  className="block h-auto w-[260px] sm:w-[340px] lg:w-[374px]"
+                  className="mx-auto block h-auto w-[260px] sm:w-[340px] lg:mx-0 lg:w-[374px]"
                   sizes="(max-width: 640px) 260px, (max-width: 1024px) 340px, 374px"
                 />
               </>
@@ -61,7 +40,7 @@ export default function UgcHero({ config }: { config: UgcConfig }) {
           </p>
 
           {/* Name + email: real, selectable text, always above the fold */}
-          <div className="flex flex-col gap-1 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-3">
+          <div className="flex flex-col items-center gap-1 sm:flex-row sm:flex-wrap sm:gap-x-3">
             <span className="text-base font-semibold">{config.name}</span>
             <span
               aria-hidden="true"
@@ -69,14 +48,19 @@ export default function UgcHero({ config }: { config: UgcConfig }) {
             >
               ·
             </span>
-            <CopyEmail email={config.contact.email} />
+            <a
+              href={`mailto:${config.contact.email}`}
+              className="select-text text-base text-foreground underline decoration-foreground/30 underline-offset-4 hover:decoration-coral break-all"
+            >
+              {config.contact.email}
+            </a>
           </div>
 
           <HeroCtas />
 
           <ul
             aria-label="Quick facts"
-            className="mt-1 flex flex-wrap gap-x-2 gap-y-2 font-mono text-xs"
+            className="mt-1 flex flex-wrap justify-center gap-x-2 gap-y-2 text-xs lg:justify-start"
           >
             {config.quickFacts.map((fact) => (
               <li
