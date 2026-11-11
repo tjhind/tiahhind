@@ -4,13 +4,15 @@ import { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "motion/react";
 
-interface Service {
+export interface WhatIDoItem {
   title: string;
   description: string;
-  bullets: string[];
+  bullets?: string[];
 }
 
-const services: Service[] = [
+type Service = WhatIDoItem;
+
+const defaultServices: Service[] = [
   {
     title: "mvp development",
     description:
@@ -94,7 +96,7 @@ function AccordionItem({
             </p>
 
             <ul className="space-y-1.5">
-              {service.bullets.map((b) => (
+              {(service.bullets ?? []).map((b) => (
                 <li key={b} className="text-sm text-foreground/70 flex gap-2">
                   <span className="text-coral mt-px">—</span>
                   {b}
@@ -108,9 +110,27 @@ function AccordionItem({
   );
 }
 
-export default function WhatIDo() {
+interface WhatIDoProps {
+  id?: string;
+  /** Section label, e.g. "what i do". */
+  label?: string;
+  items?: WhatIDoItem[];
+  /** Load sticker images with priority (homepage) or lazily (below the fold). */
+  eager?: boolean;
+  /** Extra classes on the inner container, e.g. top padding when not under the hero. */
+  innerClassName?: string;
+}
+
+export default function WhatIDo({
+  id = "skills",
+  label = "what i do",
+  items = defaultServices,
+  eager = true,
+  innerClassName = "",
+}: WhatIDoProps = {}) {
+  const services = items;
   return (
-    <section id="skills" className="relative isolate z-20 bg-[#EEEAE4]">
+    <section id={id} className="relative isolate z-20 bg-[#EEEAE4]">
       {/* Decorative stickers */}
       <div className="absolute top-6 right-8 w-18 h-18 hidden md:block select-none pointer-events-none z-0">
         <Image
@@ -119,7 +139,7 @@ export default function WhatIDo() {
           fill
           sizes="96px"
           className="object-contain"
-          priority={true}
+          priority={eager}
         />
       </div>
 
@@ -130,11 +150,13 @@ export default function WhatIDo() {
           fill
           sizes="24px"
           className="object-contain"
-          priority={true}
+          priority={eager}
         />
       </div>
 
-      <div className="relative z-10 max-w-[1440px] mx-auto px-6 md:px-10 lg:px-16 pb-14">
+      <div
+        className={`relative z-10 max-w-[1440px] mx-auto px-6 md:px-10 lg:px-16 pb-14 ${innerClassName}`}
+      >
         {/* Section label */}
         <motion.div
           className="flex items-center gap-2 mb-10 md:mb-12"
@@ -144,7 +166,7 @@ export default function WhatIDo() {
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
           <span className="font-medium font-semibold tracking-wide text-xl lg:text-2xl">
-            what i do
+            {label}
           </span>
           <Image
             src="/assets/throughout/3-line-sparkle-accent.webp"
@@ -152,7 +174,7 @@ export default function WhatIDo() {
             width={100}
             height={100}
             className="-ml-12"
-            priority={true}
+            priority={eager}
           />
         </motion.div>
 
@@ -184,7 +206,7 @@ export default function WhatIDo() {
               </p>
 
               <ul className="space-y-2">
-                {service.bullets.map((b) => (
+                {(service.bullets ?? []).map((b) => (
                   <li key={b} className="text-sm text-foreground/70 flex gap-2">
                     <span className="text-coral shrink-0">—</span>
                     {b}
